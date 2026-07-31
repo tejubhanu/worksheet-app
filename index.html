@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marty's AI Mission Challenge</title>
+  <title>Marty's AI Mission Challenge: Robot Factory Repair</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     body { background-color: #f4f7f6; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
@@ -11,7 +11,7 @@
     .header { text-align: center; margin-bottom: 20px; }
     .progress-bar { width: 100%; height: 10px; background: #e0e0e0; border-radius: 5px; margin-bottom: 20px; overflow: hidden; }
     .progress-fill { height: 100%; width: 0%; background: #4caf50; transition: width 0.3s ease; }
-    .question-box { font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 20px; }
+    .question-box { font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 20px; line-height: 1.4; }
     .options-container { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
     .option-btn { padding: 12px 16px; border: 2px solid #e0e0e0; background: white; border-radius: 8px; font-size: 1rem; cursor: pointer; text-align: left; transition: all 0.2s ease; }
     .option-btn:hover { border-color: #2196f3; background: #f0f7ff; }
@@ -23,8 +23,6 @@
     .btn-next { background: #2196f3; color: white; }
     .btn-submit { background: #4caf50; color: white; }
     .feedback { margin-top: 15px; font-size: 1rem; font-weight: bold; text-align: center; }
-    .correct { color: #2e7d32; }
-    .incorrect { color: #c62828; }
     .hidden { display: none; }
   </style>
 </head>
@@ -32,8 +30,8 @@
 
 <div class="card">
   <div class="header">
-    <h2 id="title">Mission Challenge</h2>
-    <p id="step-indicator">Question 1 of 5</p>
+    <h2 id="title">🤖 Mission: Robot Factory Repair</h2>
+    <p id="step-indicator">Question 1 of 35</p>
   </div>
   <div class="progress-bar">
     <div class="progress-fill" id="progress"></div>
@@ -52,43 +50,62 @@
   </div>
 
   <div id="result-container" class="hidden" style="text-align: center;">
-    <h2>🎉 Mission Accomplished!</h2>
+    <h2>🎖️ Mission Accomplished!</h2>
     <p style="font-size: 1.2rem; margin: 20px 0;" id="score-display"></p>
+    <p style="font-size: 1rem; color: #555; margin-bottom: 20px;">Junior Robotics Engineer Badge Unlocked!</p>
     <button class="btn btn-next" onclick="restartQuiz()">Restart Mission</button>
   </div>
 </div>
 
 <script>
-  // Add your worksheet questions here
+  // Complete 35-question payload
   const questions = [
-    {
-      type: "mcq",
-      question: "1. What comes next in the sequence? 11, 14, 17, 20, __",
-      options: ["21", "22", "23", "24"],
-      answer: "23"
-    },
-    {
-      type: "mcq",
-      question: "2. Which of the following numbers is NOT a multiple of 7?",
-      options: ["14", "21", "28", "36", "42"],
-      answer: "36"
-    },
-    {
-      type: "text",
-      question: "3. What is the smallest prime number?",
-      answer: "2"
-    },
-    {
-      type: "mcq",
-      question: "4. If a robot moves at 25% per hour, what percentage distance does it cover in 3 hours?",
-      options: ["45%", "60%", "75%", "90%"],
-      answer: "75%"
-    },
-    {
-      type: "text",
-      question: "5. Convert 2.5 hours into minutes:",
-      answer: "150"
-    }
+    // Section 1: Assembly Line Warm-Up
+    { type: "text", question: "1. Robot Alpha needs 45 gear teeth. It has 28. How many more does it need?", answer: "17" },
+    { type: "text", question: "2. 36 chips in the morning + 29 chips in the afternoon = _____ total chips", answer: "65" },
+    { type: "text", question: "3. 84 bolts minus 37 rusty bolts leaves _____ clean bolts", answer: "47" },
+    { type: "text", question: "4. Double 18 power cells = _____ total capacity", answer: "36" },
+    { type: "text", question: "5. Half of a 52-unit battery charge = _____ units", answer: "26" },
+    { type: "text", question: "6. 7 × 4 solar panels = _____ total panels", answer: "28" },
+    { type: "text", question: "7. 6 × 5 microchips = _____ total microchips", answer: "30" },
+    { type: "text", question: "8. 9 × 3 sensor beams = _____ total sensor beams", answer: "27" },
+    { type: "text", question: "9. 63 - 19 energy spheres = _____", answer: "44" },
+    { type: "text", question: "10. 58 + 26 circuit wire spools = _____", answer: "84" },
+
+    // Section 2: Pattern & Signal Detective
+    { type: "text", question: "11. Complete the circuit frequency pattern: 4, 9, 14, 19, _____, 29", answer: "24" },
+    { type: "text", question: "12. Complete the sensor pulse sequence: 3, 6, 12, 24, _____", answer: "48" },
+    { type: "mcq", question: "13. Gear Rotation: [CW, CW, CCW, CW, CW, CCW...]. What is the 14th rotation?", options: ["CW", "CCW"], answer: "CW" },
+    { type: "mcq", question: "14. Which serial number does NOT belong? [14, 21, 28, 35, 40, 49]", options: ["28", "35", "40", "49"], answer: "40" },
+    { type: "text", question: "15. Lamp A flashes every 2 sec, Lamp B every 3 sec. Next flash together at: _____ sec", answer: "6" },
+    { type: "text", question: "16. Password code sequence: A ➔ D ➔ G ➔ J ➔ _____ (Type the next letter)", answer: "M" },
+    { type: "text", question: "17. Voltage step sequence: 100, 91, 82, 73, _____", answer: "64" },
+    { type: "text", question: "18. Memory chip storage: 1, 4, 9, 16, 25, _____", answer: "36" },
+
+    // Section 3: Science & Sensor Lab
+    { type: "text", question: "19. A laser beam hits a mirror at 30°. It reflects at 30°. If turned 15° more, the new angle of reflection is _____°", answer: "45" },
+    { type: "text", question: "20. A lever pushes with 10 lbs of force on a 4-foot lever arm. Total torque = _____ ft-lbs", answer: "40" },
+    { type: "text", question: "21. Coolant liquid is at 38°C and boils at 100°C. Degrees remaining until boiling: _____°C", answer: "62" },
+    { type: "text", question: "22. Three 6-Volt batteries connected in series (+ to -) produce _____ Volts total", answer: "18" },
+    { type: "text", question: "23. Gravity on Planet Robo is half of Earth's. Robot Bolt is 84 kg on Earth. On Robo it weighs _____ kg", answer: "42" },
+    { type: "text", question: "24. Solar panels convert 20% of sunlight into power. 500 Watts of sunlight yields _____ Watts", answer: "100" },
+    { type: "text", question: "25. Gear A (10 teeth) turns 6 full times, driving Gear B (30 teeth). Gear B turns _____ times", answer: "2" },
+
+    // Section 4: Logic Matrix & Elimination
+    { type: "mcq", question: "26. CLUES: Four Robots (Robo-A, Robo-B, Robo-C, Robo-D) have four jobs: Welder, Painter, Inspector, Navigator.\n\n• Robo-A is NOT the Painter and NOT the Navigator.\n• Robo-B is the Inspector.\n• Robo-C avoids paint fumes.\n• Robo-D's task starts with the letter 'P'.\n\nWhich robot is the Inspector?", options: ["Robo-A", "Robo-B", "Robo-C", "Robo-D"], answer: "Robo-B" },
+    { type: "mcq", question: "27. Based on the clues in the previous question, which robot is the Painter?", options: ["Robo-A", "Robo-B", "Robo-C", "Robo-D"], answer: "Robo-D" },
+    { type: "mcq", question: "28. Based on the same clues, which robot is the Navigator?", options: ["Robo-A", "Robo-B", "Robo-C", "Robo-D"], answer: "Robo-C" },
+    { type: "mcq", question: "29. Based on the same clues, which robot is the Welder?", options: ["Robo-A", "Robo-B", "Robo-C", "Robo-D"], answer: "Robo-A" },
+    { type: "text", question: "30. If the Welder works 4 hrs/day and the Inspector works 6 hrs/day, how many hours do both work combined in 5 days?", answer: "50" },
+
+    // Section 5: Multi-Step Operations & Code-Breaking
+    { type: "text", question: "31. Function Machine: [Input] ➔ [× 4] ➔ [- 7] ➔ [Output]. Input = 8, Output = _____", answer: "25" },
+    { type: "text", question: "32. Inverse Machine: [Input] ➔ [× 3] ➔ [+ 5] ➔ Output: 26. Input = _____", answer: "7" },
+    { type: "text", question: "33. Alpha charges at 15%/hr. Beta charges at 25%/hr. After 3 hours, Beta is _____% ahead of Alpha.", answer: "30" },
+    { type: "mcq", question: "34. A lift holds up to 200 kg. Can it hold 3 bots (45 kg each) + a 55 kg toolbox?", options: ["YES", "NO"], answer: "YES" },
+
+    // Section 6: Boss Battle
+    { type: "text", question: "35. BOSS BATTLE: Find the 4-Digit Master Code [W, X, Y, Z]:\n\n• Clue 1: All digits are distinct single digits (1-9).\n• Clue 2: W + X + Y + Z = 20.\n• Clue 3: W is the smallest prime number.\n• Clue 4: X is 3 times W.\n• Clue 5: Y is an odd square number.\n\nType the final 4-digit code:", answer: "2693" }
   ];
 
   let currentIdx = 0;
@@ -97,7 +114,10 @@
   function loadQuestion() {
     const q = questions[currentIdx];
     document.getElementById("step-indicator").innerText = `Question ${currentIdx + 1} of ${questions.length}`;
-    document.getElementById("question-text").innerText = q.question;
+    
+    // Replace newlines with <br> tags for proper rendering in the question text
+    document.getElementById("question-text").innerHTML = q.question.replace(/\n/g, '<br>');
+    
     document.getElementById("progress").style.width = `${((currentIdx + 1) / questions.length) * 100}%`;
     document.getElementById("feedback").innerText = "";
 
