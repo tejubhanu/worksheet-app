@@ -6,34 +6,75 @@
   <title>Marty's AI Mission Challenge: Robot Factory Repair</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background-color: #f4f7f6; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; overflow-x: hidden; }
-    .card { background: white; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); width: 100%; max-width: 650px; padding: 30px; position: relative; z-index: 2; }
+    body { 
+      background-color: #0f172a; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      min-height: 100vh; 
+      padding: 20px; 
+      overflow-x: hidden; 
+      position: relative;
+    }
+
+    /* Animated Circuit Board Background Canvas */
+    #bg-canvas {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .card { 
+      background: rgba(30, 41, 59, 0.95); 
+      border: 2px solid #38bdf8;
+      border-radius: 16px; 
+      box-shadow: 0 0 40px rgba(56, 189, 248, 0.25); 
+      width: 100%; 
+      max-width: 650px; 
+      padding: 30px; 
+      position: relative; 
+      z-index: 2; 
+      color: #f8fafc;
+    }
     .header { text-align: center; margin-bottom: 20px; }
-    .progress-bar { width: 100%; height: 10px; background: #e0e0e0; border-radius: 5px; margin-bottom: 20px; overflow: hidden; }
-    .progress-fill { height: 100%; width: 0%; background: #4caf50; transition: width 0.3s ease; }
-    .question-box { font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 20px; line-height: 1.4; }
+    .header h2 { color: #38bdf8; text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
+    .header p { color: #94a3b8; }
+
+    .progress-bar { width: 100%; height: 10px; background: #334155; border-radius: 5px; margin-bottom: 20px; overflow: hidden; }
+    .progress-fill { height: 100%; width: 0%; background: #22c55e; transition: width 0.3s ease; box-shadow: 0 0 10px #22c55e; }
+    
+    .question-box { font-size: 1.25rem; font-weight: 600; color: #f1f5f9; margin-bottom: 20px; line-height: 1.4; }
+    
     .options-container { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-    .option-btn { padding: 12px 16px; border: 2px solid #e0e0e0; background: white; border-radius: 8px; font-size: 1rem; cursor: pointer; text-align: left; transition: all 0.2s ease; }
-    .option-btn:hover { border-color: #2196f3; background: #f0f7ff; }
-    .option-btn.selected { border-color: #2196f3; background: #e3f2fd; font-weight: bold; }
-    .input-box { width: 100%; padding: 12px; font-size: 1rem; border: 2px solid #ccc; border-radius: 8px; margin-bottom: 20px; }
+    .option-btn { padding: 12px 16px; border: 2px solid #475569; background: #1e293b; color: #f8fafc; border-radius: 8px; font-size: 1rem; cursor: pointer; text-align: left; transition: all 0.2s ease; }
+    .option-btn:hover { border-color: #38bdf8; background: #334155; }
+    .option-btn.selected { border-color: #38bdf8; background: #0369a1; font-weight: bold; box-shadow: 0 0 10px rgba(56, 189, 248, 0.4); }
+    
+    .input-box { width: 100%; padding: 12px; font-size: 1rem; border: 2px solid #475569; background: #0f172a; color: white; border-radius: 8px; margin-bottom: 20px; }
+    .input-box:focus { border-color: #38bdf8; outline: none; box-shadow: 0 0 10px rgba(56, 189, 248, 0.4); }
+
     .nav-buttons { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
-    .btn { padding: 10px 20px; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; font-weight: 600; transition: background 0.2s; }
-    .btn-prev { background: #9e9e9e; color: white; }
-    .btn-next { background: #2196f3; color: white; }
-    .btn-submit { background: #4caf50; color: white; }
-    .btn-summary { background: #673ab7; color: white; width: 100%; margin-top: 10px; }
+    .btn { padding: 10px 20px; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; font-weight: 600; transition: all 0.2s; }
+    .btn-prev { background: #64748b; color: white; }
+    .btn-prev:hover { background: #475569; }
+    .btn-next { background: #0284c7; color: white; }
+    .btn-next:hover { background: #0284c7; box-shadow: 0 0 10px #0284c7; }
+    .btn-submit { background: #16a34a; color: white; }
+    .btn-submit:hover { background: #22c55e; box-shadow: 0 0 10px #22c55e; }
+    .btn-summary { background: #7c3aed; color: white; width: 100%; margin-top: 10px; }
+    .btn-summary:hover { background: #8b5cf6; box-shadow: 0 0 10px #8b5cf6; }
     
     /* Scorecard Styles */
     .scorecard-container { display: flex; flex-direction: column; gap: 15px; margin: 20px 0; }
     .scorecard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 10px; }
     .score-box { padding: 10px 0; text-align: center; font-weight: bold; border-radius: 6px; cursor: pointer; color: white; transition: transform 0.1s ease; border: 2px solid transparent; }
-    .score-box:hover { transform: scale(1.05); border-color: #333; }
-    .score-correct { background-color: #4caf50; }
-    .score-wrong { background-color: #f44336; }
-    .score-unanswered { background-color: #9e9e9e; }
+    .score-box:hover { transform: scale(1.05); border-color: white; }
+    .score-correct { background-color: #16a34a; }
+    .score-wrong { background-color: #dc2626; }
+    .score-unanswered { background-color: #64748b; }
     
-    .legend { display: flex; justify-content: center; gap: 15px; font-size: 0.9rem; margin-bottom: 10px; font-weight: 600; }
+    .legend { display: flex; justify-content: center; gap: 15px; font-size: 0.9rem; margin-bottom: 10px; font-weight: 600; color: #cbd5e1; }
     .legend span { display: flex; align-items: center; gap: 5px; }
     .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
 
@@ -49,18 +90,21 @@
       align-items: center;
       color: white;
     }
-    #anim-canvas { background: #1e293b; border-radius: 12px; box-shadow: 0 0 30px rgba(33, 150, 243, 0.4); }
-    .anim-text { margin-top: 20px; font-size: 1.4rem; font-weight: bold; letter-spacing: 1px; color: #38bdf8; text-transform: uppercase; text-align: center; }
+    #anim-canvas { background: #1e293b; border-radius: 12px; border: 2px solid #38bdf8; box-shadow: 0 0 30px rgba(33, 150, 243, 0.4); }
+    .anim-text { margin-top: 20px; font-size: 1.4rem; font-weight: bold; letter-spacing: 1px; color: #38bdf8; text-transform: uppercase; text-align: center; text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
 
     .hidden { display: none !important; }
   </style>
 </head>
 <body>
 
+<!-- Animated Background Canvas -->
+<canvas id="bg-canvas"></canvas>
+
 <!-- Animation Overlay Screen -->
 <div id="anim-overlay" class="hidden">
   <canvas id="anim-canvas" width="450" height="300"></canvas>
-  <div class="anim-text" id="anim-status-text">Initiating Robot Assembly Sequence...</div>
+  <div class="anim-text" id="anim-status-text">Processing Telemetry...</div>
 </div>
 
 <div class="card">
@@ -81,8 +125,8 @@
     <!-- Navigation -->
     <div class="nav-buttons">
       <button class="btn btn-prev" id="prev-btn" onclick="changeQuestion(-1)">Previous</button>
-      <button class="btn btn-next" id="next-btn" onclick="changeQuestion(1)">Next</button>
-      <button class="btn btn-submit hidden" id="submit-btn" onclick="triggerFactoryAnimation()">Finish Mission</button>
+      <button class="btn btn-next" id="next-btn" onclick="handleNextClick()">Next</button>
+      <button class="btn btn-submit hidden" id="submit-btn" onclick="triggerFactoryAnimation('finish')">Finish Mission</button>
     </div>
     <button class="btn btn-summary hidden" id="back-summary-btn" onclick="showScorecard()">Back to Scorecard</button>
   </div>
@@ -93,25 +137,78 @@
     <p style="font-size: 1.2rem; margin: 15px 0;" id="score-display"></p>
     
     <div class="legend">
-      <span><div class="legend-dot" style="background: #4caf50;"></div> Correct</span>
-      <span><div class="legend-dot" style="background: #f44336;"></div> Wrong</span>
-      <span><div class="legend-dot" style="background: #9e9e9e;"></div> Empty</span>
+      <span><div class="legend-dot" style="background: #16a34a;"></div> Correct</span>
+      <span><div class="legend-dot" style="background: #dc2626;"></div> Wrong</span>
+      <span><div class="legend-dot" style="background: #64748b;"></div> Empty</span>
     </div>
 
     <div class="scorecard-container">
       <div class="scorecard-grid" id="scorecard-grid"></div>
     </div>
 
-    <p style="font-size: 1rem; color: #555; margin-bottom: 20px;">Click any question above to re-visit and correct your telemetry data!</p>
+    <p style="font-size: 1rem; color: #94a3b8; margin-bottom: 20px;">Click any question above to re-visit and correct your telemetry data!</p>
     
     <div style="display: flex; gap: 10px; justify-content: center;">
       <button class="btn btn-next" onclick="restartQuiz()">Restart Entire Mission</button>
-      <button class="btn btn-submit" id="final-lock-btn" onclick="triggerLockAnimation()">Lock Answers</button>
+      <button class="btn btn-submit" id="final-lock-btn" onclick="triggerFactoryAnimation('lock')">Lock Answers</button>
     </div>
   </div>
 </div>
 
 <script>
+  // Background Circuit Lines Animation Setup
+  const bgCanvas = document.getElementById('bg-canvas');
+  const bgCtx = bgCanvas.getContext('2d');
+  function resizeBg() {
+    bgCanvas.width = window.innerWidth;
+    bgCanvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeBg);
+  resizeBg();
+
+  let nodes = [];
+  for(let i=0; i<40; i++) {
+    nodes.push({
+      x: Math.random() * bgCanvas.width,
+      y: Math.random() * bgCanvas.height,
+      vx: (Math.random() - 0.5) * 0.6,
+      vy: (Math.random() - 0.5) * 0.6
+    });
+  }
+
+  function animateBg() {
+    bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+    bgCtx.strokeStyle = 'rgba(56, 189, 248, 0.12)';
+    bgCtx.fillStyle = 'rgba(56, 189, 248, 0.3)';
+    bgCtx.lineWidth = 1.5;
+
+    for(let i=0; i<nodes.length; i++) {
+      let n = nodes[i];
+      n.x += n.vx;
+      n.y += n.vy;
+      if(n.x < 0 || n.x > bgCanvas.width) n.vx *= -1;
+      if(n.y < 0 || n.y > bgCanvas.height) n.vy *= -1;
+
+      bgCtx.beginPath();
+      bgCtx.arc(n.x, n.y, 2.5, 0, Math.PI * 2);
+      bgCtx.fill();
+
+      for(let j=i+1; j<nodes.length; j++) {
+        let n2 = nodes[j];
+        let dist = Math.hypot(n.x - n2.x, n.y - n2.y);
+        if(dist < 120) {
+          bgCtx.beginPath();
+          bgCtx.moveTo(n.x, n.y);
+          bgCtx.lineTo(n2.x, n2.y);
+          bgCtx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(animateBg);
+  }
+  animateBg();
+
+  // Questions Database
   const questions = [
     { type: "text", question: "1. Robot Alpha needs 45 gear teeth. It has 28. How many more does it need?", answer: "17" },
     { type: "text", question: "2. 36 chips in the morning + 29 chips in the afternoon = _____ total chips", answer: "65" },
@@ -213,8 +310,32 @@
     }
   }
 
-  // Animation Engine
-  function runFactoryAnimation(statusMessages, onComplete) {
+  function handleNextClick() {
+    runQuickAnimation("Saving Telemetry...", () => {
+      changeQuestion(1);
+    });
+  }
+
+  function triggerFactoryAnimation(mode) {
+    let messages = [];
+    let onComplete = null;
+
+    if (mode === 'finish') {
+      messages = ["Scanning Telemetry Inputs...", "Welding Logic Circuits...", "Generating Mission Status Report..."];
+      onComplete = () => generateScorecard();
+    } else if (mode === 'lock') {
+      messages = ["Locking Current Answers...", "Synchronizing Data Matrix...", "Telemetry Successfully Secure!"];
+      onComplete = () => alert("Telemetry Locked! Great job, Explorer Team Alpha!");
+    }
+
+    runCustomAnimation(messages, 130, onComplete);
+  }
+
+  function runQuickAnimation(textMsg, onComplete) {
+    runCustomAnimation([textMsg, "Loading Next Circuit..."], 45, onComplete);
+  }
+
+  function runCustomAnimation(statusMessages, durationFrames, onComplete) {
     const overlay = document.getElementById("anim-overlay");
     const canvas = document.getElementById("anim-canvas");
     const ctx = canvas.getContext("2d");
@@ -223,13 +344,11 @@
     overlay.classList.remove("hidden");
     
     let frame = 0;
-    let msgIdx = 0;
     statusText.innerText = statusMessages[0];
 
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw Conveyor Belt
       ctx.fillStyle = "#334155";
       ctx.fillRect(0, 220, canvas.width, 20);
       ctx.fillStyle = "#64748b";
@@ -237,18 +356,15 @@
         ctx.fillRect(i, 225, 15, 10);
       }
 
-      // Draw Assembling Robot Unit
       let robotX = 225;
-      let robotY = 160 + Math.sin(frame * 0.1) * 3; // subtle hover/bob
+      let robotY = 160 + Math.sin(frame * 0.1) * 3;
       
-      // Robot Body
       ctx.fillStyle = "#38bdf8";
       ctx.fillRect(robotX - 25, robotY, 50, 45);
-      // Robot Eyes
       ctx.fillStyle = frame % 20 < 10 ? "#facc15" : "#ef4444";
       ctx.fillRect(robotX - 15, robotY + 10, 8, 8);
       ctx.fillRect(robotX + 7, robotY + 10, 8, 8);
-      // Robot Antenna
+      
       ctx.strokeStyle = "#94a3b8";
       ctx.lineWidth = 3;
       ctx.beginPath();
@@ -260,7 +376,6 @@
       ctx.arc(robotX, robotY - 18, 5, 0, Math.PI * 2);
       ctx.fill();
 
-      // Draw Laser Arm & Sparks
       let armX = 100 + (frame * 4) % 250;
       ctx.strokeStyle = "#cbd5e1";
       ctx.lineWidth = 6;
@@ -269,7 +384,6 @@
       ctx.lineTo(armX, 120);
       ctx.stroke();
 
-      // Laser Beam & Sparkles
       ctx.strokeStyle = "#ef4444";
       ctx.lineWidth = 2;
       ctx.beginPath();
@@ -277,7 +391,6 @@
       ctx.lineTo(robotX, robotY);
       ctx.stroke();
 
-      // Sparks flare
       if (frame % 5 === 0) {
         ctx.fillStyle = "#facc15";
         for (let s = 0; s < 4; s++) {
@@ -287,46 +400,25 @@
 
       frame++;
       
-      // Change status messages dynamically
-      if (frame === 45) {
-        msgIdx = 1;
-        statusText.innerText = statusMessages[1];
-      } else if (frame === 90) {
-        msgIdx = 2;
-        statusText.innerText = statusMessages[2];
+      if (statusMessages.length > 1) {
+        if (frame === Math.floor(durationFrames / 3)) {
+          statusText.innerText = statusMessages[1];
+        } else if (frame === Math.floor((durationFrames / 3) * 2) && statusMessages.length > 2) {
+          statusText.innerText = statusMessages[2];
+        }
       }
 
-      if (frame < 130) {
+      if (frame < durationFrames) {
         requestAnimationFrame(draw);
       } else {
         setTimeout(() => {
           overlay.classList.add("hidden");
           onComplete();
-        }, 400);
+        }, 200);
       }
     }
 
     draw();
-  }
-
-  function triggerFactoryAnimation() {
-    runFactoryAnimation([
-      "Scanning Telemetry Inputs...",
-      "Welding Logic Circuits...",
-      "Generating Mission Status Report..."
-    ], () => {
-      generateScorecard();
-    });
-  }
-
-  function triggerLockAnimation() {
-    runFactoryAnimation([
-      "Locking Current Answers...",
-      "Synchronizing Data Matrix...",
-      "Telemetry Successfully Secure!"
-    ], () => {
-      alert("Telemetry Locked! Great job, Explorer Team Alpha!");
-    });
   }
 
   function generateScorecard() {
