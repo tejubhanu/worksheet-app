@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marty's AI Mission Challenge: Robot Factory Repair</title>
+  <title>Marty's AI Mission Challenge</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     body { 
@@ -17,7 +17,6 @@
       position: relative;
     }
 
-    /* Animated Circuit Board Background Canvas */
     #bg-canvas {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -65,7 +64,6 @@
     .btn-summary { background: #7c3aed; color: white; width: 100%; margin-top: 10px; }
     .btn-summary:hover { background: #8b5cf6; box-shadow: 0 0 10px #8b5cf6; }
     
-    /* Scorecard Styles */
     .scorecard-container { display: flex; flex-direction: column; gap: 15px; margin: 20px 0; }
     .scorecard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 10px; }
     .score-box { padding: 10px 0; text-align: center; font-weight: bold; border-radius: 6px; cursor: pointer; color: white; transition: transform 0.1s ease; border: 2px solid transparent; }
@@ -78,7 +76,6 @@
     .legend span { display: flex; align-items: center; gap: 5px; }
     .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
 
-    /* Animation Overlay Styles */
     #anim-overlay {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -98,31 +95,26 @@
 </head>
 <body>
 
-<!-- Animated Background Canvas -->
 <canvas id="bg-canvas"></canvas>
 
-<!-- Animation Overlay Screen -->
 <div id="anim-overlay" class="hidden">
   <canvas id="anim-canvas" width="450" height="300"></canvas>
   <div class="anim-text" id="anim-status-text">Processing Telemetry...</div>
 </div>
 
 <div class="card">
-  <!-- Progress Header -->
   <div class="header">
-    <h2 id="title">🤖 Mission: Robot Factory Repair</h2>
-    <p id="step-indicator">Question 1 of 35</p>
+    <h2 id="title">🤖 Mission Challenge</h2>
+    <p id="step-indicator">Question 1 of 1</p>
   </div>
   <div class="progress-bar">
     <div class="progress-fill" id="progress"></div>
   </div>
 
-  <!-- Question Section -->
   <div id="quiz-container">
     <div class="question-box" id="question-text">Loading question...</div>
     <div id="answer-container"></div>
 
-    <!-- Navigation -->
     <div class="nav-buttons">
       <button class="btn btn-prev" id="prev-btn" onclick="changeQuestion(-1)">Previous</button>
       <button class="btn btn-next" id="next-btn" onclick="handleNextClick()">Next</button>
@@ -131,7 +123,6 @@
     <button class="btn btn-summary hidden" id="back-summary-btn" onclick="showScorecard()">Back to Scorecard</button>
   </div>
 
-  <!-- Completion / Scorecard Section -->
   <div id="result-container" class="hidden" style="text-align: center;">
     <h2>🎖️ Mission Status Report</h2>
     <p style="font-size: 1.2rem; margin: 15px 0;" id="score-display"></p>
@@ -146,17 +137,20 @@
       <div class="scorecard-grid" id="scorecard-grid"></div>
     </div>
 
-    <p style="font-size: 1rem; color: #94a3b8; margin-bottom: 20px;">Click any question above to re-visit and correct your telemetry data!</p>
+    <p style="font-size: 1rem; color: #94a3b8; margin-bottom: 20px;">Click any question above to re-visit and correct your data!</p>
     
     <div style="display: flex; gap: 10px; justify-content: center;">
-      <button class="btn btn-next" onclick="restartQuiz()">Restart Entire Mission</button>
+      <button class="btn btn-next" onclick="restartQuiz()">Restart Mission</button>
       <button class="btn btn-submit" id="final-lock-btn" onclick="triggerFactoryAnimation('lock')">Lock Answers</button>
     </div>
   </div>
 </div>
 
+<!-- Load external questions/theme file -->
+<script src="questions.js"></script>
+
 <script>
-  // Background Circuit Lines Animation Setup
+  // Background Animation Setup
   const bgCanvas = document.getElementById('bg-canvas');
   const bgCtx = bgCanvas.getContext('2d');
   function resizeBg() {
@@ -208,44 +202,9 @@
   }
   animateBg();
 
-  // Questions Database
-  const questions = [
-    { type: "text", question: "1. Robot Alpha needs 45 gear teeth. It has 28. How many more does it need?", answer: "17" },
-    { type: "text", question: "2. 36 chips in the morning + 29 chips in the afternoon = _____ total chips", answer: "65" },
-    { type: "text", question: "3. 84 bolts minus 37 rusty bolts leaves _____ clean bolts", answer: "47" },
-    { type: "text", question: "4. Double 18 power cells = _____ total capacity", answer: "36" },
-    { type: "text", question: "5. Half of a 52-unit battery charge = _____ units", answer: "26" },
-    { type: "text", question: "6. 7 × 4 solar panels = _____ total panels", answer: "28" },
-    { type: "text", question: "7. 6 × 5 microchips = _____ total microchips", answer: "30" },
-    { type: "text", question: "8. 9 × 3 sensor beams = _____ total sensor beams", answer: "27" },
-    { type: "text", question: "9. 63 - 19 energy spheres = _____", answer: "44" },
-    { type: "text", question: "10. 58 + 26 circuit wire spools = _____", answer: "84" },
-    { type: "text", question: "11. Complete the circuit frequency pattern: 4, 9, 14, 19, _____, 29", answer: "24" },
-    { type: "text", question: "12. Complete the sensor pulse sequence: 3, 6, 12, 24, _____", answer: "48" },
-    { type: "mcq", question: "13. Gear Rotation: [CW, CW, CCW, CW, CW, CCW...]. What is the 14th rotation?", options: ["CW", "CCW"], answer: "CW" },
-    { type: "mcq", question: "14. Which serial number does NOT belong? [14, 21, 28, 35, 40, 49]", options: ["28", "35", "40", "49"], answer: "40" },
-    { type: "text", question: "15. Lamp A flashes every 2 sec, Lamp B every 3 sec. Next flash together at: _____ sec", answer: "6" },
-    { type: "text", question: "16. Password code sequence: A ➔ D ➔ G ➔ J ➔ _____ (Type the next letter)", answer: "M" },
-    { type: "text", question: "17. Voltage step sequence: 100, 91, 82, 73, _____", answer: "64" },
-    { type: "text", question: "18. Memory chip storage: 1, 4, 9, 16, 25, _____", answer: "36" },
-    { type: "text", question: "19. A laser beam hits a mirror at 30°. It reflects at 30°. If turned 15° more, the new angle of reflection is _____°", answer: "45" },
-    { type: "text", question: "20. A lever pushes with 10 lbs of force on a 4-foot lever arm. Total torque = _____ ft-lbs", answer: "40" },
-    { type: "text", question: "21. Coolant liquid is at 38°C and boils at 100°C. Degrees remaining until boiling: _____°C", answer: "62" },
-    { type: "text", question: "22. Three 6-Volt batteries connected in series (+ to -) produce _____ Volts total", answer: "18" },
-    { type: "text", question: "23. Gravity on Planet Robo is half of Earth's. Robot Bolt is 84 kg on Earth. On Robo it weighs _____ kg", answer: "42" },
-    { type: "text", question: "24. Solar panels convert 20% of sunlight into power. 500 Watts of sunlight yields _____ Watts", answer: "100" },
-    { type: "text", question: "25. Gear A (10 teeth) turns 6 full times, driving Gear B (30 teeth). Gear B turns _____ times", answer: "2" },
-    { type: "mcq", question: "26. CLUES: Four Robots (Robo-A, Robo-B, Robo-C, Robo-D) have four jobs: Welder, Painter, Inspector, Navigator.\n• Robo-A is NOT the Painter and NOT the Navigator.\n• Robo-B is the Inspector.\n• Robo-C avoids paint fumes.\n• Robo-D's task starts with the letter 'P'.\n\nWhich robot is the Inspector?", options: ["Robo-A", "Robo-B", "Robo-C", "Robo-D"], answer: "Robo-B" },
-    { type: "mcq", question: "27. Based on the clues in the previous question, which robot is the Painter?", options: ["Robo-A", "Robo-B", "Robo-C", "Robo-D"], answer: "Robo-D" },
-    { type: "mcq", question: "28. Based on the same clues, which robot is the Navigator?", options: ["Robo-A", "Robo-B", "Robo-C", "Robo-D"], answer: "Robo-C" },
-    { type: "mcq", question: "29. Based on the same clues, which robot is the Welder?", options: ["Robo-A", "Robo-B", "Robo-C", "Robo-D"], answer: "Robo-A" },
-    { type: "text", question: "30. If the Welder works 4 hrs/day and the Inspector works 6 hrs/day, how many hours do both work combined in 5 days?", answer: "50" },
-    { type: "text", question: "31. Function Machine: [Input] ➔ [× 4] ➔ [- 7] ➔ [Output]. Input = 8, Output = _____", answer: "25" },
-    { type: "text", question: "32. Inverse Machine: [Input] ➔ [× 3] ➔ [+ 5] ➔ Output: 26. Input = _____", answer: "7" },
-    { type: "text", question: "33. Alpha charges at 15%/hr. Beta charges at 25%/hr. After 3 hours, Beta is _____% ahead of Alpha.", answer: "30" },
-    { type: "mcq", question: "34. A lift holds up to 200 kg. Can it hold 3 bots (45 kg each) + a 55 kg toolbox?", options: ["YES", "NO"], answer: "YES" },
-    { type: "text", question: "35. BOSS BATTLE: Find the 4-Digit Master Code [W, X, Y, Z]:\n• Clue 1: All digits are distinct single digits (1-9).\n• Clue 2: W + X + Y + Z = 20.\n• Clue 3: W is the smallest prime number.\n• Clue 4: X is 3 times W.\n• Clue 5: Y is an odd square number.\n\nType the final 4-digit code:", answer: "2693" }
-  ];
+  // Load Theme Title dynamically from questions.js
+  document.getElementById("title").innerText = missionConfig.themeTitle;
+  const questions = missionConfig.questions;
 
   let currentIdx = 0;
   let userAnswers = new Array(questions.length).fill(null);
@@ -311,7 +270,7 @@
   }
 
   function handleNextClick() {
-    runQuickAnimation("Saving Telemetry...", () => {
+    runQuickAnimation("Saving Data...", () => {
       changeQuestion(1);
     });
   }
@@ -321,18 +280,18 @@
     let onComplete = null;
 
     if (mode === 'finish') {
-      messages = ["Scanning Telemetry Inputs...", "Welding Logic Circuits...", "Generating Mission Status Report..."];
+      messages = ["Scanning Inputs...", "Processing Data...", "Generating Status Report..."];
       onComplete = () => generateScorecard();
     } else if (mode === 'lock') {
-      messages = ["Locking Current Answers...", "Synchronizing Data Matrix...", "Telemetry Successfully Secure!"];
-      onComplete = () => alert("Telemetry Locked! Great job, Explorer Team Alpha!");
+      messages = ["Locking Answers...", "Synchronizing Matrix...", "Data Successfully Secure!"];
+      onComplete = () => alert("Answers Locked Successfully!");
     }
 
     runCustomAnimation(messages, 130, onComplete);
   }
 
   function runQuickAnimation(textMsg, onComplete) {
-    runCustomAnimation([textMsg, "Loading Next Circuit..."], 45, onComplete);
+    runCustomAnimation([textMsg, "Loading Next Step..."], 45, onComplete);
   }
 
   function runCustomAnimation(statusMessages, durationFrames, onComplete) {
