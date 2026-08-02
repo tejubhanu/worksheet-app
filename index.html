@@ -273,7 +273,7 @@
     });
   }
 
-  // --- Dynamic Particle Physics Animation Engine ---
+   // --- Dynamic Particle Physics Animation Engine ---
   function runCustomAnimation(mode, onComplete) {
     const overlay = document.getElementById("anim-overlay");
     const canvas = document.getElementById("anim-canvas");
@@ -283,10 +283,14 @@
     overlay.classList.remove("hidden");
     
     let frame = 0;
-    let durationFrames = mode === 'quick' ? 45 : 180;
+    
+    // INCREASED FRAMES = SLOWER ANIMATION
+    // Quick transition increased from 45 to 90 frames (~double the time)
+    // Final battle increased from 180 to 300 frames (~5 seconds of slow-mo action)
+    let durationFrames = mode === 'quick' ? 90 : 300;
+    
     statusText.innerText = mode === 'quick' ? "Loading Next Phase..." : "Epic Battle Commencing!";
     
-    // Generate particles based on the themeIcon
     let particles = [];
     let numParticles = mode === 'quick' ? 3 : 15;
     
@@ -294,11 +298,13 @@
       particles.push({
         x: mode === 'quick' ? -50 : canvas.width / 2,
         y: mode === 'quick' ? 50 + (i * 80) : canvas.height / 2,
-        vx: mode === 'quick' ? 12 + Math.random()*5 : (Math.random() - 0.5) * 20,
-        vy: mode === 'quick' ? 0 : (Math.random() - 0.5) * 20,
+        // REDUCED VELOCITIES = SLOWER MOVEMENT
+        vx: mode === 'quick' ? 5 + Math.random()*3 : (Math.random() - 0.5) * 6,
+        vy: mode === 'quick' ? 0 : (Math.random() - 0.5) * 6,
         size: 30 + Math.random() * 20,
         rotation: 0,
-        spin: (Math.random() - 0.5) * 0.5
+        // REDUCED SPIN = SLOWER ROTATION
+        spin: (Math.random() - 0.5) * 0.15
       });
     }
 
@@ -313,7 +319,6 @@
         p.y += p.vy;
         p.rotation += p.spin;
 
-        // Bounce off walls if it's the boss battle
         if(mode === 'boss') {
           if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
           if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
@@ -329,9 +334,10 @@
 
       frame++;
       
+      // Adjusted text milestones for the longer 300-frame duration
       if (mode === 'boss') {
-        if (frame === 60) statusText.innerText = "Clashing Powers!";
-        if (frame === 120) statusText.innerText = "Analyzing Results...";
+        if (frame === 100) statusText.innerText = "Clashing Powers!";
+        if (frame === 200) statusText.innerText = "Analyzing Results...";
       }
 
       if (frame < durationFrames) {
