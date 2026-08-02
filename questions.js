@@ -1,5 +1,8 @@
 const missionConfig = {
-  themeTitle: "🤖 Mission: Secrets of the AI Core",
+  themeTitle: "🌀 Mission: Beyblade Metal Fusion",
+  themeColor: "#facc15", // Hex code or name (e.g., "Yellow", "#0f172a")
+  themeIcon: "🌀",      // Use an emoji for the animation (🌀, 🚀, 🤖, 🏎️)
+  
   questions: [
     // SECTION 1: WARM-UP (Basic Arithmetic in Story Context)
     { type: "text", question: "1. Marty builds 45 digital trees in the Land of AI, and his brother Arjun builds 28 trees. How many trees did they build in total?", answer: "73" },
