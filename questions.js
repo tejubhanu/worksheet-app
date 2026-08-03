@@ -1,7 +1,6 @@
 const missionConfig = {
   themeTitle: "🟩 Mission: Block World Builders",
-//  themeColor: "linear-gradient(135deg, #16a34a, #047857)", 
-  themeColor: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%2310b981' d='M44.7,-76.4C58.8,-69.3,71.8,-59.1,79.9,-45.4C88,-31.8,91.1,-14.7,89.5,1.6C88,17.9,81.8,33.4,72.3,46.1C62.7,58.8,49.8,68.7,35.3,75.3C20.8,81.9,4.7,85.1,-10.8,83.4C-26.3,81.6,-41.2,74.9,-54.1,65.3C-67,55.7,-77.9,43.2,-83.1,28.6C-88.3,14,-87.8,-2.7,-83.4,-18.1C-79,-33.5,-70.7,-47.5,-58.5,-55.1C-46.3,-62.7,-30.2,-63.9,-15.7,-70.8C-1.2,-77.8,11.7,-90.5,26.9,-90.9C42.2,-91.3,59.7,-79.4,44.7,-76.4Z' transform='translate(100 100)' /%3E%3C/svg%3E\")"
+  themeColor: "linear-gradient(135deg, #16a34a, #047857)", 
   themeIcon: "⛏️", 
   questions: [
     // SECTION 1: WARM-UP (Inventory Math)
