@@ -73,11 +73,13 @@
     
     .scorecard-container { display: flex; flex-direction: column; gap: 15px; margin: 20px 0; }
     .scorecard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 10px; }
-    .score-box { padding: 10px 0; text-align: center; font-weight: bold; border-radius: 6px; cursor: pointer; color: white; transition: transform 0.1s ease; border: 2px solid transparent; }
-    .score-box:hover { transform: scale(1.05); border-color: #333; }
-    .score-correct { background-color: #16a34a; pointer-events: none;}
-    .score-wrong { background-color: #dc2626; pointer-events: none;}
-    .score-unanswered { background-color: #94a3b8; pointer-events: none;}
+    .score-box { padding: 10px 0; text-align: center; font-weight: bold; border-radius: 6px; color: white; transition: transform 0.1s ease; border: 2px solid transparent; }
+    
+    /* Correct is locked, Incorrect is clickable */
+    .score-correct { background-color: #16a34a; pointer-events: none; }
+    .score-wrong { background-color: #dc2626; cursor: pointer; }
+    .score-unanswered { background-color: #94a3b8; cursor: pointer; }
+    .score-wrong:hover, .score-unanswered:hover { transform: scale(1.05); border-color: #333; }
     
     .motivational-msg { margin-top: 20px; padding: 15px; background: #fef3c7; border-left: 5px solid #f59e0b; border-radius: 4px; font-size: 1.1rem; color: #92400e; font-weight: bold; }
 
@@ -288,18 +290,39 @@
 
   // --- RETRY MODE LOGIC ---
   function startRetryMode() {
+    if(missedQuestions.length === 0) return;
     isRetryMode = true;
     retryIndex = 0;
     document.getElementById('result-container').classList.add('hidden');
     document.getElementById('quiz-container').classList.remove('hidden');
     
     // Resume global timer for retry session
+    clearInterval(globalTimerInt);
     globalTimerInt = setInterval(() => {
       globalSeconds++;
       document.getElementById("global-timer").innerText = formatTime(globalSeconds);
     }, 1000);
     
     loadQuestion();
+  }
+  
+  // Directly jump to a specific missed question from the scorecard
+  function jumpToRetryQuestion(globalIdx) {
+    const missedIdx = missedQuestions.indexOf(globalIdx);
+    if (missedIdx !== -1) {
+      isRetryMode = true;
+      retryIndex = missedIdx;
+      document.getElementById("result-container").classList.add("hidden");
+      document.getElementById("quiz-container").classList.remove("hidden");
+      
+      clearInterval(globalTimerInt);
+      globalTimerInt = setInterval(() => {
+        globalSeconds++;
+        document.getElementById("global-timer").innerText = formatTime(globalSeconds);
+      }, 1000);
+      
+      loadQuestion();
+    }
   }
 
   function submitRetryAnswer() {
@@ -340,9 +363,8 @@
     isRetryMode = false;
     alert("🌟 Great effort! You completed your review mission.");
     
-    // Clear out missed array to hide retry button on final screen
     missedQuestions = []; 
-    generateScorecard(); // Regenerates scorecard showing the corrected answers
+    generateScorecard(); 
   }
 
   // --- ANIMATION ENGINE ---
@@ -410,17 +432,22 @@
     draw();
   }
 
+  // Adjusted Inverse Motivation Logic
   function getMotivationalMessage(score, total) {
     const pct = score / total;
-    if (pct === 1) return "Flawless victory, Marty! Explorer Team Alpha is lucky to have a leader who thinks so carefully.";
-    if (pct > 0.7) return "Incredible job, Marty! You did the hard work of thinking today. Keep up that Explorer Team Alpha spirit!";
-    return "Great effort, Marty! Real engineers learn the most when things get tricky. Review your telemetry data and try again!";
+    if (pct < 0.6) {
+      return "WOOHOO! 🚀 This is EXACTLY where real engineers level up! You've uncovered an amazing opportunity to train your brain. Explorer Team Alpha is cheering you on—let's dive into these tricky puzzles and smash them!";
+    } else if (pct < 1) {
+      return "Great work today! You successfully navigated most of the missions. Just a few final adjustments needed for your telemetry data. You've got this!";
+    } else {
+      return "Mission accomplished. Solid engineering work today. Telemetry is 100% stable.";
+    }
   }
 
   function generateScorecard() {
     missionCompleted = true;
     let score = 0;
-    missedQuestions = []; // Reset missing pool
+    missedQuestions = []; 
     const grid = document.getElementById("scorecard-grid");
     grid.innerHTML = "";
 
@@ -436,14 +463,19 @@
       }
 
       const box = document.createElement("div");
-      box.className = "score-box " + (isCorrect ? "score-correct" : (isAnswered ? "score-wrong" : "score-unanswered"));
+      if (isCorrect) {
+        box.className = "score-box score-correct";
+      } else {
+        box.className = "score-box " + (isAnswered ? "score-wrong" : "score-unanswered");
+        box.onclick = () => jumpToRetryQuestion(i);
+        box.title = "Click to retry this mission!";
+      }
       box.innerText = `Q${i + 1}`;
       grid.appendChild(box);
     });
 
     document.getElementById("score-display").innerText = `Score: ${score} / ${questions.length} | Time: ${formatTime(globalSeconds)}`;
     
-    // Toggle Retry Button visibility
     if (missedQuestions.length > 0) {
       document.getElementById("retry-btn").classList.remove("hidden");
       document.getElementById("motivational-message").innerText = getMotivationalMessage(score, questions.length);
