@@ -167,4 +167,136 @@ const missionConfig = {
     },
     { 
       type: "mcq", 
-      question: "23. Team Alpha has three pet
+      question: "23. Team Alpha has three pet wolves with different collars: red, blue, and green. Marty's wolf does not have a green collar. Ayaan's wolf has a red collar. What color collar does Marty's wolf have?", 
+      options: ["Red", "Blue", "Green", "Yellow"], 
+      answer: "Blue",
+      hint: "💡 Use elimination! If Ayaan has the red one, and Marty DOES NOT have the green one...",
+      explanation: "⭐ **Answer: Blue!** \nSince Ayaan has Red, only Blue and Green are left. Since Marty doesn't have Green, he must have Blue!"
+    },
+    { 
+      type: "text", 
+      question: "24. If 3 automated furnaces can smelt 12 iron ores in one minute, how many iron ores can 5 automated furnaces smelt in one minute?", 
+      answer: "20",
+      hint: "💡 Find out how many ores ONE furnace smelts in a minute first (12 divided by 3).",
+      explanation: "⭐ **Answer: 20!** \n3 furnaces = 12 ores, so 1 furnace = 4 ores per minute. 5 furnaces x 4 = 20 ores."
+    },
+    { 
+      type: "text", 
+      question: "25. Mom is thinking of a secret Y-coordinate for a diamond mine. It is an even number between 10 and 15. It can be divided evenly by 6. What is the secret coordinate?", 
+      answer: "12",
+      hint: "💡 Write out the even numbers between 10 and 15: 12 and 14. Which one is in the 6 times table?",
+      explanation: "⭐ **Answer: 12!** \n12 is even, between 10 and 15, and 12 ÷ 6 = 2."
+    },
+    { 
+      type: "mcq", 
+      question: "26. Whenever it rains in Block World, the crops grow faster. The crops are currently growing faster. Does this mean it is DEFINITELY raining? (Hint: Could something else like bone meal make them grow faster?)", 
+      options: ["Yes", "No"], 
+      answer: "No",
+      hint: "💡 Think like an engineer! Is rain the ONLY way to make crops grow fast?",
+      explanation: "⭐ **Answer: No!** \nWhile rain makes them grow faster, using fertilizer (bone meal) also makes them grow faster. So you can't be 100% sure it's raining!"
+    },
+    { 
+      type: "text", 
+      question: "27. Dad and Arjun build a wall 120 blocks long. Blue blocks are 10 units wide and Green blocks are 15 units wide. If they use 6 Green blocks, how many Blue blocks do they need to finish the wall?", 
+      answer: "3",
+      hint: "💡 First, find out how much space the 6 Green blocks take up (6 x 15). Then subtract that from 120, and divide by 10!",
+      explanation: "⭐ **Answer: 3!** \n6 Green blocks x 15 width = 90 units. 120 - 90 = 30 units left to fill. 30 ÷ 10 width = 3 Blue blocks."
+    },
+    { 
+      type: "text", 
+      question: "28. Rod has a jetpack battery that lasts 90 minutes. Flying takes 10 minutes per trip, and mining takes 20 minutes per trip. If Rod mines 2 times and flies 3 times, how many minutes of battery remain?", 
+      answer: "20",
+      hint: "💡 Calculate the total mining time and total flying time, then subtract them from 90.",
+      explanation: "⭐ **Answer: 20!** \nMining: 2 x 20 = 40 mins. Flying: 3 x 10 = 30 mins. Total used = 70. 90 - 70 = 20 minutes left."
+    },
+    { 
+      type: "text", 
+      question: "29. To open the Server Vault, Taksh needs a 3-digit code. The first digit is 18 divided by 3. The second digit is the first digit minus 2. The third digit is zero. What is the code?", 
+      answer: "640",
+      hint: "💡 Find the first digit (18 ÷ 3). Then subtract 2 for the next one.",
+      explanation: "⭐ **Answer: 640!** \nDigit 1: 18 ÷ 3 = 6. Digit 2: 6 - 2 = 4. Digit 3: 0. The code is 640."
+    },
+    { 
+      type: "text", 
+      question: "30. Sisira built 3 towers. The first is 18 blocks high. The second is half the height of the first. The third is 5 blocks taller than the second. How high is the third tower?", 
+      answer: "14",
+      hint: "💡 First find the height of the second tower by cutting 18 in half. Then add 5.",
+      explanation: "⭐ **Answer: 14!** \nTower 1 = 18. Tower 2 = 9. Tower 3 = 9 + 5 = 14 blocks high."
+    },
+
+    // SECTION 4: ADVANCED MATH & MULTI-STEP CHALLENGES
+    { 
+      type: "text", 
+      question: "31. The AI Core gives Marty a function machine for smelting. The rule is: Multiply the input by 3, then subtract 2. If Marty puts in 7 ores, what comes out?", 
+      answer: "19",
+      hint: "💡 Follow the rule: (7 x 3) - 2.",
+      explanation: "⭐ **Answer: 19!** \n7 x 3 = 21. 21 - 2 = 19."
+    },
+    { 
+      type: "text", 
+      question: "32. Reverse Function Machine! A secret number of blocks gets added to 15, and the output is 42. What was the secret input number?", 
+      answer: "27",
+      hint: "💡 Work backwards! If you added 15 to get 42, you need to subtract 15 from 42.",
+      explanation: "⭐ **Answer: 27!** \n42 - 15 = 27."
+    },
+    { 
+      type: "text", 
+      question: "33. Exactly half of Explorer Team Alpha (which has 6 human members) are exploring the Nether. How many members are NOT in the Nether?", 
+      answer: "3",
+      hint: "💡 What is half of 6?",
+      explanation: "⭐ **Answer: 3!** \nHalf of 6 is 3. If 3 are in the Nether, the other 3 are not."
+    },
+    { 
+      type: "text", 
+      question: "34. A dispenser shoots arrows into the air. If it shoots 2 arrows every 5 seconds, how many does it shoot in 25 seconds?", 
+      answer: "10",
+      hint: "💡 How many times does 5 seconds fit into 25 seconds? Multiply that by 2 arrows.",
+      explanation: "⭐ **Answer: 10!** \n25 ÷ 5 = 5 bursts. 5 bursts x 2 arrows = 10 arrows."
+    },
+    { 
+      type: "mcq", 
+      question: "35. The server crashes if the entity count goes over 1000 items. The current count is 850. Smithika spawns 3 herds of cows, and each herd has 40 cows. Does the server crash?", 
+      options: ["Yes", "No"], 
+      answer: "No",
+      hint: "💡 Figure out how many total cows she spawned (3 x 40). Add that to 850. Is it over 1000?",
+      explanation: "⭐ **Answer: No!** \n3 x 40 = 120 cows. 850 + 120 = 970. Since 970 is less than 1000, the server is safe!"
+    },
+    
+    // SECTION 5: BOSS BATTLES
+    { 
+      type: "text", 
+      question: "36. BOSS BATTLE: Marty and Dad built two minecart tracks. Track A takes 12 seconds per lap and Track B takes 18 seconds per lap. If minecarts launch on both loops at the exact same time, after how many seconds will both carts cross the starting line together for the first time?", 
+      answer: "36",
+      hint: "💡 You need to find the Least Common Multiple (LCM). Skip count by 12 and by 18 until you find a matching number!",
+      explanation: "⭐ **Answer: 36 seconds!** \nTrack A: 12, 24, 36, 48... \nTrack B: 18, 36, 54... \nThe first number they share is 36!"
+    },
+    { 
+      type: "text", 
+      question: "37. BOSS BATTLE: In the Block Building Championship, Team Alpha scored 15 points more than Team Builder. Team Crafter scored double Team Builder's points. Total points for all three teams was 135. How many points did Team Builder score?", 
+      answer: "30",
+      hint: "💡 Guess and check! Try giving Team Builder 20 points, figure out the other teams, and add them up. If it's too low, try a bigger number.",
+      explanation: "⭐ **Answer: 30!** \nIf Builder = 30.\nAlpha = 30 + 15 = 45.\nCrafter = 30 x 2 = 60.\nTotal: 30 + 45 + 60 = 135!"
+    },
+    { 
+      type: "text", 
+      question: "38. BOSS BATTLE: Crack Dad's 4-Digit Server Code [A, B, C, D]: All digits are different numbers from 1 to 9. 'A' is the second prime number. 'B' is 'A' multiplied by 2, plus 1. 'C' is 'B' minus 5. The sum of all 4 digits is 18. What is the 4-digit code?", 
+      answer: "3726",
+      hint: "💡 Take it one step at a time. The prime numbers start: 2, 3, 5, 7. Which one is the second one?",
+      explanation: "⭐ **Answer: 3726!** \nStep 1: 'A' is the 2nd prime number, so A=3.\nStep 2: 'B' = (3 x 2) + 1 = 7.\nStep 3: 'C' = 7 - 5 = 2.\nStep 4: A+B+C = 12. Since the total is 18, D must be 6. Code: 3726."
+    },
+    { 
+      type: "text", 
+      question: "39. BOSS BATTLE: Mom set up a 100-block long highway with torches every 10 blocks and banners every 25 blocks (both start at 0 blocks). How many total locations along the track have BOTH a torch and a banner?", 
+      answer: "3",
+      hint: "💡 Find where 10 and 25 meet! Count by 25s up to 100, and see which ones are also in the 10s column. Don't forget the starting line at 0!",
+      explanation: "⭐ **Answer: 3 locations!** \nTorches are at 0, 10, 20...50...100.\nBanners are at 0, 25, 50, 75, 100.\nThey overlap at 0, 50, and 100 (3 locations)."
+    },
+    { 
+      type: "text", 
+      question: "40. BOSS BATTLE: Taksh, Ayaan, Advi, and Smithika raced boats on a 300-meter ice circuit. Taksh traveled at 30 m/s, Ayaan at 25 m/s, Advi at 20 m/s, and Smithika at 15 m/s. How many total seconds passed between the time the 1st place boat finished and the time the last place boat finished?", 
+      answer: "10",
+      hint: "💡 First, find out how long it took 1st place to finish (300 ÷ 30). Then find out how long it took last place (300 ÷ 15). Subtract the difference!",
+      explanation: "⭐ **Answer: 10 seconds!** \n1st Place (Taksh): 300 ÷ 30 = 10 seconds to finish.\nLast Place (Smithika): 300 ÷ 15 = 20 seconds to finish.\nDifference: 20 - 10 = 10 seconds."
+    }
+  ]
+};
