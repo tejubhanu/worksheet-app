@@ -7,7 +7,6 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     
-    /* The background color is now dynamically controlled by JS */
     body { 
       background-color: #0f172a; 
       display: flex; 
@@ -20,12 +19,7 @@
       transition: background-color 0.5s ease;
     }
 
-    #bg-canvas {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      z-index: 1;
-      pointer-events: none;
-    }
+    #bg-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none; }
 
     .card { 
       background: rgba(255, 255, 255, 0.95); 
@@ -39,18 +33,10 @@
       color: #1e293b;
     }
     
-    /* Timers */
     .timer-container {
-      display: flex;
-      justify-content: space-between;
-      background: #1e293b;
-      color: #38bdf8;
-      padding: 8px 15px;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 0.95rem;
-      margin-bottom: 15px;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+      display: flex; justify-content: space-between; background: #1e293b; color: #38bdf8;
+      padding: 8px 15px; border-radius: 8px; font-weight: bold; font-size: 0.95rem;
+      margin-bottom: 15px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
     }
 
     .header { text-align: center; margin-bottom: 15px; }
@@ -60,48 +46,44 @@
     .progress-bar { width: 100%; height: 10px; background: #e2e8f0; border-radius: 5px; margin-bottom: 20px; overflow: hidden; }
     .progress-fill { height: 100%; width: 0%; background: #22c55e; transition: width 0.3s ease; }
     
-    .question-box { font-size: 1.25rem; font-weight: 600; color: #0f172a; margin-bottom: 20px; line-height: 1.4; }
+    /* Hint & Explanation Styles */
+    .hint-container {
+      background-color: #fff9c4; border: 2px dashed #fbc02d; color: #574300;
+      padding: 12px 16px; border-radius: 12px; font-size: 1.05rem; margin-bottom: 15px; font-weight: 600;
+    }
+
+    .explanation-card {
+      background-color: #e8f5e9; border: 2px solid #66bb6a; padding: 20px;
+      border-radius: 12px; margin-bottom: 20px; text-align: center; font-size: 1.1rem; color: #1b5e20;
+    }
     
+    .question-box { font-size: 1.25rem; font-weight: 600; color: #0f172a; margin-bottom: 20px; line-height: 1.4; }
     .options-container { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-    .option-btn { padding: 12px 16px; border: 2px solid #cbd5e1; background: #f8fafc; color: #0f172a; border-radius: 8px; font-size: 1rem; cursor: pointer; text-align: left; transition: all 0.2s ease; }
+    .option-btn { padding: 12px 16px; border: 2px solid #cbd5e1; background: #f8fafc; border-radius: 8px; font-size: 1rem; cursor: pointer; text-align: left; transition: all 0.2s ease; }
     .option-btn:hover { border-color: #38bdf8; background: #e0f2fe; }
     .option-btn.selected { border-color: #0284c7; background: #bae6fd; font-weight: bold; }
+    .input-box { width: 100%; padding: 12px; font-size: 1rem; border: 2px solid #cbd5e1; border-radius: 8px; margin-bottom: 20px; }
     
-    .input-box { width: 100%; padding: 12px; font-size: 1rem; border: 2px solid #cbd5e1; background: #fff; color: #0f172a; border-radius: 8px; margin-bottom: 20px; }
-    .input-box:focus { border-color: #38bdf8; outline: none; box-shadow: 0 0 10px rgba(56, 189, 248, 0.4); }
-
     .nav-buttons { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
     .btn { padding: 10px 20px; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; font-weight: 600; transition: all 0.2s; }
     .btn-prev { background: #94a3b8; color: white; }
     .btn-next { background: #0284c7; color: white; }
     .btn-submit { background: #16a34a; color: white; }
-    .btn-summary { background: #7c3aed; color: white; width: 100%; margin-top: 10px; }
+    .btn-retry { background: #f59e0b; color: white; width: 100%; margin-top: 15px; padding: 15px; font-size: 1.1rem;}
     
-    /* Scorecard Styles */
     .scorecard-container { display: flex; flex-direction: column; gap: 15px; margin: 20px 0; }
     .scorecard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 10px; }
     .score-box { padding: 10px 0; text-align: center; font-weight: bold; border-radius: 6px; cursor: pointer; color: white; transition: transform 0.1s ease; border: 2px solid transparent; }
     .score-box:hover { transform: scale(1.05); border-color: #333; }
-    .score-correct { background-color: #16a34a; }
-    .score-wrong { background-color: #dc2626; }
-    .score-unanswered { background-color: #94a3b8; }
+    .score-correct { background-color: #16a34a; pointer-events: none;}
+    .score-wrong { background-color: #dc2626; pointer-events: none;}
+    .score-unanswered { background-color: #94a3b8; pointer-events: none;}
     
     .motivational-msg { margin-top: 20px; padding: 15px; background: #fef3c7; border-left: 5px solid #f59e0b; border-radius: 4px; font-size: 1.1rem; color: #92400e; font-weight: bold; }
 
-    /* Animation Overlay Styles */
-    #anim-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(15, 23, 42, 0.95);
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-    }
+    #anim-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.95); z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; }
     #anim-canvas { background: #1e293b; border-radius: 12px; border: 2px solid #38bdf8; box-shadow: 0 0 30px rgba(33, 150, 243, 0.4); }
-    .anim-text { margin-top: 20px; font-size: 1.4rem; font-weight: bold; letter-spacing: 1px; color: #38bdf8; text-transform: uppercase; text-align: center; text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
+    .anim-text { margin-top: 20px; font-size: 1.4rem; font-weight: bold; color: #38bdf8; text-transform: uppercase; text-align: center; text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
 
     .hidden { display: none !important; }
   </style>
@@ -116,8 +98,8 @@
 <div class="card">
   
   <div class="timer-container">
-    <div>⏱️ Total Mission Time: <span id="global-timer">00:00</span></div>
-    <div>⏳ This Question: <span id="question-timer">00:00</span></div>
+    <div>⏱️ Mission Time: <span id="global-timer">00:00</span></div>
+    <div>⏳ Question Time: <span id="question-timer">00:00</span></div>
   </div>
 
   <div class="header">
@@ -130,15 +112,27 @@
   </div>
 
   <div id="quiz-container">
-    <div class="question-box" id="question-text">Loading question...</div>
-    <div id="answer-container"></div>
-
-    <div class="nav-buttons">
-      <button class="btn btn-prev" id="prev-btn" onclick="changeQuestion(-1)">Previous</button>
-      <button class="btn btn-next" id="next-btn" onclick="handleNextClick()">Next</button>
-      <button class="btn btn-submit hidden" id="submit-btn" onclick="triggerFactoryAnimation('finish')">Complete Mission</button>
+    
+    <div id="hint-box" class="hint-container hidden"></div>
+    <div id="explanation-modal" class="explanation-card hidden">
+      <div id="explanation-text" style="margin-bottom: 15px;"></div>
+      <button class="btn btn-next" onclick="nextRetryAfterExplanation()">Got It! Next Question ➡️</button>
     </div>
-    <button class="btn btn-summary hidden" id="back-summary-btn" onclick="showScorecard()">Back to Scorecard</button>
+
+    <div id="question-wrapper">
+      <div class="question-box" id="question-text">Loading question...</div>
+      <div id="answer-container"></div>
+
+      <div class="nav-buttons" id="standard-nav">
+        <button class="btn btn-prev" id="prev-btn" onclick="changeQuestion(-1)">Previous</button>
+        <button class="btn btn-next" id="next-btn" onclick="handleNextClick()">Next</button>
+        <button class="btn btn-submit hidden" id="submit-btn" onclick="triggerFactoryAnimation('finish')">Complete Mission</button>
+      </div>
+
+      <div class="nav-buttons hidden" id="retry-nav">
+        <button class="btn btn-next" style="width:100%;" onclick="submitRetryAnswer()">Check My Answer</button>
+      </div>
+    </div>
   </div>
 
   <div id="result-container" class="hidden" style="text-align: center;">
@@ -151,8 +145,10 @@
     
     <div id="motivational-message" class="motivational-msg"></div>
 
+    <button id="retry-btn" class="btn btn-retry hidden" onclick="startRetryMode()">🧩 Review & Try Missed Questions</button>
+    
     <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
-      <button class="btn btn-next" onclick="restartQuiz()">Restart Mission</button>
+      <button class="btn btn-prev" onclick="restartQuiz()">Restart Entire Mission</button>
     </div>
   </div>
 </div>
@@ -160,7 +156,7 @@
 <script src="questions.js"></script>
 
 <script>
-  // Apply Dynamic Theme from questions.js
+  // Apply Dynamic Theme
   document.body.style.backgroundColor = missionConfig.themeColor || "#0f172a";
   document.getElementById("title").innerText = missionConfig.themeTitle || "Mission";
   const themeIcon = missionConfig.themeIcon || "🤖";
@@ -170,8 +166,13 @@
   let currentIdx = 0;
   let userAnswers = new Array(questions.length).fill(null);
   let missionCompleted = false;
+  
+  // Retry Logic State
+  let missedQuestions = [];
+  let retryIndex = 0;
+  let isRetryMode = false;
 
-  // Timer Variables
+  // Timers
   let globalSeconds = 0;
   let questionSeconds = 0;
   let globalTimerInt, questionTimerInt;
@@ -185,12 +186,10 @@
   function startTimers() {
     clearInterval(globalTimerInt);
     clearInterval(questionTimerInt);
-    
     globalTimerInt = setInterval(() => {
       globalSeconds++;
       document.getElementById("global-timer").innerText = formatTime(globalSeconds);
     }, 1000);
-
     questionTimerInt = setInterval(() => {
       questionSeconds++;
       document.getElementById("question-timer").innerText = formatTime(questionSeconds);
@@ -198,23 +197,48 @@
   }
 
   function loadQuestion() {
-    questionSeconds = 0; // Reset per-question timer
+    questionSeconds = 0; 
     document.getElementById("question-timer").innerText = "00:00";
+    
+    const activeIdx = isRetryMode ? missedQuestions[retryIndex] : currentIdx;
+    const q = questions[activeIdx];
+    
+    if(isRetryMode) {
+      document.getElementById("step-indicator").innerText = `Reviewing Missed Question ${retryIndex + 1} of ${missedQuestions.length}`;
+      document.getElementById("progress").style.width = `${((retryIndex + 1) / missedQuestions.length) * 100}%`;
+    } else {
+      document.getElementById("step-indicator").innerText = `Question ${currentIdx + 1} of ${questions.length}`;
+      document.getElementById("progress").style.width = `${((currentIdx + 1) / questions.length) * 100}%`;
+    }
 
-    const q = questions[currentIdx];
-    document.getElementById("step-indicator").innerText = `Question ${currentIdx + 1} of ${questions.length}`;
     document.getElementById("question-text").innerHTML = q.question.replace(/\n/g, '<br>');
-    document.getElementById("progress").style.width = `${((currentIdx + 1) / questions.length) * 100}%`;
 
+    // UI Resets
     const container = document.getElementById("answer-container");
     container.innerHTML = "";
+    document.getElementById("explanation-modal").classList.add("hidden");
+    document.getElementById("question-wrapper").classList.remove("hidden");
 
+    // Show Hint in Retry Mode
+    if (isRetryMode) {
+      const hintBox = document.getElementById("hint-box");
+      hintBox.innerHTML = `<strong>Need a clue?</strong> ${q.hint}`;
+      hintBox.classList.remove("hidden");
+      document.getElementById("standard-nav").classList.add("hidden");
+      document.getElementById("retry-nav").classList.remove("hidden");
+    } else {
+      document.getElementById("hint-box").classList.add("hidden");
+      document.getElementById("standard-nav").classList.remove("hidden");
+      document.getElementById("retry-nav").classList.add("hidden");
+    }
+
+    // Input Generation
     if (q.type === "mcq") {
       const optsDiv = document.createElement("div");
       optsDiv.className = "options-container";
       q.options.forEach(opt => {
         const btn = document.createElement("button");
-        btn.className = "option-btn" + (userAnswers[currentIdx] === opt ? " selected" : "");
+        btn.className = "option-btn" + (userAnswers[activeIdx] === opt ? " selected" : "");
         btn.innerText = opt;
         btn.onclick = () => selectOption(opt);
         optsDiv.appendChild(btn);
@@ -225,30 +249,27 @@
       input.type = "text";
       input.className = "input-box";
       input.placeholder = "Type your answer here...";
-      input.value = userAnswers[currentIdx] || "";
-      input.oninput = (e) => { userAnswers[currentIdx] = e.target.value.trim(); };
+      input.value = userAnswers[activeIdx] || "";
+      input.oninput = (e) => { userAnswers[activeIdx] = e.target.value.trim(); };
       container.appendChild(input);
     }
 
-    document.getElementById("prev-btn").disabled = currentIdx === 0;
-    
-    if (currentIdx === questions.length - 1) {
-      document.getElementById("next-btn").classList.add("hidden");
-      document.getElementById("submit-btn").classList.remove("hidden");
-    } else {
-      document.getElementById("next-btn").classList.remove("hidden");
-      document.getElementById("submit-btn").classList.add("hidden");
-    }
-
-    if (missionCompleted) {
-      document.getElementById("back-summary-btn").classList.remove("hidden");
-    } else {
-      document.getElementById("back-summary-btn").classList.add("hidden");
+    // Standard Nav Logic
+    if (!isRetryMode) {
+      document.getElementById("prev-btn").disabled = currentIdx === 0;
+      if (currentIdx === questions.length - 1) {
+        document.getElementById("next-btn").classList.add("hidden");
+        document.getElementById("submit-btn").classList.remove("hidden");
+      } else {
+        document.getElementById("next-btn").classList.remove("hidden");
+        document.getElementById("submit-btn").classList.add("hidden");
+      }
     }
   }
 
   function selectOption(val) {
-    userAnswers[currentIdx] = val;
+    const activeIdx = isRetryMode ? missedQuestions[retryIndex] : currentIdx;
+    userAnswers[activeIdx] = val;
     loadQuestion();
   }
 
@@ -265,6 +286,66 @@
     });
   }
 
+  // --- RETRY MODE LOGIC ---
+  function startRetryMode() {
+    isRetryMode = true;
+    retryIndex = 0;
+    document.getElementById('result-container').classList.add('hidden');
+    document.getElementById('quiz-container').classList.remove('hidden');
+    
+    // Resume global timer for retry session
+    globalTimerInt = setInterval(() => {
+      globalSeconds++;
+      document.getElementById("global-timer").innerText = formatTime(globalSeconds);
+    }, 1000);
+    
+    loadQuestion();
+  }
+
+  function submitRetryAnswer() {
+    const activeIdx = missedQuestions[retryIndex];
+    const q = questions[activeIdx];
+    const ans = userAnswers[activeIdx];
+
+    if (ans && ans.toLowerCase() === q.answer.toLowerCase()) {
+      alert("🎉 Awesome job thinking it through! You got it right!");
+      retryIndex++;
+      if (retryIndex < missedQuestions.length) {
+        loadQuestion();
+      } else {
+        finishRetryMode();
+      }
+    } else {
+      // Failed retry -> Show Explanation
+      document.getElementById("question-wrapper").classList.add("hidden");
+      document.getElementById("explanation-modal").classList.remove("hidden");
+      // Format markdown-like bolding for the explanation text
+      let explHTML = q.explanation.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+      document.getElementById("explanation-text").innerHTML = `<h3>Nice try! Let's learn together:</h3><br><p>${explHTML}</p>`;
+    }
+  }
+
+  function nextRetryAfterExplanation() {
+    retryIndex++;
+    if (retryIndex < missedQuestions.length) {
+      loadQuestion();
+    } else {
+      finishRetryMode();
+    }
+  }
+
+  function finishRetryMode() {
+    clearInterval(globalTimerInt);
+    clearInterval(questionTimerInt);
+    isRetryMode = false;
+    alert("🌟 Great effort! You completed your review mission.");
+    
+    // Clear out missed array to hide retry button on final screen
+    missedQuestions = []; 
+    generateScorecard(); // Regenerates scorecard showing the corrected answers
+  }
+
+  // --- ANIMATION ENGINE ---
   function triggerFactoryAnimation(mode) {
     clearInterval(globalTimerInt);
     clearInterval(questionTimerInt);
@@ -273,7 +354,6 @@
     });
   }
 
-   // --- Dynamic Particle Physics Animation Engine ---
   function runCustomAnimation(mode, onComplete) {
     const overlay = document.getElementById("anim-overlay");
     const canvas = document.getElementById("anim-canvas");
@@ -281,12 +361,7 @@
     const statusText = document.getElementById("anim-status-text");
     
     overlay.classList.remove("hidden");
-    
     let frame = 0;
-    
-    // INCREASED FRAMES = SLOWER ANIMATION
-    // Quick transition increased from 45 to 90 frames (~double the time)
-    // Final battle increased from 180 to 300 frames (~5 seconds of slow-mo action)
     let durationFrames = mode === 'quick' ? 90 : 300;
     
     statusText.innerText = mode === 'quick' ? "Loading Next Phase..." : "Epic Battle Commencing!";
@@ -298,56 +373,39 @@
       particles.push({
         x: mode === 'quick' ? -50 : canvas.width / 2,
         y: mode === 'quick' ? 50 + (i * 80) : canvas.height / 2,
-        // REDUCED VELOCITIES = SLOWER MOVEMENT
         vx: mode === 'quick' ? 5 + Math.random()*3 : (Math.random() - 0.5) * 6,
         vy: mode === 'quick' ? 0 : (Math.random() - 0.5) * 6,
         size: 30 + Math.random() * 20,
         rotation: 0,
-        // REDUCED SPIN = SLOWER ROTATION
         spin: (Math.random() - 0.5) * 0.15
       });
     }
 
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.font = "30px Arial";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
+      ctx.textAlign = "center"; ctx.textBaseline = "middle";
 
       particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        p.rotation += p.spin;
-
+        p.x += p.vx; p.y += p.vy; p.rotation += p.spin;
         if(mode === 'boss') {
           if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
           if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
         }
-
         ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rotation);
+        ctx.translate(p.x, p.y); ctx.rotate(p.rotation);
         ctx.font = p.size + "px Arial";
         ctx.fillText(themeIcon, 0, 0);
         ctx.restore();
       });
 
       frame++;
-      
-      // Adjusted text milestones for the longer 300-frame duration
       if (mode === 'boss') {
         if (frame === 100) statusText.innerText = "Clashing Powers!";
         if (frame === 200) statusText.innerText = "Analyzing Results...";
       }
 
-      if (frame < durationFrames) {
-        requestAnimationFrame(draw);
-      } else {
-        setTimeout(() => {
-          overlay.classList.add("hidden");
-          onComplete();
-        }, 200);
-      }
+      if (frame < durationFrames) requestAnimationFrame(draw);
+      else setTimeout(() => { overlay.classList.add("hidden"); onComplete(); }, 200);
     }
     draw();
   }
@@ -362,54 +420,40 @@
   function generateScorecard() {
     missionCompleted = true;
     let score = 0;
+    missedQuestions = []; // Reset missing pool
     const grid = document.getElementById("scorecard-grid");
     grid.innerHTML = "";
 
     questions.forEach((q, i) => {
-      const answerGiven = userAnswers[i];
-      const isAnswered = answerGiven !== null && answerGiven !== "";
-      const isCorrect = isAnswered && answerGiven.toLowerCase() === q.answer.toLowerCase();
+      const ans = userAnswers[i];
+      const isAnswered = ans !== null && ans !== "";
+      const isCorrect = isAnswered && ans.toLowerCase() === q.answer.toLowerCase();
 
-      if (isCorrect) score++;
+      if (isCorrect) {
+        score++;
+      } else {
+        missedQuestions.push(i);
+      }
 
       const box = document.createElement("div");
       box.className = "score-box " + (isCorrect ? "score-correct" : (isAnswered ? "score-wrong" : "score-unanswered"));
       box.innerText = `Q${i + 1}`;
-      box.onclick = () => jumpToQuestion(i);
       grid.appendChild(box);
     });
 
     document.getElementById("score-display").innerText = `Score: ${score} / ${questions.length} | Time: ${formatTime(globalSeconds)}`;
-    document.getElementById("motivational-message").innerText = getMotivationalMessage(score, questions.length);
-    showScorecard();
-  }
+    
+    // Toggle Retry Button visibility
+    if (missedQuestions.length > 0) {
+      document.getElementById("retry-btn").classList.remove("hidden");
+      document.getElementById("motivational-message").innerText = getMotivationalMessage(score, questions.length);
+    } else {
+      document.getElementById("retry-btn").classList.add("hidden");
+      document.getElementById("motivational-message").innerText = "Review Complete! You fixed all the errors in your telemetry data!";
+    }
 
-  function showScorecard() {
-    if(missionCompleted) generateScorecardUIOnly(); 
     document.getElementById("quiz-container").classList.add("hidden");
     document.getElementById("result-container").classList.remove("hidden");
-  }
-
-  function generateScorecardUIOnly() {
-    let score = 0;
-    questions.forEach((q, i) => {
-      const answerGiven = userAnswers[i];
-      if (answerGiven !== null && answerGiven !== "" && answerGiven.toLowerCase() === q.answer.toLowerCase()) score++;
-    });
-    document.getElementById("score-display").innerText = `Score: ${score} / ${questions.length} | Time: ${formatTime(globalSeconds)}`;
-  }
-
-  function jumpToQuestion(index) {
-    currentIdx = index;
-    document.getElementById("result-container").classList.add("hidden");
-    document.getElementById("quiz-container").classList.remove("hidden");
-    loadQuestion();
-    // Restart question timer only (leave global running)
-    clearInterval(questionTimerInt);
-    questionTimerInt = setInterval(() => {
-      questionSeconds++;
-      document.getElementById("question-timer").innerText = formatTime(questionSeconds);
-    }, 1000);
   }
 
   function restartQuiz() {
@@ -418,6 +462,8 @@
       globalSeconds = 0;
       userAnswers = new Array(questions.length).fill(null);
       missionCompleted = false;
+      isRetryMode = false;
+      missedQuestions = [];
       document.getElementById("result-container").classList.add("hidden");
       document.getElementById("quiz-container").classList.remove("hidden");
       startTimers();
