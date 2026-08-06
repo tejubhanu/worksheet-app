@@ -1,6 +1,3 @@
-Here is the complete, ready-to-use questions.js file for the new BattleBots adventure!
-This mission features Marty, Arjun, Taksh, Ayaan, Advi, and Smithika, along with Mom, Dad, Rod, and the AI Core. It is perfectly scaled for an advanced 8-year-old, moving from warm-up arithmetic into logic grids and final boss battles. The background is a sleek red gradient, and it features the robot emoji (🤖) for the animations.
-To apply this, completely replace the contents of your current questions.js file with the code block below:
 const missionConfig = {
   themeTitle: "🤖 Mission: BattleBots Arena Clash",
   themeColor: "linear-gradient(135deg, #b91c1c, #7f1d1d)", 
