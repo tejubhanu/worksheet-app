@@ -1,6 +1,7 @@
 const missionConfig = {
   themeTitle: "🚀 Mission: The Solar System Secrets",
-  themeColor: "linear-gradient(135deg, #0b0f19, #000000)", 
+  // themeColor: "linear-gradient(135deg, #0b0f19, #000000)", 
+  themeColor: "black"
   themeIcon: "🚀", 
   questions: [
     // SECTION 1: INNER PLANETS & WARM-UP
