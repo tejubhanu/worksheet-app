@@ -1,2 +1,2 @@
 # worksheet-app
-Marty's Worksheet
+Marty's Worksheet app to practice math & logic
