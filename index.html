@@ -66,6 +66,7 @@
             padding: 6px 12px;
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            white-space: nowrap;
         }
 
         .streak-badge {
@@ -264,9 +265,10 @@
     <div class="container" id="app-container">
         <div class="header-bar">
             <div class="mission-title" id="mission-title-text">🚀 Loading Mission...</div>
-            <div style="display: flex; gap: 10px; align-items: center;">
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
                 <div class="streak-badge" id="streak-badge">🔥 <span id="streak-count">0</span> Streak</div>
-                <div class="timer-container">⏳ <span id="global-timer">00:00</span></div>
+                <div class="timer-container">⏱️ Q: <span id="question-timer">00:00</span></div>
+                <div class="timer-container">⏳ Total: <span id="global-timer">00:00</span></div>
             </div>
         </div>
 
@@ -395,11 +397,15 @@
         let currentIdx = 0;
         let userResponses = {}; // questionIndex -> { answer, correct }
         let streak = 0;
-        let globalSeconds = 0;
-        let timerInterval = null;
         let isReviewMode = false;
         let reviewQueue = [];
         let reviewQueueIdx = 0;
+        
+        // --- Timer State ---
+        let globalSeconds = 0;
+        let globalTimerInterval = null;
+        let questionSeconds = 0;
+        let questionTimerInterval = null;
 
         window.addEventListener('DOMContentLoaded', () => {
             if (typeof missionConfig !== 'undefined') {
@@ -420,7 +426,7 @@
         });
 
         function startGlobalTimer() {
-            timerInterval = setInterval(() => {
+            globalTimerInterval = setInterval(() => {
                 globalSeconds++;
                 let mins = Math.floor(globalSeconds / 60).toString().padStart(2, '0');
                 let secs = (globalSeconds % 60).toString().padStart(2, '0');
@@ -428,7 +434,20 @@
             }, 1000);
         }
 
+        function startQuestionTimer() {
+            clearInterval(questionTimerInterval);
+            questionSeconds = 0;
+            document.getElementById('question-timer').innerText = `00:00`;
+            questionTimerInterval = setInterval(() => {
+                questionSeconds++;
+                let mins = Math.floor(questionSeconds / 60).toString().padStart(2, '0');
+                let secs = (questionSeconds % 60).toString().padStart(2, '0');
+                document.getElementById('question-timer').innerText = `${mins}:${secs}`;
+            }, 1000);
+        }
+
         function loadQuestion() {
+            startQuestionTimer(); // Restart the per-question timer when a question loads
             let q;
             let displayNum;
 
@@ -533,6 +552,7 @@
                 userResponses[currentIdx] = { answer: userAns, correct: false };
 
                 if (isReviewMode && q.explanation) {
+                    clearInterval(questionTimerInterval); // Stop timer while reading explanation
                     const explanationBox = document.getElementById('explanation-box');
                     explanationBox.innerHTML = `⭐ <b>Explanation:</b> ${q.explanation}`;
                     explanationBox.style.display = 'block';
@@ -566,10 +586,12 @@
         }
 
         function showScorecard() {
-            clearInterval(timerInterval);
+            clearInterval(globalTimerInterval);
+            clearInterval(questionTimerInterval);
             document.getElementById('quiz-view').style.display = 'none';
             document.getElementById('scorecard-view').style.display = 'block';
             document.getElementById('streak-badge').style.display = 'none';
+            document.getElementById('question-timer').parentElement.style.display = 'none'; // Hide per-question timer on scorecard
 
             playSound('fanfare');
             triggerBurst(typeof missionConfig !== 'undefined' ? missionConfig.themeIcon : '⭐');
@@ -717,6 +739,7 @@
         function jumpToQuestion(idx) {
             document.getElementById('scorecard-view').style.display = 'none';
             document.getElementById('quiz-view').style.display = 'block';
+            document.getElementById('question-timer').parentElement.style.display = 'block'; // Ensure timer is visible again
             isReviewMode = true;
             reviewQueue = [idx];
             reviewQueueIdx = 0;
@@ -734,6 +757,7 @@
 
             document.getElementById('scorecard-view').style.display = 'none';
             document.getElementById('quiz-view').style.display = 'block';
+            document.getElementById('question-timer').parentElement.style.display = 'block'; // Ensure timer is visible again
             isReviewMode = true;
             reviewQueue = missedIndices;
             reviewQueueIdx = 0;
