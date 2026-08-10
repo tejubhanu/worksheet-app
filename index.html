@@ -156,6 +156,13 @@
             transform: translateY(-1px);
         }
 
+        .btn-success {
+            background: #10b981;
+            color: #fff;
+            margin-top: 15px;
+            width: 100%;
+        }
+
         .hint-box {
             background: rgba(234, 179, 8, 0.15);
             border: 2px dashed #facc15;
@@ -301,7 +308,10 @@
                 </table>
             </div>
 
-            <div style="display: flex; gap: 10px; margin-top: 25px;">
+            <!-- Download Report Button -->
+            <button class="btn-primary btn-success" onclick="downloadReport()">📥 Download Parent Report</button>
+
+            <div style="display: flex; gap: 10px; margin-top: 15px;">
                 <button class="btn-primary" onclick="startRetryMode()" id="retry-btn" style="flex: 1; display: none;">Review Missed Questions</button>
                 <button class="btn-primary" onclick="restartMission()" style="flex: 1; background: #64748b; color: #fff;">Restart Mission</button>
             </div>
@@ -309,35 +319,15 @@
     </div>
 
     <script>
-        // --- Web Audio API Synth Generator ---
+        // --- Web Audio API Synth Generator (Only kept fanfare for the end of the quiz) ---
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         function playSound(type) {
             if (audioCtx.state === 'suspended') {
                 audioCtx.resume();
             }
-            const osc = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            osc.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-
             const now = audioCtx.currentTime;
-            if (type === 'correct') {
-                osc.type = 'triangle';
-                osc.frequency.setValueAtTime(440, now);
-                osc.frequency.exponentialRampToValueAtTime(880, now + 0.15);
-                gainNode.gain.setValueAtTime(0.15, now);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
-                osc.start(now);
-                osc.stop(now + 0.3);
-            } else if (type === 'incorrect') {
-                osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(220, now);
-                osc.frequency.linearRampToValueAtTime(140, now + 0.2);
-                gainNode.gain.setValueAtTime(0.15, now);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
-                osc.start(now);
-                osc.stop(now + 0.25);
-            } else if (type === 'fanfare') {
+            
+            if (type === 'fanfare') {
                 const notes = [523.25, 659.25, 783.99, 1046.50];
                 notes.forEach((freq, idx) => {
                     const o = audioCtx.createOscillator();
@@ -523,7 +513,6 @@
             let isCorrect = (userAns.toLowerCase() === q.answer.toLowerCase());
 
             if (isCorrect) {
-                playSound('correct');
                 streak++;
                 triggerBurst(typeof missionConfig !== 'undefined' ? missionConfig.themeIcon : '⭐');
                 updateStreakDisplay();
@@ -538,7 +527,6 @@
                     loadQuestion();
                 }
             } else {
-                playSound('incorrect');
                 streak = 0;
                 updateStreakDisplay();
 
@@ -658,7 +646,7 @@
                 let row = document.createElement('tr');
                 row.innerHTML = `
                     <td>#${i + 1}</td>
-                    <td style="max-width: 220px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${questions[i].question}">${questions[i].question}</td>
+                    <td style="max-width: 220px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${questions[i].question.replace(/<[^>]*>?/gm, '')}">${questions[i].question}</td>
                     <td>${userAnsText}</td>
                     <td style="color: ${resp && resp.correct ? '#4ade80' : '#ef4444'}; font-weight: bold;">${statusText}</td>
                 `;
@@ -679,6 +667,51 @@
             } else {
                 retryBtn.style.display = 'none';
             }
+        }
+
+        // --- Parent Report Download Engine ---
+        function downloadReport() {
+            // Generate the current EST/EDT timestamp
+            const date = new Date();
+            const estOptions = { 
+                timeZone: 'America/New_York', 
+                year: 'numeric', month: '2-digit', day: '2-digit', 
+                hour: '2-digit', minute: '2-digit', second: '2-digit', 
+                hour12: false 
+            };
+            
+            // Format string securely for file naming
+            const estTimeString = date.toLocaleString('en-US', estOptions).replace(/, /g, '_').replace(/[:\/]/g, '-');
+            const fileName = `MartyAnswers_${estTimeString}_EST.csv`;
+
+            // Build CSV Content
+            let csvContent = "Question Number,Question Text,Marty's Answer,Correct Answer,Status\n";
+
+            for (let i = 0; i < questions.length; i++) {
+                let q = questions[i];
+                let resp = userResponses[i];
+                
+                // Clean formatting out of strings to prevent CSV breaking
+                let rawQuestion = q.question.replace(/<[^>]*>?/gm, '').replace(/"/g, '""');
+                let userAns = resp ? resp.answer.replace(/"/g, '""') : "Unanswered";
+                let correctAns = q.answer.replace(/"/g, '""');
+                let status = (resp && resp.correct) ? "Correct" : "Wrong";
+
+                csvContent += `"${i + 1}","${rawQuestion}","${userAns}","${correctAns}","${status}"\n`;
+            }
+
+            // Create a Blob and trigger the download
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            
+            link.setAttribute("href", url);
+            link.setAttribute("download", fileName);
+            link.style.visibility = 'hidden';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         function jumpToQuestion(idx) {
