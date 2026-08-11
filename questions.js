@@ -1,323 +1,323 @@
 const missionConfig = {
-    themeTitle: "🌌 Cosmic Detective: The Lost Star Map",
-    themeColor: "radial-gradient(circle at center, #1b2735 0%, #090a0f 100%)", // Deep space black/blue gradient
-    themeIcon: "🛸",
+    themeTitle: "🕵️‍♂️ Spy Academy: Operation Quantum Shield",
+    themeColor: "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0284c7 100%)", // Sleek Spy Slate & Cyan
+    themeIcon: "🕵️‍♂️",
     questions: [
-        // --- Warm-Up: Launch Prep ---
+        // --- Phase 1: Spy Academy Orientation ---
         {
             type: "text",
-            question: "Marty is preparing the spaceship for launch. He needs 45 fuel cells, but he only has 28. How many more fuel cells does he need?",
-            answer: "17",
-            hint: "Try subtracting 28 from 45. What do you get if you borrow a ten?",
-            explanation: "45 - 28 = 17. Marty needs 17 more fuel cells to reach full power."
-        },
-        {
-            type: "text",
-            question: "Rod the AI calculates that the journey to the Moon takes 3 days. Since there are 24 hours in one day, how many hours will the trip take?",
-            answer: "72",
-            hint: "Multiply 24 by 3. Try doing 20 x 3, and then 4 x 3, and add them together!",
-            explanation: "24 x 3 = 72. The trip will take 72 hours."
+            question: "Agent Marty needs to disable the laser grid at headquarters. The hallway has 35 active laser beams, and he disables 17 of them. How many laser beams are still active?",
+            answer: "18",
+            hint: "Subtract 17 from 35. (35 - 10 = 25, then subtract 7 more).",
+            explanation: "35 - 17 = 18 active laser beams remaining."
         },
         {
             type: "mcq",
-            question: "Arjun is packing snacks for the crew. If he packs 6 boxes of astronaut ice cream, and each box has 8 sandwiches, how many sandwiches are there in total?",
-            options: ["42", "48", "54", "64"],
+            question: "Agent Arjun is timing his stealth sprint. He needs to run for exactly 4 minutes. How many seconds is 4 minutes?",
+            options: ["180", "200", "240", "300"],
+            answer: "240",
+            hint: "There are 60 seconds in 1 minute. Multiply 60 by 4.",
+            explanation: "60 x 4 = 240 seconds."
+        },
+        {
+            type: "text",
+            question: "Agent Taksh decodes an encrypted message on his spy watch: 'Multiply 8 by 7, then add 9.' What is the decoded security passcode?",
+            answer: "65",
+            hint: "First calculate 8 x 7, then add 9 to your result.",
+            explanation: "8 x 7 = 56. Then 56 + 9 = 65."
+        },
+        {
+            type: "mcq",
+            question: "Agent Ayaan is packing disguise kits. He packs 5 kits, and each kit contains 7 gadget tools. How many gadget tools did he pack in total?",
+            options: ["30", "32", "35", "40"],
+            answer: "35",
+            hint: "Multiply 5 by 7.",
+            explanation: "5 x 7 = 35 gadget tools."
+        },
+        {
+            type: "mcq",
+            question: "Agent Advi spots a number pattern on the vault keypad: 3, 6, 12, 24, ___. What number unlocks the vault?",
+            options: ["30", "36", "48", "60"],
             answer: "48",
-            hint: "Think of your 6 times tables. What is 6 x 8?",
-            explanation: "6 x 8 = 48. Arjun packed 48 astronaut ice cream sandwiches."
-        },
-        {
-            type: "text",
-            question: "Mom and Dad are checking the radar. They spot 63 asteroids on the left and 29 on the right. How many asteroids did they spot in total?",
-            answer: "92",
-            hint: "Add 63 and 29. Try adding 30 to 63 first, then subtract 1!",
-            explanation: "63 + 29 = 92. They spotted 92 asteroids on the radar."
-        },
-        {
-            type: "mcq",
-            question: "Taksh finds a strange pattern on the navigation screen: 5, 10, 20, 40, ... What number comes next?",
-            options: ["50", "60", "80", "100"],
-            answer: "80",
-            hint: "Look at how the numbers are growing. Each number is being doubled (multiplied by 2).",
-            explanation: "The pattern doubles each time. 40 x 2 = 80."
+            hint: "Look at how the sequence grows. Each number is being doubled!",
+            explanation: "The pattern doubles each number. 24 x 2 = 48."
         },
 
-        // --- Phase 2: Space Facts & Planetary Math ---
+        // --- Phase 2: Gadgets & Tech Recon ---
+        {
+            type: "text",
+            question: "Agent Smithika has 72 mini recon drones. She divides them equally among all 8 squad members. How many drones does each agent receive?",
+            answer: "9",
+            hint: "Divide 72 by 8. Think: 8 times what number equals 72?",
+            explanation: "72 / 8 = 9 drones per agent."
+        },
         {
             type: "mcq",
-            question: "The Sun is actually a giant star! It is so big that you could fit 1 million Earths inside it. If Ayaan draws 4 pictures of the Sun, and puts 9 Earths in each picture, how many Earths did he draw?",
-            options: ["36", "45", "32", "40"],
-            answer: "36",
-            hint: "Multiply the number of pictures (4) by the number of Earths in each (9).",
-            explanation: "4 x 9 = 36. Ayaan drew 36 Earths."
+            question: "Mom tests high-tech grappling hooks. Each hook can reach 15 feet. If she ties 4 grappling ropes together end-to-end, how high can she climb?",
+            options: ["45 feet", "50 feet", "60 feet", "75 feet"],
+            answer: "60 feet",
+            hint: "Multiply 15 by 4. You can double 15 to get 30, then double it again!",
+            explanation: "15 x 4 = 60 feet."
         },
         {
             type: "text",
-            question: "Jupiter is the largest planet and has 95 known moons! If Advi discovers 12 more tiny moons hidden in Jupiter's rings, how many moons does Jupiter have now?",
-            answer: "107",
-            hint: "Add 95 and 12 together.",
-            explanation: "95 + 12 = 107. Jupiter would have 107 moons."
+            question: "Dad is monitoring 80 security feeds. 35 feeds are on Floor 1, and the rest are on Floor 2. How many security feeds are on Floor 2?",
+            answer: "45",
+            hint: "Subtract 35 from 80.",
+            explanation: "80 - 35 = 45 security feeds."
         },
         {
             type: "mcq",
-            question: "Smithika reads that a year on Mercury is only 88 Earth days long because it is so close to the Sun. How many days are in TWO years on Mercury?",
-            options: ["176", "166", "188", "196"],
-            answer: "176",
-            hint: "Add 88 + 88, or multiply 88 x 2. (80 + 80 = 160, and 8 + 8 = 16).",
-            explanation: "88 x 2 = 176. Two years on Mercury equal 176 Earth days."
-        },
-        {
-            type: "text",
-            question: "Mars is known as the Red Planet. The team sends 4 rovers to explore Mars. If each rover takes 15 pictures, how many pictures do they take in total?",
-            answer: "60",
-            hint: "Multiply 15 by 4. You can also double 15 to get 30, and then double it again!",
-            explanation: "15 x 4 = 60. The rovers took 60 pictures."
-        },
-        {
-            type: "mcq",
-            question: "Saturn is famous for its beautiful rings made of ice and rock. If Marty counts 7 large rings and Dad says each large ring is made of 6 smaller bands, how many bands are there?",
-            options: ["35", "42", "49", "48"],
-            answer: "42",
-            hint: "What is 7 times 6?",
-            explanation: "7 x 6 = 42. There are 42 smaller bands."
-        },
-
-        // --- Phase 3: Cosmic Logic & Deductive Reasoning ---
-        {
-            type: "mcq",
-            question: "The team finds a locked space chest floating in orbit. The passcode is a 3-digit number. The first digit is 3. The second digit is double the first. The third digit is the second digit minus 1. What is the passcode?",
-            options: ["365", "367", "398", "342"],
-            answer: "365",
-            hint: "First digit = 3. Second digit = 3 x 2. Third digit = Second digit - 1.",
-            explanation: "First digit is 3. Double 3 is 6. 6 minus 1 is 5. The code is 365."
-        },
-        {
-            type: "mcq",
-            question: "Arjun, Taksh, and Ayaan each pick a favorite planet: Venus, Mars, or Neptune. Arjun does not like hot planets. Taksh loves the color red. Which planet is Ayaan's favorite?",
-            options: ["Venus", "Mars", "Neptune", "Earth"],
-            answer: "Venus",
-            hint: "Taksh likes red, so he picks Mars. Arjun doesn't like hot planets, so he picks Neptune. Who is left?",
-            explanation: "Taksh gets Mars (red). Arjun gets Neptune (cold). That leaves Venus for Ayaan."
-        },
-        {
-            type: "text",
-            question: "To decode a distress signal, Rod the AI says: 'Take the number 12, multiply it by 3, and then subtract 6.' What is the final number?",
+            question: "Rod the AI has a 100 Megabyte encrypted memory drive. 28 Megabytes are used for maps and 42 Megabytes are used for codes. How many Megabytes of memory are left?",
+            options: ["20", "30", "40", "50"],
             answer: "30",
-            hint: "First do 12 x 3. Then take that answer and subtract 6.",
-            explanation: "12 x 3 = 36. Then 36 - 6 = 30."
-        },
-        {
-            type: "mcq",
-            question: "Mom arranges the spaceship's solar panels in a grid. There are 4 rows and 9 columns. If 5 panels are broken, how many panels are working perfectly?",
-            options: ["36", "31", "29", "25"],
-            answer: "31",
-            hint: "First find the total number of panels by multiplying 4 x 9. Then subtract the 5 broken ones.",
-            explanation: "4 x 9 = 36 total panels. 36 - 5 broken = 31 working panels."
+            hint: "Add the used memory first (28 + 42 = 70), then subtract from 100.",
+            explanation: "28 + 42 = 70. 100 - 70 = 30 Megabytes left."
         },
         {
             type: "text",
-            question: "Advi is organizing star charts. She has 50 charts. She gives 14 to Smithika and 16 to Marty. How many star charts does Advi have left?",
-            answer: "20",
-            hint: "First, add up how many charts she gave away (14 + 16). Then subtract that from 50.",
-            explanation: "14 + 16 = 30 charts given away. 50 - 30 = 20 charts left."
+            question: "Marty needs 3 micro-batteries for each of his 9 night-vision goggles. How many micro-batteries does he need in total?",
+            answer: "27",
+            hint: "Multiply 3 by 9.",
+            explanation: "3 x 9 = 27 micro-batteries."
         },
 
-        // --- Phase 4: Intermediate Multi-Step Problems ---
+        // --- Phase 3: Logic & Suspect Elimination ---
         {
             type: "mcq",
-            question: "The team's spaceship travels at 8 miles per second! How many miles does it travel in 10 seconds?",
-            options: ["18", "64", "80", "800"],
-            answer: "80",
-            hint: "Multiply the speed (8) by the time (10).",
-            explanation: "8 x 10 = 80 miles."
+            question: "The team interrogates 3 disguise suspects wearing Red, Blue, and Black hats. Suspect A is NOT wearing Red. Suspect B is wearing Black. What color hat is Suspect A wearing?",
+            options: ["Red", "Blue", "Black", "Yellow"],
+            answer: "Blue",
+            hint: "Suspect B has the Black hat. Suspect A does not have Red. Which color is left for A?",
+            explanation: "B = Black. That leaves Red and Blue. Since A is not Red, A must be wearing Blue!"
+        },
+        {
+            type: "mcq",
+            question: "The security safe requires an EVEN passcode between 30 and 50. The sum of its digits is 10. What is the passcode?",
+            options: ["36", "46", "48", "44"],
+            answer: "46",
+            hint: "Check 46: Is it even? Yes. Is it between 30 and 50? Yes. Is 4 + 6 equal to 10? Yes!",
+            explanation: "46 is even, falls between 30 and 50, and 4 + 6 = 10."
         },
         {
             type: "text",
-            question: "Dad buys 4 packs of zero-gravity batteries. Each pack has 12 batteries. If he uses 8 batteries to fix the scanner, how many does he have left?",
-            answer: "40",
-            hint: "First find the total (4 x 12). Then subtract 8.",
-            explanation: "4 x 12 = 48 total batteries. 48 - 8 = 40 batteries left."
+            question: "Arjun finds an encrypted safe. Rod the AI gives a clue: 'Take 15, multiply it by 4, and add 10.' What is the combination?",
+            answer: "70",
+            hint: "First do 15 x 4 = 60. Then add 10.",
+            explanation: "15 x 4 = 60. 60 + 10 = 70."
         },
         {
             type: "mcq",
-            question: "Smithika is tracking comets. She sees 3 comets on Monday, 6 on Tuesday, and 9 on Wednesday. If this pattern continues, how many comets will she see on Thursday?",
-            options: ["10", "12", "15", "18"],
+            question: "Taksh, Ayaan, and Advi choose disguises: Chef, Detective, and Pilot. Taksh hates cooking. Ayaan wears a long trench coat. Who is disguised as the Chef?",
+            options: ["Taksh", "Ayaan", "Advi", "Rod"],
+            answer: "Advi",
+            hint: "Taksh isn't the Chef. Ayaan has the trench coat (Detective). Who is left?",
+            explanation: "Ayaan = Detective. Taksh = Pilot (hates cooking). Advi = Chef."
+        },
+        {
+            type: "text",
+            question: "Smithika tracks a suspect who moves 25 steps North, 18 steps East, and 12 steps South. How many total steps did the suspect take?",
+            answer: "55",
+            hint: "Add all three step counts together: 25 + 18 + 12.",
+            explanation: "25 + 18 + 12 = 55 total steps."
+        },
+
+        // --- Phase 4: Infiltrating the Villain's Lair ---
+        {
+            type: "mcq",
+            question: "A high-security laser pulse shoots across the hallway every 6 seconds. How many times will the laser pulse in 1 full minute (60 seconds)?",
+            options: ["6", "8", "10", "12"],
+            answer: "10",
+            hint: "Divide 60 seconds by 6 seconds.",
+            explanation: "60 / 6 = 10 laser pulses per minute."
+        },
+        {
+            type: "text",
+            question: "Mom hacks a door with this math puzzle: 'Find half of 180, then subtract 15.' What is the override code?",
+            answer: "75",
+            hint: "Half of 180 is 90. Now subtract 15 from 90.",
+            explanation: "180 / 2 = 90. 90 - 15 = 75."
+        },
+        {
+            type: "mcq",
+            question: "Dad finds 6 storage boxes in the lair with 9 stealth suits in each. If 7 suits are missing, how many suits are still in the boxes?",
+            options: ["47", "54", "45", "42"],
+            answer: "47",
+            hint: "First find total suits: 6 x 9 = 54. Then subtract 7.",
+            explanation: "6 x 9 = 54. 54 - 7 = 47 stealth suits left."
+        },
+        {
+            type: "text",
+            question: "Rod the AI says the self-destruct countdown is at 180 seconds. How many full minutes do they have to escape?",
+            answer: "3",
+            hint: "Divide 180 by 60.",
+            explanation: "180 seconds / 60 seconds per minute = 3 minutes."
+        },
+        {
+            type: "mcq",
+            question: "Marty must leap across 4 floating stepping stones. Each stone is 8 feet long, and there is a 2-foot gap between each stone. What is the total distance from the start of the first stone to the end of the 4th stone?",
+            options: ["32 feet", "38 feet", "40 feet", "36 feet"],
+            answer: "38 feet",
+            hint: "4 stones x 8 ft = 32 ft. There are 3 gaps between 4 stones (3 x 2 ft = 6 ft). Add 32 + 6.",
+            explanation: "32 ft (stones) + 6 ft (gaps) = 38 feet total."
+        },
+
+        // --- Phase 5: The Encryption Vault ---
+        {
+            type: "text",
+            question: "Arjun types in a decryption sequence: 12 multiplied by 12, minus 44. What is the code?",
+            answer: "100",
+            hint: "12 x 12 = 144. Now subtract 44.",
+            explanation: "12 x 12 = 144. 144 - 44 = 100."
+        },
+        {
+            type: "mcq",
+            question: "Taksh finds a vault sequence: 2, 5, 11, 23, ___. What is the next number? (Clue: Multiply by 2 and add 1!)",
+            options: ["35", "45", "47", "50"],
+            answer: "47",
+            hint: "Take 23, multiply by 2 (46), and add 1.",
+            explanation: "(23 x 2) + 1 = 47."
+        },
+        {
+            type: "text",
+            question: "Taksh decodes a stolen keycard: 'Divide 63 by 7.' What is the single-digit keycard pin?",
+            answer: "9",
+            hint: "Think: 7 x ? = 63.",
+            explanation: "63 / 7 = 9."
+        },
+        {
+            type: "mcq",
+            question: "Ayaan inspects 3 wire cutters: Red, Yellow, and Blue. Yellow is 4 inches long. Red is TWICE as long as Yellow. Blue is 3 inches LONGER than Red. How long is Blue?",
+            options: ["8 inches", "10 inches", "11 inches", "12 inches"],
+            answer: "11 inches",
+            hint: "Yellow = 4 in. Red = 4 x 2 = 8 in. Blue = 8 + 3 in.",
+            explanation: "Red = 8 in. Blue = 8 + 3 = 11 inches."
+        },
+        {
+            type: "text",
+            question: "Advi opens a bag of decoy spy coins. There are 5 smaller sacks inside, and each sack has 15 gold coins. How many gold coins are there in total?",
+            answer: "75",
+            hint: "Multiply 5 by 15.",
+            explanation: "5 x 15 = 75 coins."
+        },
+
+        // --- Phase 6: Laser Maze & Escape ---
+        {
+            type: "mcq",
+            question: "A laser maze grid has 9 rows with 6 sensors in each row. Smithika deactivates 14 sensors. How many sensors are still active?",
+            options: ["40", "54", "44", "38"],
+            answer: "40",
+            hint: "Total sensors = 9 x 6 = 54. Subtract 14.",
+            explanation: "54 - 14 = 40 active sensors."
+        },
+        {
+            type: "text",
+            question: "Smithika solves the final override equation: (9 x 6) + (4 x 5). What is the answer?",
+            answer: "74",
+            hint: "First do 9 x 6 = 54. Then do 4 x 5 = 20. Add 54 + 20.",
+            explanation: "54 + 20 = 74."
+        },
+        {
+            type: "mcq",
+            question: "Mom needs 60 gallons of fuel for the getaway boat. The fuel pump delivers 5 gallons per minute. How many minutes will it take to fill the tank?",
+            options: ["10", "12", "15", "20"],
             answer: "12",
-            hint: "Look at the pattern: 3, 6, 9... What are the numbers counting up by?",
-            explanation: "The pattern goes up by 3 each day. 9 + 3 = 12 comets."
+            hint: "Divide 60 by 5.",
+            explanation: "60 / 5 = 12 minutes."
         },
         {
             type: "text",
-            question: "A constellation is a group of stars that forms a shape. Marty spots the Orion constellation, which has 7 main stars. If the team finds 8 different constellations just like Orion, how many main stars did they count in total?",
-            answer: "56",
-            hint: "Multiply 7 stars by 8 constellations.",
-            explanation: "7 x 8 = 56 main stars in total."
+            question: "Dad drives the getaway spy van at 45 miles per hour. How many miles does the team travel in 2 hours?",
+            answer: "90",
+            hint: "Multiply 45 by 2.",
+            explanation: "45 x 2 = 90 miles."
         },
         {
             type: "mcq",
-            question: "Rod the AI's battery is at 100%. He uses 25% to scan a planet and 38% to process the data. What is his battery percentage now?",
-            options: ["37", "47", "63", "27"],
-            answer: "37",
-            hint: "Add the power he used (25 + 38), then subtract that total from 100.",
-            explanation: "25 + 38 = 63% used. 100 - 63 = 37% remaining."
+            question: "Rod the AI blocks a firewall attack with this riddle: 'What ODD number comes immediately after 89?'",
+            options: ["90", "91", "93", "88"],
+            answer: "91",
+            hint: "89 + 1 = 90 (even). What is the next number after 90?",
+            explanation: "91 is the odd number directly following 89."
         },
 
-        // --- Phase 5: The Mystery of the Lost Star Map ---
+        // --- Phase 7: The Mastermind Showdown ---
         {
             type: "text",
-            question: "The team finds a mysterious locked door on an abandoned space station. The password is the sum of the number of planets in our solar system (8) and the number of days in a normal Earth year (365). What is the password?",
-            answer: "373",
-            hint: "Add 365 + 8.",
-            explanation: "365 + 8 = 373."
+            question: "The Villain's master lock reads: '5 x X = 45'. What number is X?",
+            answer: "9",
+            hint: "Divide 45 by 5.",
+            explanation: "45 / 5 = 9. So X = 9."
         },
         {
             type: "mcq",
-            question: "Inside the station, they find a riddle: 'I am an even number. I am greater than 40 but less than 50. If you count by 7s, you will say my name.' What number am I?",
-            options: ["42", "44", "46", "49"],
-            answer: "42",
-            hint: "Think of your 7 times tables. Which multiple of 7 is between 40 and 50 AND is an even number?",
-            explanation: "7 x 6 = 42. It is even and falls exactly between 40 and 50 (49 is odd)."
+            question: "Marty finds 4 clue briefcases weighing 10 lbs, 15 lbs, 20 lbs, and 15 lbs. What is the average weight of the briefcases?",
+            options: ["12 lbs", "15 lbs", "18 lbs", "20 lbs"],
+            answer: "15 lbs",
+            hint: "Add all weights together (10+15+20+15 = 60), then divide by 4 briefcases.",
+            explanation: "60 / 4 = 15 lbs average."
         },
         {
             type: "text",
-            question: "The first piece of the Star Map is hidden in a locker. The locker number is half of 150. What is the locker number?",
-            answer: "75",
-            hint: "Divide 150 by 2. What is half of 100? What is half of 50? Add them together.",
-            explanation: "Half of 100 is 50. Half of 50 is 25. 50 + 25 = 75."
+            question: "The Mastermind sets a security countdown of 500 seconds. Rod the AI instantly bypasses 175 seconds. How many seconds are left on the timer?",
+            answer: "325",
+            hint: "Subtract 175 from 500.",
+            explanation: "500 - 175 = 325 seconds."
         },
         {
             type: "mcq",
-            question: "Ayaan, Advi, and Smithika are holding map pieces. Advi does not have piece #1. Smithika has the piece with the highest number. If the pieces are #1, #2, and #3, who has piece #1?",
-            options: ["Ayaan", "Advi", "Smithika", "Rod"],
-            answer: "Ayaan",
-            hint: "Smithika has the highest (#3). Advi doesn't have #1, so she must have #2. Who is left?",
-            explanation: "Smithika = #3. Advi = #2. Therefore, Ayaan must have piece #1."
+            question: "Arjun needs 1/4 of the squad's 80 gadget gadgets to disable the main server. How many gadgets is 1/4 of 80?",
+            options: ["15", "20", "25", "40"],
+            answer: "20",
+            hint: "Divide 80 by 4.",
+            explanation: "80 / 4 = 20 gadgets."
         },
         {
             type: "text",
-            question: "To combine the map pieces, Mom says they need to enter a calibration code. The code is 9 multiplied by itself. What is the code?",
-            answer: "81",
-            hint: "What is 9 x 9?",
-            explanation: "9 multiplied by itself is 9 x 9, which equals 81."
+            question: "Taksh inputs the final self-destruct disarm code: 7 x 9 + 17. What is the disarm code?",
+            answer: "80",
+            hint: "7 x 9 = 63. Now add 17.",
+            explanation: "63 + 17 = 80."
         },
 
-        // --- Phase 6: Deep Space Math Challenges ---
+        // --- Phase 8: Mission Accomplished & Debrief ---
         {
             type: "mcq",
-            question: "The Star Map shows a path through an asteroid belt. To avoid the asteroids, they must fly in a zigzag pattern. If they fly 15 miles left, 20 miles right, and repeat this pattern 3 times in total, how many miles did they fly?",
-            options: ["35", "70", "105", "120"],
-            answer: "105",
-            hint: "One pattern is 15 + 20 miles. Find that total, then multiply by 3.",
-            explanation: "One zigzag is 15 + 20 = 35 miles. 35 x 3 = 105 miles."
+            question: "Ayaan counts victory fireworks above HQ: 8 red signal flares, 12 blue flares, and 15 gold flares. How many flares did he count in total?",
+            options: ["30", "32", "35", "40"],
+            answer: "35",
+            hint: "Add 8 + 12 + 15.",
+            explanation: "8 + 12 = 20. 20 + 15 = 35 flares."
         },
         {
             type: "text",
-            question: "Dad is brewing space-coffee. He has 100 ounces of water. He uses 28 ounces for his cup and 32 ounces for Mom's cup. How many ounces of water are left?",
-            answer: "40",
-            hint: "Add 28 + 32 together first, then subtract that amount from 100.",
-            explanation: "28 + 32 = 60. 100 - 60 = 40 ounces left."
-        },
-        {
-            type: "mcq",
-            question: "Arjun counts shooting stars out the window. He sees 4 blue ones, 5 green ones, and 2 times as many white ones as blue ones. How many white shooting stars did he see?",
-            options: ["8", "10", "12", "14"],
+            question: "Advi and Smithika share 48 honor badges equally among all 6 field agents. How many badges does each agent get?",
             answer: "8",
-            hint: "He saw 4 blue ones. He saw TWO TIMES as many white ones as blue ones. What is 4 x 2?",
-            explanation: "Blue = 4. White is 2 times blue. 4 x 2 = 8 white shooting stars."
-        },
-        {
-            type: "text",
-            question: "If Taksh has 54 space-credits and wants to buy robot parts that cost 9 credits each, how many parts can he buy?",
-            answer: "6",
-            hint: "Divide 54 by 9. Think: 9 times what number equals 54?",
-            explanation: "54 / 9 = 6. Taksh can buy 6 robot parts."
+            hint: "Divide 48 by 6.",
+            explanation: "48 / 6 = 8 badges per agent."
         },
         {
             type: "mcq",
-            question: "The ship needs to cool down. The engine temperature is 120 degrees. It drops 15 degrees every minute. What will the temperature be after 3 minutes?",
-            options: ["45", "75", "105", "60"],
-            answer: "75",
-            hint: "First find out how much it drops in total (15 x 3). Then subtract that from 120.",
-            explanation: "15 x 3 = 45 degrees dropped. 120 - 45 = 75 degrees."
-        },
-
-        // --- Phase 7: Boss Battle - The Cosmic Glitch ---
-        {
-            type: "text",
-            question: "Oh no! A Cosmic Glitch has frozen the ship's computer. The screen says: 'Solve this to reboot: (8 x 5) + 17'. What is the answer?",
-            answer: "57",
-            hint: "Do the multiplication in the parentheses first (8 x 5), then add 17.",
-            explanation: "8 x 5 = 40. Then 40 + 17 = 57."
-        },
-        {
-            type: "mcq",
-            question: "The Glitch creates 3 holographic clones of Rod the AI. Rod #1 always tells the truth. Rod #2 always lies. Rod #3 says, 'Rod #2 is lying!' Who is the real Rod?",
-            options: ["Rod #1", "Rod #2", "Rod #3", "None of them"],
-            answer: "Rod #1",
-            hint: "The real Rod always tells the truth to help Marty. Therefore, Rod #1 is the real one.",
-            explanation: "Because Rod #1 always tells the truth, he is the reliable, real AI helper."
+            question: "Mom and Dad grade the mission performance. Out of 40 challenges, Marty answered 38 correctly. What score percentage did he achieve?",
+            options: ["90%", "92%", "95%", "100%"],
+            answer: "95%",
+            hint: "38 out of 40 is the same as 95 out of 100.",
+            explanation: "(38 / 40) x 100 = 95%."
         },
         {
             type: "text",
-            question: "To break the Glitch's firewall, Marty needs to enter the missing number: 100, 85, 70, 55, ___. What comes next?",
-            answer: "40",
-            hint: "Look at how much the numbers are shrinking by. Subtract 15 each time.",
-            explanation: "The pattern subtracts 15. 55 - 15 = 40."
+            question: "Rod the AI calculates the final mission efficiency score: '100 minus (3 x 4)'. What is the efficiency score?",
+            answer: "88",
+            hint: "Do the multiplication first: 3 x 4 = 12. Then 100 - 12.",
+            explanation: "3 x 4 = 12. 100 - 12 = 88."
         },
         {
             type: "mcq",
-            question: "The Glitch tries to delete the Star Map! It locks the file behind a math puzzle: I am an odd number. I am less than 30 but greater than 25. If you divide me by 3, you get 9. What am I?",
-            options: ["25", "27", "29", "21"],
-            answer: "27",
-            hint: "What is 9 x 3?",
-            explanation: "9 x 3 = 27. It is odd, and between 25 and 30."
-        },
-        {
-            type: "text",
-            question: "Arjun and Smithika reboot the thrusters. They need exactly 100 power units. They have four batteries that hold 15, 20, 25, and 30 units. Does adding all four batteries give them exactly 100 units? (Type Yes or No)",
-            answer: "No",
-            hint: "Add 15 + 20 + 25 + 30. Does it equal 100?",
-            explanation: "15 + 20 + 25 + 30 = 90. They only have 90 units, which is not 100, so the answer is No."
-        },
-        
-        // --- Phase 8: The Grand Finale ---
-        {
-            type: "mcq",
-            question: "To get the final 10 power units, Taksh reroutes the solar grid. The grid provides 2 units of power for every star it scans. How many stars does it need to scan to get 10 units?",
-            options: ["5", "10", "12", "20"],
-            answer: "5",
-            hint: "Divide 10 by 2.",
-            explanation: "10 / 2 = 5 stars needed to generate 10 power units."
-        },
-        {
-            type: "text",
-            question: "The power is restored! The Star Map finally opens, revealing a hidden galaxy. The coordinates are (9 x 8) minus 12. What is the coordinate number?",
-            answer: "60",
-            hint: "First do 9 x 8. Then subtract 12 from your answer.",
-            explanation: "9 x 8 = 72. Then 72 - 12 = 60."
-        },
-        {
-            type: "mcq",
-            question: "The map shows that the hidden galaxy is 800 light-years away. If the ship's hyper-drive can travel 100 light-years in a single jump, how many jumps will it take to get there?",
-            options: ["8", "10", "80", "100"],
-            answer: "8",
-            hint: "Divide 800 by 100. (Think: 100 times what equals 800?)",
-            explanation: "800 / 100 = 8 jumps."
-        },
-        {
-            type: "text",
-            question: "Before they jump, Rod says they need 3 energy crystals per person on the ship. There are 9 people on board (Marty, Arjun, Taksh, Ayaan, Advi, Smithika, Mom, Dad, and Rod's avatar). How many crystals do they need in total?",
-            answer: "27",
-            hint: "Multiply 9 people by 3 crystals each.",
-            explanation: "9 x 3 = 27 energy crystals."
-        },
-        {
-            type: "mcq",
-            question: "As they enter hyperspace, Marty smiles. Explorer Team Alpha solved every puzzle! If they solved 5 puzzles per phase, and there were 8 phases, how many puzzles did they solve in total to beat the mission?",
-            options: ["30", "35", "40", "45"],
-            answer: "40",
-            hint: "Multiply the number of puzzles (5) by the number of phases (8).",
-            explanation: "5 x 8 = 40 puzzles solved! Mission Accomplished!"
+            question: "Final team salute! All 9 squad agents stand in a straight line for a photo. If there are 3 feet of space between each agent, what is the distance from the 1st agent to the 9th agent?",
+            options: ["21 feet", "24 feet", "27 feet", "30 feet"],
+            answer: "24 feet",
+            hint: "There are 8 gaps between 9 agents! Multiply 8 gaps by 3 feet.",
+            explanation: "8 spaces x 3 feet = 24 feet."
         }
     ]
 };
