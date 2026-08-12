@@ -2,6 +2,10 @@ const missionConfig = {
     themeTitle: "🌀 Beyblade X: Legends of the X-Tower",
     themeColor: "radial-gradient(circle at center, #0f172a 0%, #1e1b4b 60%, #311b92 100%)", // Deep Neon Beyblade Arena Glow
     themeIcon: "🌀",
+    showStreakCounter: true,
+    streakCounter: true,
+    enableStreakBonus: true,
+    streakThreshold: 3,
     questions: [
         // --- Phase 1: Arrival at X-Tower (Warm-Up Strategies) ---
         {
