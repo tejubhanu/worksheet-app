@@ -1,322 +1,321 @@
 const missionConfig = {
-    themeTitle: "🚀 SpaceX & Tesla: Marty's Mars Mission",
-    themeColor: "linear-gradient(135deg, #cc0000 0%, #000000 50%, #555555 100%)", // Tesla Red, Space Black, Steel Silver
+    themeTitle: "⚡ Pokémon: The Legendary Champion League",
+    themeColor: "linear-gradient(135deg, #1d4ed8 0%, #b91c1c 50%, #eab308 100%)", // Pokéball Red, Masterball Blue & Electric Yellow
     themeIcon: "⚡",
     showStreakCounter: true,
     streakCounter: true,
     enableStreakBonus: true,
     streakThreshold: 3,
     questions: [
-        // --- Phase 1: Gigafactory Logic (Logic Grids & Sudoku) ---
+        // --- Phase 1: Pewter & Cerulean Gyms (Warm-Up Strategies) ---
         {
-            type: "mcq",
-            question: "<b>Logic Grid Puzzle!</b><br>Marty, Arjun, and Jaxon each drive a different Tesla: Cybertruck, Model 3, or Model X.<br>• Clue 1: Marty does NOT drive the Model X.<br>• Clue 2: Arjun drives the Model 3.<br>What vehicle does Marty drive?",
-            options: ["Cybertruck", "Model 3", "Model X"],
-            answer: "Cybertruck",
-            hint: "Arjun took the Model 3. That leaves Cybertruck and Model X. Since Marty is NOT Model X, what is left?",
-            explanation: "With the Model 3 taken by Arjun and Model X ruled out for Marty, the Cybertruck is the only option left."
+            type: "text",
+            question: "<b>Advanced Strategy: Bridging Through 100!</b><br>When adding numbers close to 100, break apart the second number to make 100 first, then add what remains.<br><i>Example: To solve 97 + 25, take 3 from 25 to make 97 + 3 = 100, then add the remaining 22 to get 122.</i><br><br><b>Story:</b> Marty and Pikachu enter the Pewter City Gym. Pikachu has 95 Electric power points and collects 36 extra charge points from a Thunderstone. Using Bridging Through 100, what is Pikachu's total power score?",
+            answer: "131",
+            hint: "Take 5 from 36 to turn 95 into 100. Then add the remaining 31!",
+            explanation: "95 + 36 = (95 + 5) + 31 = 100 + 31 = 131 power points."
+        },
+        {
+            type: "text",
+            question: "<b>Advanced Strategy: Counting Up in Chunks for Subtraction!</b><br>Count up from the smaller number to the nearest hundred first, then to the target number.<br><i>Example: To solve 215 - 188, count up from 188: +12 to reach 200, then +15 to reach 215. Total = 12 + 15 = 27.</i><br><br><b>Story:</b> Charizard needs 314 Flame units to blast through Onix's Rock Wall, but currently has 278 units. Count UP from 278 to 314. How many more Flame units does Charizard need?",
+            answer: "36",
+            hint: "Count from 278 up to 300 (+22), then from 300 to 314 (+14). Add 22 + 14!",
+            explanation: "278 to 300 is 22. 300 to 314 is 14. 22 + 14 = 36 Flame units."
         },
         {
             type: "mcq",
-            question: "<b>Logic Grid Puzzle 2!</b><br>Three rockets (Falcon 9, Falcon Heavy, Starship) are painted Silver, White, or Black.<br>• Clue 1: Starship is NOT Black.<br>• Clue 2: Falcon 9 is White.<br>• Clue 3: Falcon Heavy is NOT Silver.<br>What color is Starship?",
-            options: ["Silver", "White", "Black"],
-            answer: "Silver",
-            hint: "Falcon 9 is White. Starship is not Black. What color is left for Starship?",
-            explanation: "Falcon 9 = White. Falcon Heavy = Black (since it can't be Silver or White). Starship must be Silver."
+            question: "<b>Advanced Concept: Composite Perimeter!</b><br>Perimeter is the total distance all the way around the outside edge of a shape. Add all side lengths together.<br><i>Example: A shape with outer sides 4 in, 5 in, 6 in, 3 in, and 2 in has a perimeter of 4 + 5 + 6 + 3 + 2 = 20 in.</i><br><br><b>Story:</b> Misty builds a custom training pool for Starmie. The outer sides measure 14 feet, 9 feet, 8 feet, 6 feet, 6 feet, and 17 feet. What is the total perimeter around the pool?",
+            options: ["50 feet", "58 feet", "60 feet", "64 feet"],
+            answer: "60 feet",
+            hint: "Add all 6 sides together: 14 + 9 + 8 + 6 + 6 + 17.",
+            explanation: "14 + 9 = 23, + 8 = 31, + 6 = 37, + 6 = 43, + 17 = 60 feet."
+        },
+        {
+            type: "text",
+            question: "<b>Advanced Strategy: Near-Double Compensation!</b><br>To add two numbers right next to each other, double the smaller number and add 1.<br><i>Example: To solve 36 + 37, double 36 to get 72, then add 1 = 73.</i><br><br><b>Story:</b> Marty picks up 58 Poké Balls and Arjun picks up 59 Poké Balls at the Cerulean City Mart. Use Near Doubles (double 58, then add 1) to find how many Poké Balls they have in total.",
+            answer: "117",
+            hint: "Double 58 is 116. Now add 1 more!",
+            explanation: "58 + 59 = (58 + 58) + 1 = 116 + 1 = 117 Poké Balls."
         },
         {
             type: "mcq",
-            question: "<b>Mini-Sudoku Deduction!</b><br>In a Gigafactory assembly grid, every row must have one of each battery type: A, B, C, and D without repeating.<br><b>Story:</b> Marty is loading a 4x4 battery tray. The first row currently has [Battery A, Battery C, Battery D, ___]. What is the missing battery type?",
-            options: ["Battery A", "Battery B", "Battery C", "Battery D"],
-            answer: "Battery B",
-            hint: "Look at the letters already in the row. Which of the 4 types is missing?",
-            explanation: "The row already has A, C, and D. The missing battery to complete the set is B."
-        },
-        {
-            type: "mcq",
-            question: "<b>Mini-Sudoku Intersection!</b><br>Check both the row and the column. The missing item cannot match anything already in its row OR its column.<br><b>Story:</b> Marty needs to place a solar panel on a grid. Its Row already has a <i>Red Panel</i> and <i>Blue Panel</i>. Its Column already has a <i>Green Panel</i>. The only colors allowed are Red, Blue, Green, and Yellow. What color must the missing panel be?",
-            options: ["Red", "Blue", "Green", "Yellow"],
-            answer: "Yellow",
-            hint: "Eliminate Red and Blue (from the row) and Green (from the column).",
-            explanation: "It cannot be Red, Blue, or Green because they are already in the same row or column. It must be Yellow."
-        },
-        {
-            type: "mcq",
-            question: "<b>Knights and Knaves (Truth or Lie)!</b><br>One robot always tells the truth, one robot always lies.<br><b>Story:</b> Marty is looking for the launch control room. Two AI robots stand at two doors (Red and Blue). The honest robot says, 'The control room is NOT behind the Red door.' The lying robot says, 'The control room is behind the Red door.' Which door hides the control room?",
-            options: ["Red Door", "Blue Door"],
-            answer: "Blue Door",
-            hint: "Trust the honest robot. If it's NOT the Red door, which one is it?",
-            explanation: "The honest robot tells the truth: it is NOT the Red door. Therefore, it must be behind the Blue door."
+            question: "<b>Advanced Concept: Rounding to the Nearest 100!</b><br>Look at the tens digit. If it is 50 or higher, round UP to the next hundred. If it is 49 or lower, round DOWN.<br><i>Example: 340 rounds down to 300. 360 rounds up to 400.</i><br><br><b>Story:</b> Marty's Pokédex scans a wild Gyarados with 849 Combat Power. What is 849 rounded to the nearest 100?",
+            options: ["800", "850", "900", "1,000"],
+            answer: "800",
+            hint: "Look at the tens digit (49). Since 49 is less than 50, round down!",
+            explanation: "849 is closer to 800 than 900, so it rounds down to 800."
         },
 
-        // --- Phase 2: Starbase Codes (Picture Equations & Cryptograms) ---
+        // --- Phase 2: Vermilion & Celadon Gyms (Multiplication & Division) ---
         {
             type: "text",
-            question: "<b>Math Picture Equation!</b><br>Find the value of the Battery (🔋).<br>🚀 + 🚀 = 20<br>🚀 + 🔋 = 15<br>What number does the 🔋 stand for?",
-            answer: "5",
-            hint: "First find 🚀 (what plus itself is 20?). Then subtract that from 15.",
-            explanation: "🚀 = 10 (10 + 10 = 20). If 10 + 🔋 = 15, then 🔋 must be 5."
-        },
-        {
-            type: "text",
-            question: "<b>Math Picture Equation 2!</b><br>Find the value of the Astronaut (🧑‍🚀).<br>🛰️ + 🛰️ + 🛰️ = 12<br>🛰️ + 🧑‍🚀 = 11<br>What number does the 🧑‍🚀 stand for?",
-            answer: "7",
-            hint: "Divide 12 by 3 to find the satellite (🛰️). Then subtract that number from 11.",
-            explanation: "🛰️ = 4 (4 + 4 + 4 = 12). If 4 + 🧑‍🚀 = 11, then 🧑‍🚀 must be 7."
+            question: "<b>Advanced Strategy: Distributive Chunking for Multiplication!</b><br>Break the larger factor into Tens and Ones, multiply separately, then add them together.<br><i>Example: 7 x 13 = (7 x 10) + (7 x 3) = 70 + 21 = 91.</i><br><br><b>Story:</b> Lt. Surge trains 8 Raichu squads. Each squad requires 15 Volt Badges. Using Distributive Chunking (8 x 10 plus 8 x 5), how many Volt Badges are needed in total?",
+            answer: "120",
+            hint: "8 x 10 = 80, and 8 x 5 = 40. Add 80 + 40!",
+            explanation: "8 x 15 = (8 x 10) + (8 x 5) = 80 + 40 = 120 Volt Badges."
         },
         {
             type: "mcq",
-            question: "<b>Mastermind Code Breaker!</b><br>Use feedback clues to guess a secret code sequence.<br><b>Story:</b> Marty needs a 2-digit passcode to unlock the Starship airlock. He tries '84'. The system says: 'The 8 is completely wrong, but the 4 is the correct number in the correct spot.' He knows the first digit is 5. What is the code?",
-            options: ["48", "85", "54", "45"],
-            answer: "54",
-            hint: "The first digit is 5. The second digit is the 4 (since it was in the correct spot).",
-            explanation: "The first digit is 5. The 4 is the correct second digit, making the code 54."
+            question: "<b>Advanced Concept: Prime vs. Composite Numbers!</b><br>Prime numbers only have 2 factors: 1 and itself. Composite numbers can be split evenly into equal groups.<br><i>Example: 9 is composite (3 x 3). 11 is prime.</i><br><br><b>Story:</b> Erika inspects a box of Grass-type Berries: 13, 19, 25, and 31. Which of these numbers is a COMPOSITE number that can be divided into equal groups?",
+            options: ["13", "19", "25", "31"],
+            answer: "25",
+            hint: "Which number can be made by multiplying 5 by itself? (5 x 5 = ?)",
+            explanation: "25 is composite because 5 x 5 = 25. The others (13, 19, 31) are all prime."
         },
         {
             type: "text",
-            question: "<b>Cryptogram Decoder!</b><br>Each letter matches a specific number.<br><b>Story:</b> Mission Control uses a secret point system for rocket landings: X = 10, Y = 5, Z = 1. Marty's rocket scores an 'X Y Z' landing rating. Add the values of X + Y + Z to find his total score.",
+            question: "<b>Advanced Strategy: Chunking Division!</b><br>Split a dividend into two easy parts that both divide cleanly.<br><i>Example: 84 / 4 -> (40 / 4) + (44 / 4) = 10 + 11 = 21.</i><br><br><b>Story:</b> Marty and Ash have 96 Hyper Potions to distribute equally among 6 Pokémon Centers. Using chunking (60 / 6 + 36 / 6), how many Potions does each Center get?",
             answer: "16",
-            hint: "Add 10 + 5 + 1.",
-            explanation: "X(10) + Y(5) + Z(1) = 16 points."
+            hint: "Divide 60 by 6 (=10), then divide 36 by 6 (=6). Add 10 + 6!",
+            explanation: "60 / 6 = 10 and 36 / 6 = 6. 10 + 6 = 16 Potions per Center."
         },
         {
             type: "mcq",
-            question: "<b>Mastermind Sandwich Logic!</b><br>Use number boundaries to find a secret code.<br><b>Story:</b> The Cybertruck's suspension setting is an odd number. It is greater than 20, but less than 24. It is NOT 21. What is the setting number?",
-            options: ["19", "21", "22", "23"],
-            answer: "23",
-            hint: "Find the odd numbers between 20 and 24 (21 and 23). If it's not 21, which one is it?",
-            explanation: "The odd numbers between 20 and 24 are 21 and 23. Since it is NOT 21, it must be 23."
+            question: "<b>Advanced Strategy: The 'Add Two Zeros' Trick for 100s!</b><br>When multiplying any whole number by 100, add two zeros to the end of the number.<br><i>Example: 9 x 100 = 900.</i><br><br><b>Story:</b> Professor Oak sends 18 Pokemon Researchers into the wild. Each researcher receives 100 Ultra Balls. What is 18 x 100?",
+            options: ["180", "1,800", "18,000", "10,800"],
+            answer: "1,800",
+            hint: "Write 18 and attach two zeros to the right!",
+            explanation: "18 x 100 = 1,800 Ultra Balls."
+        },
+        {
+            type: "text",
+            question: "<b>Advanced Strategy: Halving and Doubling for Multiplication!</b><br>Cut one factor in half and double the other to make the multiplication simple!<br><i>Example: 12 x 15 -> Cut 12 in half (6), double 15 (30) -> 6 x 30 = 180.</i><br><br><b>Story:</b> Marty calculates total EXP gained from 14 battles yielding 25 EXP each: 14 x 25. Cut 14 in half (7) and double 25 (50). Now calculate 7 x 50. What is the total EXP?",
+            answer: "350",
+            hint: "Multiply 7 x 50 (think: 7 x 5 = 35, then add a zero).",
+            explanation: "14 x 25 = 7 x 50 = 350 EXP."
         },
 
-        // --- Phase 3: Mars Rover Grids (Nonograms & Minesweeper) ---
+        // --- Phase 3: Fuchsia & Saffron Gyms (Geometry & Spatial Reasoning) ---
         {
-            type: "text",
-            question: "<b>Nonogram Grid Logic!</b><br>In Nonograms, numbers tell you how many consecutive blocks to color in a row.<br><b>Story:</b> Marty is mapping a Mars Rover path on a digital grid. He is shading a row that is exactly 5 blocks wide. The clue for this row is the number <b>5</b>. How many blocks must he leave blank (empty) in this row?",
-            answer: "0",
-            hint: "If he has to shade 5 blocks in a 5-block row, are there any leftover?",
-            explanation: "The clue '5' means all 5 blocks must be shaded, leaving 0 blank blocks."
+            type: "mcq",
+            question: "<b>Advanced Logic Strategy: Shape Elimination!</b><br>Cross out options that fail geometric properties until the correct shape remains.<br><i>Example: A 4-sided polygon with opposite parallel sides and no right angles is a parallelogram.</i><br><br><b>Story:</b> Koga hides a Ninja Scroll inside a 4-sided geometric display case. Clue 1: All 4 sides are equal in length. Clue 2: None of its angles are 90-degree right angles. What is the shape of the case?",
+            options: ["Rectangle", "Trapezoid", "Rhombus", "Square"],
+            answer: "Rhombus",
+            hint: "A square has 4 equal sides WITH right angles. If angles are NOT 90 degrees, it's a Rhombus!",
+            explanation: "A Rhombus has 4 equal side lengths without requiring 90-degree right angles."
         },
         {
             type: "mcq",
-            question: "<b>Nonogram Sequence Logic!</b><br>A clue with two numbers means there is a gap between shaded blocks.<br><b>Story:</b> Marty reads a row of 4 blocks for the rover map. The clue is <b>'2, 1'</b>. This means two blocks are shaded, then at least one space is blank, then one block is shaded. What does the 4-block row look like?",
-            options: ["Shaded, Blank, Shaded, Shaded", "Blank, Shaded, Shaded, Shaded", "Shaded, Shaded, Blank, Shaded"],
-            answer: "Shaded, Shaded, Blank, Shaded",
-            hint: "You need a block of 2, a space, then a block of 1 to fit exactly into 4 spaces.",
-            explanation: "To fit '2' and '1' in a 4-block row, they must be separated by exactly one blank space: Shaded, Shaded, Blank, Shaded."
-        },
-        {
-            type: "mcq",
-            question: "<b>Minesweeper Deduction!</b><br>A number in a square tells you exactly how many hidden items are touching it (up, down, left, right, or diagonal).<br><b>Story:</b> Marty scans a Mars map for hidden craters. He steps on a square that says <b>'0'</b>. There are 8 squares touching it. How many of those 8 touching squares have craters?",
-            options: ["0 squares", "1 square", "4 squares", "8 squares"],
-            answer: "0 squares",
-            hint: "The number 0 means zero craters are touching it!",
-            explanation: "A '0' clue guarantees that absolutely none of the adjacent squares contain craters."
+            question: "<b>Advanced Concept: Complex Two-Attribute Patterns!</b><br>Track changes in two different features (like color and shape, or size and direction) at the same time.<br><i>Example: Big Red, Small Blue, Big Red, Small Blue...</i><br><br><b>Story:</b> Sabrina arranges Psychic Teleportation tiles: Gold Star, Silver Circle, Gold Star, Silver Circle... What is the 7th tile in her pattern?",
+            options: ["Gold Star", "Silver Circle", "Gold Circle", "Silver Star"],
+            answer: "Gold Star",
+            hint: "Positions 1, 3, 5, 7 start each new repeating pair!",
+            explanation: "The pattern repeats every 2 tiles (1:Gold Star, 2:Silver Circle...). Tile 7 is Gold Star."
         },
         {
             type: "text",
-            question: "<b>Minesweeper Corners!</b><br>If a numbered square is in a corner, it touches fewer squares. This makes it easy to find hidden items!<br><b>Story:</b> Marty looks at a corner square that says <b>'1'</b>. It is only touching exactly ONE unexplored sector. How many hidden craters are in that unexplored sector?",
-            answer: "1",
-            hint: "If the clue says '1' and there's only one possible sector it touches, the crater has to be there.",
-            explanation: "Since the '1' must touch a crater, and there is only 1 sector available, that sector contains 1 crater."
+            question: "<b>Advanced Concept: Area of an L-Shaped Floor!</b><br>Split an L-shape into two separate rectangles, calculate both areas (Length x Width), then add them together.<br><i>Example: Section 1 is 3x4 (12) and Section 2 is 5x2 (10). Total Area = 12 + 10 = 22.</i><br><br><b>Story:</b> Marty helps Sabrina lay psychic floor mats. Area 1 is 7 feet by 3 feet (21 sq ft). Area 2 is 5 feet by 4 feet (20 sq ft). What is the total combined Area?",
+            answer: "41",
+            hint: "Add the two area amounts together: 21 + 20.",
+            explanation: "Area = (7 x 3) + (5 x 4) = 21 + 20 = 41 square feet."
         },
         {
             type: "mcq",
-            question: "<b>Logic Process of Elimination!</b><br>Cross out options that violate the rules.<br><b>Story:</b> Identify the mystery Starship part. Clue 1: It is made of metal (not plastic). Clue 2: It is round (not jagged). Options: A Jagged Metal Hull, A Round Plastic Fin, A Round Metal Thruster. Which part is it?",
-            options: ["Jagged Metal Hull", "Round Plastic Fin", "Round Metal Thruster"],
-            answer: "Round Metal Thruster",
-            hint: "Eliminate the plastic one, and eliminate the jagged one.",
-            explanation: "It must be metal (eliminating the Plastic Fin) and round (eliminating the Jagged Hull). It is the Round Metal Thruster."
+            question: "<b>Advanced Logic Strategy: Multi-Constraint Sandwich Clues!</b><br>Narrow down numbers using boundaries, parity (even/odd), and divisibility.<br><i>Example: An odd number between 20 and 30 that divides by 5 is 25.</i><br><br><b>Story:</b> Marty tries to guess Alakazam's secret IQ score badge. Rod the AI says: 'It is an EVEN number between 70 and 80 that is a multiple of 8.' What is the number?",
+            options: ["72", "74", "76", "78"],
+            answer: "72",
+            hint: "Which number between 70 and 80 is in the 8 times table? (8 x 9 = ?)",
+            explanation: "8 x 9 = 72, which is even and sits between 70 and 80."
+        },
+        {
+            type: "text",
+            question: "<b>Advanced Strategy: Growing Pattern Multiplier Rules!</b><br>Identify the multiplier or addition jump between terms in a growing sequence.<br><i>Example: 3, 6, 12, 24... doubles (x2) each step. Next is 48.</i><br><br><b>Story:</b> Psychic energy waves grow in frequency: 4 Hz, 12 Hz, 36 Hz, ___ Hz. The sequence multiplies by 3 each step. What is the next frequency value (36 x 3)?",
+            answer: "108",
+            hint: "Multiply 36 by 3 (think: 30 x 3 = 90, 6 x 3 = 18. 90 + 18 = ?).",
+            explanation: "The pattern multiplies by 3 each step. 36 x 3 = 108 Hz."
         },
 
-        // --- Phase 4: Launchpad Math (Addition, Subtraction, Rounding) ---
+        // --- Phase 4: Cinnabar & Viridian Gyms (Fractions & Multi-Step Time) ---
         {
             type: "text",
-            question: "<b>Making Tens for Addition!</b><br>Split the smaller number to make a clean 10 first.<br><b>Story:</b> Marty counts the rockets at Starbase. There are 9 Falcon 9s and 6 Starships. Using Making Tens, take 1 from the 6 to turn 9 into 10. How many total rockets are there?",
-            answer: "15",
-            hint: "9 + 1 = 10. You took 1 from 6, leaving 5. 10 + 5 = ?",
-            explanation: "9 + 6 = (9 + 1) + 5 = 10 + 5 = 15 rockets."
-        },
-        {
-            type: "text",
-            question: "<b>Counting Up for Subtraction!</b><br>Start at the smaller number and count UP to the bigger number.<br><b>Story:</b> The mission requires 22 Starlink satellites, but Marty only has 18 loaded. Count UP from 18 to 22. How many more satellites does he need?",
-            answer: "4",
-            hint: "Count: 19, 20, 21, 22. How many numbers did you count?",
-            explanation: "Counting up from 18 to 22 takes 4 steps (18 + 4 = 22), so 22 - 18 = 4."
-        },
-        {
-            type: "mcq",
-            question: "<b>Perimeter!</b><br>Perimeter is the total distance around the outside edge. Add all side lengths together!<br><b>Story:</b> Marty measures a square launchpad zone. Each of its 4 sides is 5 meters long. What is the total perimeter around the launchpad?",
-            options: ["15 meters", "20 meters", "25 meters", "30 meters"],
-            answer: "20 meters",
-            hint: "Add 5 four times: 5 + 5 + 5 + 5.",
-            explanation: "5 + 5 + 5 + 5 = 20 meters."
+            question: "<b>Advanced Concept: Finding Three-Quarters (3/4) of a Number!</b><br>Divide the total by 4 to find 1/4, then multiply that result by 3!<br><i>Example: 3/4 of 16 -> 16 / 4 = 4, then 4 x 3 = 12.</i><br><br><b>Story:</b> Blaine has 28 Fire-type badges. He awards 3/4 of them to elite trainers. Calculate (28 / 4) x 3. How many badges did Blaine award?",
+            answer: "21",
+            hint: "First divide 28 by 4 (= 7). Then multiply 7 by 3!",
+            explanation: "28 / 4 = 7. 7 x 3 = 21 badges awarded."
         },
         {
             type: "text",
-            question: "<b>Near Doubles (Double + 1)!</b><br>If two numbers are neighbors, double the smaller number and add 1.<br><b>Story:</b> Marty sees 7 red Model 3s and 8 blue Model 3s at the charging station. Use Near Doubles (double 7, then add 1) to find the total.",
-            answer: "15",
-            hint: "Double 7 is 14. Add 1 more.",
-            explanation: "7 + 8 = (7 + 7) + 1 = 14 + 1 = 15."
+            question: "<b>Advanced Strategy: 2-Digit Addition with Carrying!</b><br>Add the ones column first (regrouping tens), then add the tens column.<br><i>Example: 57 + 38 -> Ones: 7 + 8 = 15 (write 5 carry 1). Tens: 5 + 3 + 1 = 9 -> 95.</i><br><br><b>Story:</b> Marty collects 67 Magmar embers and Arjun collects 78 Arcanine flames. What is the total combined count of fire items?",
+            answer: "145",
+            hint: "Add ones: 7 + 8 = 15. Add tens: 60 + 70 + 10 = 140. Combine 140 + 5!",
+            explanation: "67 + 78 = 145 fire items."
         },
-        {
-            type: "mcq",
-            question: "<b>Rounding to the Nearest 10!</b><br>Look at the ones digit. 5 or bigger rounds UP. 4 or smaller rounds DOWN.<br><b>Story:</b> Marty's Cybertruck hits a speed of 67 mph on the test track. What is 67 rounded to the nearest 10?",
-            options: ["60 mph", "65 mph", "70 mph", "80 mph"],
-            answer: "70 mph",
-            hint: "Look at the 7. Since it is 5 or bigger, round up to the next ten.",
-            explanation: "67 is closer to 70 than 60, so it rounds up to 70."
-        },
-
-        // --- Phase 5: Supercharger Multiplication (Mult & Div Tricks) ---
         {
             type: "text",
-            question: "<b>Skip Counting for Multiplication!</b><br>Multiply by skip counting.<br><b>Story:</b> Marty checks 5 Superchargers, and each has 4 charging cables. Skip count by 4s five times (4, 8, 12...) to find the total cables.",
+            question: "<b>Advanced Concept: Three-Item Average Calculation!</b><br>Add all three numbers together, then divide the total sum by 3.<br><i>Example: Average of 10, 20, 30 -> Sum = 60. 60 / 3 = 20.</i><br><br><b>Story:</b> Giovanni measures speed stats for three Ground Pokémon: 110, 130, and 180. Add them up (420), then divide by 3 to find their average speed.",
+            answer: "140",
+            hint: "Divide 420 by 3 (think: 42 / 3 = 14, then add a zero).",
+            explanation: "110 + 130 + 180 = 420. 420 / 3 = 140 average speed."
+        },
+        {
+            type: "text",
+            question: "<b>Advanced Strategy: Working Backward with Two Steps!</b><br>Undo operations in reverse order: subtract added amounts, then divide multiplied amounts.<br><i>Example: (X + 4) x 2 = 20 -> 20 / 2 = 10, then 10 - 4 = 6.</i><br><br><b>Story:</b> Pikachu doubled his stored energy (x2) and then absorbed 10 bonus units (+10), reaching 50 total units. Work backward: (50 - 10) / 2. How much energy did Pikachu start with?",
             answer: "20",
-            hint: "4, 8, 12, 16, __.",
-            explanation: "4, 8, 12, 16, 20. 5 x 4 = 20."
-        },
-        {
-            type: "text",
-            question: "<b>The 'Add a Zero' Trick for 10s!</b><br>When multiplying a number by 10, just write a 0 at the end.<br><b>Story:</b> The Gigafactory roof has 6 rows of solar panels, with 10 panels in each row. What is 6 x 10?",
-            answer: "60",
-            hint: "Write the number 6 and put a 0 after it.",
-            explanation: "6 x 10 = 60."
-        },
-        {
-            type: "text",
-            question: "<b>Halving (Dividing by 2)!</b><br>To find half, split the number into two identical parts.<br><b>Story:</b> Marty builds 14 battery packs and sends half of them to the testing lab. What is half of 14?",
-            answer: "7",
-            hint: "What number plus itself equals 14?",
-            explanation: "7 + 7 = 14, so half of 14 is 7."
+            hint: "Subtract 10 from 50 (= 40). Then divide 40 by 2!",
+            explanation: "50 - 10 = 40. 40 / 2 = 20 starting units."
         },
         {
             type: "mcq",
-            question: "<b>Even vs. Odd Numbers!</b><br>Even numbers end in 0, 2, 4, 6, 8. Odd numbers end in 1, 3, 5, 7, 9.<br><b>Story:</b> Marty has 17 spare astronaut helmets. Can 17 be split perfectly in half? Is 17 Even or Odd?",
-            options: ["Even", "Odd"],
-            answer: "Odd",
-            hint: "Look at the 7. Does it belong to the Even or Odd group?",
-            explanation: "17 ends in 7, making it an Odd number. It cannot be split evenly."
-        },
-        {
-            type: "text",
-            question: "<b>Double-Double Trick for x4!</b><br>To multiply by 4, double the number, then double it again!<br><b>Story:</b> Marty tests 7 Raptor engines. He needs 4 bolts per engine (7 x 4). Double 7 to get 14. Now double 14. What is the answer?",
-            answer: "28",
-            hint: "14 + 14 = ?",
-            explanation: "Double 7 is 14. Double 14 is 28. 7 x 4 = 28."
+            question: "<b>Advanced Concept: Comparing Non-Unit Fractions!</b><br>Convert fractions to percents or compare against a half (1/2) benchmark.<br><i>Example: 4/5 is larger than 2/3 because 4/5 is 80% while 2/3 is ~67%.</i><br><br><b>Story:</b> Marty's Pidgeot flies across 4/5 of Kanto, while Fearow flies across 3/4 of Kanto. Which Pokémon covered a GREATER fraction of the region?",
+            options: ["Pidgeot (4/5)", "Fearow (3/4)"],
+            answer: "Pidgeot (4/5)",
+            hint: "4/5 equals 80/100 (80%), whereas 3/4 equals 75/100 (75%). Which is bigger?",
+            explanation: "4/5 (80%) > 3/4 (75%). Pidgeot covered a greater fraction."
         },
 
-        // --- Phase 6: Orbit Trajectories (Fractions, Time, Area) ---
+        // --- Phase 5: Victory Road (Data Analysis: Mode, Median, Range) ---
         {
             type: "text",
-            question: "<b>Fractions (One-Fourth)!</b><br>One-fourth (1/4) means dividing a total by 4.<br><b>Story:</b> There are 16 solar tiles on the habitat. Marty turns on 1/4 of them. Divide 16 by 4 to find how many tiles are turned on.",
-            answer: "4",
-            hint: "What is 16 divided by 4?",
-            explanation: "16 / 4 = 4. He turned on 4 solar tiles."
+            question: "<b>Advanced Concept: Median of an Even Data Set!</b><br>Order numbers from least to greatest. If there are two middle numbers, find the exact midpoint between them!<br><i>Example: For [10, 14, 18, 22], middle numbers are 14 and 18. Midpoint = 16.</i><br><br><b>Story:</b> Marty records Machamp's punch speeds on Victory Road: 14 mph, 18 mph, 22 mph, and 30 mph. Look at the two middle numbers (18 and 22). What is the Median value sitting right between them?",
+            answer: "20",
+            hint: "What number is halfway between 18 and 22?",
+            explanation: "The middle two values are 18 and 22. Halfway between them is 20."
+        },
+        {
+            type: "text",
+            question: "<b>Advanced Strategy: Multiply by 25 (Multiply by 100 then Divide by 4)!</b><br>To multiply a number by 25 easily, multiply it by 100 first, then divide by 4!<br><i>Example: 12 x 25 -> 12 x 100 = 1200, then 1200 / 4 = 300.</i><br><br><b>Story:</b> Arjun calculates total Max Revive points for 12 Pokémon: 12 x 25. First calculate 12 x 100 = 1200. What is 1200 divided by 4?",
+            answer: "300",
+            hint: "12 / 4 = 3, so 1200 / 4 = 300!",
+            explanation: "12 x 100 = 1200. 1200 / 4 = 300."
+        },
+        {
+            type: "text",
+            question: "<b>Advanced Concept: Multi-Value Range!</b><br>Range is the difference between the Largest value and Smallest value in a set (Max - Min).<br><i>Example: For [15, 30, 45, 80], Range = 80 - 15 = 65.</i><br><br><b>Story:</b> Ash measures wild Pokémon HP levels on Victory Road: 42, 28, 95, and 61. Subtract the smallest HP (28) from the largest HP (95) to find the Range.",
+            answer: "67",
+            hint: "Subtract 95 - 28 (think: 95 - 20 = 75, then 75 - 8 = 67).",
+            explanation: "95 - 28 = 67 HP Range."
+        },
+        {
+            type: "text",
+            question: "<b>Advanced Strategy: Subtraction by Rounding to 50!</b><br>To subtract 49 easily, subtract 50 first, then add 1 back!<br><i>Example: 135 - 49 -> 135 - 50 = 85, then 85 + 1 = 86.</i><br><br><b>Story:</b> Solve 162 - 49 for Victory Road rock clearance time. First do 162 - 50 (which is 112), then add 1 back. What is the final answer?",
+            answer: "113",
+            hint: "162 - 50 = 112. Now add 1 back to 112!",
+            explanation: "162 - 50 = 112. 112 + 1 = 113."
         },
         {
             type: "mcq",
-            question: "<b>Comparing Fractions!</b><br>Fewer cuts make LARGER pieces. 1/2 is bigger than 1/4.<br><b>Story:</b> Two rocket fuel tanks are being compared. Which contains MORE fuel: 1/2 of a tank, or 1/4 of a tank?",
-            options: ["1/2 tank", "1/4 tank"],
-            answer: "1/2 tank",
-            hint: "Would you rather have half a pizza or a quarter slice? Half is bigger!",
-            explanation: "1/2 splits a whole into 2 larger parts. 1/4 splits it into 4 smaller parts. 1/2 is larger."
-        },
-        {
-            type: "mcq",
-            question: "<b>Elapsed Time!</b><br>Find the time passed from start to end.<br><b>Story:</b> The Starship launch window opens at 1:15 PM and closes at 1:45 PM. How many minutes does the launch window stay open?",
-            options: ["15 minutes", "20 minutes", "30 minutes", "40 minutes"],
-            answer: "30 minutes",
-            hint: "Subtract the start minutes (15) from the end minutes (45).",
-            explanation: "45 - 15 = 30 minutes."
-        },
-        {
-            type: "text",
-            question: "<b>Area of a Rectangle!</b><br>Multiply Length times Width.<br><b>Story:</b> Marty deploys a solar array that is 6 meters long and 3 meters wide. What is the Area of his array (6 x 3)?",
-            answer: "18",
-            hint: "Multiply 6 times 3.",
-            explanation: "6 x 3 = 18 square meters."
-        },
-        {
-            type: "text",
-            question: "<b>Range!</b><br>Subtract the smallest number from the biggest number in a list.<br><b>Story:</b> Marty tracks satellite speeds: 10 km/s, 18 km/s, and 25 km/s. Subtract the smallest (10) from the largest (25) to find the Range.",
-            answer: "15",
-            hint: "25 - 10 = ?",
-            explanation: "25 - 10 = 15 Range."
+            question: "<b>Advanced Logic Strategy: 4-Item Comparative Chain Deduction!</b><br>Link statements together to rank items from highest to lowest.<br><i>Example: W > X, X > Y, Y > Z -> W is highest, Z is lowest.</i><br><br><b>Story:</b> In a battle sprint, Dragonite is faster than Lapras. Lapras is faster than Snorlax. Snorlax is faster than Blastoise. Which Pokémon is the SLOWEST overall?",
+            options: ["Dragonite", "Lapras", "Snorlax", "Blastoise"],
+            answer: "Blastoise",
+            hint: "Follow the chain down: Dragonite > Lapras > Snorlax > Blastoise. Who is last?",
+            explanation: "Dragonite > Lapras > Snorlax > Blastoise. Blastoise is at the bottom."
         },
 
-        // --- Phase 7: Engineering Logic (Advanced Logic) ---
+        // --- Phase 6: Indigo Plateau - Elite Four (Logic & Deduction) ---
+        {
+            type: "text",
+            question: "<b>Advanced Concept: Combinations across Three Categories!</b><br>Multiply the number of options in Category 1 x Category 2 x Category 3.<br><i>Example: 2 caps, 3 shirts, 4 shoes = 2 x 3 x 4 = 24 outfits.</i><br><br><b>Story:</b> Marty creates custom Pokémon battle gear. He has 4 battle vests, 2 glove types, and 3 mega-ring colors. How many unique gear combinations can he make (4 x 2 x 3)?",
+            answer: "24",
+            hint: "Multiply 4 x 2 = 8, then multiply 8 x 3!",
+            explanation: "4 x 2 x 3 = 24 unique gear combinations."
+        },
         {
             type: "mcq",
-            question: "<b>The 'NOT' Rule in Logic!</b><br>When a clue says 'NOT X and NOT Y', cross them out!<br><b>Story:</b> The next rocket destination is NOT Mars and NOT Venus. Options: Mars, Venus, Moon. Where is the rocket going?",
-            options: ["Mars", "Venus", "Moon"],
-            answer: "Moon",
-            hint: "Cross out Mars and Venus.",
-            explanation: "Only the Moon is left after crossing out the other two destinations."
-        },
-        {
-            type: "text",
-            question: "<b>The Median (Middle)!</b><br>Put numbers in order from smallest to largest. The Median is the one in the exact middle.<br><b>Story:</b> Put these rover speeds in order: 12 mph, 8 mph, 15 mph. What is the Median (middle) speed?",
-            answer: "12",
-            hint: "Order them: 8, 12, 15. Which is in the middle?",
-            explanation: "In the ordered set [8, 12, 15], 12 is the middle number."
-        },
-        {
-            type: "text",
-            question: "<b>Working Backward!</b><br>Undo steps using opposite math.<br><b>Story:</b> Marty's engineering team moved up 5 spots on the leaderboard today, landing in 14th place. Work backward (14 - 5) to find their place yesterday.",
-            answer: "9",
-            hint: "Subtract 5 from 14.",
-            explanation: "14 - 5 = 9. They were in 9th place."
-        },
-        {
-            type: "text",
-            question: "<b>Multiply by 5 Trick!</b><br>Multiply by 10, then take half.<br><b>Story:</b> Marty calculates 8 x 5 for drone battery life. First do 8 x 10 = 80. What is half of 80?",
-            answer: "40",
-            hint: "What is 80 divided by 2?",
-            explanation: "Half of 80 is 40. 8 x 5 = 40."
-        },
-        {
-            type: "text",
-            question: "<b>Two-Step Problem Solving!</b><br>Follow steps in order.<br><b>Story:</b> Marty receives 4 crates containing 5 spacesuit parts each (4 x 5 = 20). He installs 3 parts. How many parts does he have left (20 - 3)?",
-            answer: "17",
-            hint: "20 - 3 = ?",
-            explanation: "4 x 5 = 20. 20 - 3 = 17 parts."
-        },
-
-        // --- Phase 8: Mars Landing (Data, Money, Celebration) ---
-        {
-            type: "text",
-            question: "<b>Reading a Bar Graph!</b><br>Find where the bar stops on the number line.<br><b>Story:</b> On the mission screen, Marty's team bar reaches 15 successful test flights. The rival team's bar reaches 9 flights. Subtract 9 from 15 to find how many more flights Marty's team had.",
+            question: "<b>Advanced Concept: Lines of Symmetry on Regular Polygons!</b><br>A regular polygon (equal sides and angles) has as many lines of symmetry as it has sides!<br><i>Example: A regular pentagon (5 sides) has 5 lines of symmetry.</i><br><br><b>Story:</b> Lorelei examines an ice crystal shaped like a regular Hexagon (6 equal sides). How many lines of symmetry does a regular Hexagon have?",
+            options: ["4", "5", "6", "8"],
             answer: "6",
-            hint: "15 - 9 = ?",
-            explanation: "15 - 9 = 6 flights difference."
+            hint: "A regular shape with 6 equal sides has 6 lines of symmetry!",
+            explanation: "Regular polygons have lines of symmetry equal to their number of sides (6)."
         },
         {
             type: "text",
-            question: "<b>Making Change with Money!</b><br>Change = Money Paid minus Item Cost.<br><b>Story:</b> Marty buys a SpaceX hat for $12 and pays with a $20 bill. How much change does he get back ($20 - $12)?",
-            answer: "8",
-            hint: "Subtract 12 from 20.",
-            explanation: "$20 - $12 = $8 change."
+            question: "<b>Advanced Strategy: The Triple-Double Trick for x8!</b><br>To multiply any number by 8, double it three times in a row!<br><i>Example: 9 x 8 -> Double 9 (18), double 18 (36), double 36 (72).</i><br><br><b>Story:</b> Bruno's Onix smashes 6 boulders yielding 8 Stardust each: 6 x 8. Use Triple-Double: Double 6 is 12, double 12 is 24, now double 24. What is 6 x 8?",
+            answer: "48",
+            hint: "Double 24 (24 + 24 = ?).",
+            explanation: "Double 6 = 12, double 12 = 24, double 24 = 48. 6 x 8 = 48."
+        },
+        {
+            type: "mcq",
+            question: "<b>Advanced Concept: Crossing Hour Markers in Elapsed Time!</b><br>Calculate elapsed minutes by counting to the top of the hour first, then adding the remaining minutes.<br><i>Example: From 3:40 PM to 4:25 PM is 20 min (to 4:00) + 25 min = 45 minutes.</i><br><br><b>Story:</b> Lance's Dragon-type battle starts at 4:45 PM and finishes at 5:30 PM. How many total minutes did the match last?",
+            options: ["30 minutes", "40 minutes", "45 minutes", "50 minutes"],
+            answer: "45 minutes",
+            hint: "Count from 4:45 PM to 5:00 PM (15 min), then add 30 min past 5:00!",
+            explanation: "15 minutes (to 5:00) + 30 minutes = 45 minutes elapsed."
+        },
+        {
+            type: "mcq",
+            question: "<b>Advanced Strategy: Dual-Inverse Verification!</b><br>Check multiplication using division to verify correctness.<br><i>Example: Check 15 x 4 = 60 by verifying 60 / 4 = 15.</i><br><br><b>Story:</b> Agatha calculates that 28 x 3 = 84 Ghost energy points. Verify her math by dividing 84 by 3. Does it equal 28?",
+            options: ["Yes", "No"],
+            answer: "Yes",
+            hint: "Divide 84 by 3. Does it give 28?",
+            explanation: "Yes! 84 / 3 = 28, confirming Agatha's calculation is correct."
+        },
+
+        // --- Phase 7: Boss Battle - Legendary Mewtwo Strike (Multi-Step & Equations) ---
+        {
+            type: "mcq",
+            question: "<b>Advanced Concept: Simplified Probability Fractions!</b><br>Probability = Favorable Choices / Total Choices. Reduce the fraction to simplest form.<br><i>Example: 4 green balls out of 12 total = 4/12 = 1 in 3 chance.</i><br><br><b>Story:</b> Mewtwo creates 10 psychic barrier spheres, but only 2 contain real access keys. What is the simplified probability of picking a real key on the first attempt?",
+            options: ["1 in 5 chance", "1 in 4 chance", "2 in 5 chance", "1 in 10 chance"],
+            answer: "1 in 5 chance",
+            hint: "Simplify 2 out of 10 (2/10 -> divide numerator and denominator by 2).",
+            explanation: "2 out of 10 simplifies to 1/5, or a 1 in 5 chance."
         },
         {
             type: "text",
-            question: "<b>Combinations!</b><br>Multiply choices together to find total combos.<br><b>Story:</b> Marty has 3 different spacesuit colors and 2 visor styles. Multiply 3 x 2 to find how many unique suit combinations he can wear on Mars.",
-            answer: "6",
-            hint: "What is 3 times 2?",
-            explanation: "3 x 2 = 6 unique combinations."
+            question: "<b>Advanced Strategy: Grouping Numbers into Tens & Hundreds!</b><br>Combine pairs of numbers that make clean tens/hundreds first.<br><i>Example: 35 + 48 + 15 + 22 -> (35 + 15 = 50) + (48 + 22 = 70) = 120.</i><br><br><b>Story:</b> Marty combines four energy cells to pierce Mewtwo's shield: 44 + 37 + 16 + 23. Group (44 + 16 = 60) and (37 + 23 = 60). What is the total combined energy score?",
+            answer: "120",
+            hint: "Add 60 + 60!",
+            explanation: "(44 + 16) + (37 + 23) = 60 + 60 = 120 energy units."
+        },
+        {
+            type: "mcq",
+            question: "<b>Advanced Logic Strategy: Multi-Constraint 'NOT' Grid Elimination!</b><br>Cross out options ruled out by negative clues to reveal the true answer.<br><i>Example: 'Not blue, not red, not small' leaves 'Big Green'.</i><br><br><b>Story:</b> Mewtwo's weak spot is hidden in one of four chambers: Chamber A, Chamber B, Chamber C, Chamber D. Clue 1: It is NOT in Chamber A. Clue 2: It is NOT in Chamber B. Clue 3: It is in an ODD-numbered position (A=1, B=2, C=3, D=4). Where is the weak spot?",
+            options: ["Chamber A", "Chamber B", "Chamber C", "Chamber D"],
+            answer: "Chamber C",
+            hint: "Cross out A and B. Position C is #3 (odd) and D is #4 (even). Which is odd?",
+            explanation: "Eliminating A and B leaves C (#3, odd) and D (#4, even). Chamber C is correct."
         },
         {
             type: "text",
-            question: "<b>The Mode (Most Often)!</b><br>The Mode is the number seen the MOST times.<br><b>Story:</b> Marty tracks successful booster landings over 5 weeks: 7, 10, 7, 5, 7. What number appears most often?",
-            answer: "7",
-            hint: "Which number shows up three times?",
-            explanation: "7 appears 3 times, making it the Mode."
+            question: "<b>Advanced Concept: Finding the Median of 5 Values!</b><br>Sort all 5 values in order from smallest to largest and pick the 3rd (middle) value.<br><i>Example: For [12, 19, 24, 31, 40], the median is 24.</i><br><br><b>Story:</b> Sort Mewtwo's 5 barrier recovery times in seconds: 42, 19, 55, 33, and 28. Put them in order [19, 28, 33, 42, 55]. What is the Median value?",
+            answer: "33",
+            hint: "Look at the sorted list: 19, 28, 33, 42, 55. Which number is right in the center?",
+            explanation: "In the sorted list [19, 28, 33, 42, 55], 33 sits right in the middle."
         },
         {
             type: "text",
-            question: "<b>Grand Finale: Repeated Addition!</b><br>Add equal parts for the grand total.<br><b>Story:</b> Marty programs 5 successful Starship landings in Simulation A, 5 in Simulation B, and 5 in the real Mars test! Add 5 + 5 + 5 to find his total perfect landings.",
-            answer: "15",
-            hint: "Count by 5s three times: 5, 10, 15.",
-            explanation: "5 + 5 + 5 = 15 perfect landings! Mars Mission Accomplished!"
+            question: "<b>Advanced Strategy: Three-Step Multi-Operation Word Problem!</b><br>Execute operations in precise sequence: Multiply first, Add second, Subtract third.<br><i>Example: 4 x 6 = 24. Add 10 = 34. Subtract 5 = 29.</i><br><br><b>Story:</b> Charizard carries 4 packs of Fire Energy with 8 cards in each pack (4 x 8 = 32). Marty gives him 10 bonus cards (32 + 10 = 42). Mewtwo's Disable attack removes 7 cards. How many cards remain (42 - 7)?",
+            answer: "35",
+            hint: "Step 1: 4 x 8 = 32. Step 2: 32 + 10 = 42. Step 3: 42 - 7 = ?",
+            explanation: "4 x 8 = 32. 32 + 10 = 42. 42 - 7 = 35 cards remaining."
+        },
+
+        // --- Phase 8: Hall of Fame Victory Celebration (Graphs, Money & Master Logic) ---
+        {
+            type: "text",
+            question: "<b>Advanced Concept: Comparative Bar Graph Reading!</b><br>Subtract the lower bar value from the higher bar value to calculate the margin.<br><i>Example: High bar = 90, Low bar = 42 -> Difference = 90 - 42 = 48.</i><br><br><b>Story:</b> In the Hall of Fame record book, Marty's team scored 94 victory points while Rival Blue scored 48 points. Subtract 48 from 94 to find Marty's winning point margin.",
+            answer: "46",
+            hint: "Subtract 94 - 48 (think: 94 - 40 = 54, then 54 - 8 = 46).",
+            explanation: "94 - 48 = 46 victory points margin."
+        },
+        {
+            type: "text",
+            question: "<b>Advanced Strategy: Multiply by 99 (Multiply by 100 minus 1 group)!</b><br>To multiply any number by 99, multiply by 100 first, then subtract 1 group of that number!<br><i>Example: 8 x 99 -> (8 x 100) - 8 = 800 - 8 = 792.</i><br><br><b>Story:</b> Professor Oak orders victory confetti cannons: 6 x 99. First calculate 6 x 100 = 600. Now subtract 6 from 600. What is 6 x 99?",
+            answer: "594",
+            hint: "Subtract 6 from 600 (600 - 6).",
+            explanation: "6 x 100 = 600. 600 - 6 = 594 confetti bursts."
+        },
+        {
+            type: "text",
+            question: "<b>Advanced Concept: Multi-Item Money Change Calculation!</b><br>Multiply item cost by quantity, then subtract from total money handed to cashier.<br><i>Example: 4 items at $6 each = $24. Pay with $50 bill -> $50 - $24 = $26 change.</i><br><br><b>Story:</b> Marty buys 4 Champion T-shirts at the Indigo Plateau shop for $9 each ($4 x $9 = $36 total). He pays with a $50 bill. How much change does he get back ($50 - $36)?",
+            answer: "14",
+            hint: "Subtract $36 from $50 ($50 - $36).",
+            explanation: "4 x $9 = $36 total cost. $50 - $36 = $14 change returned."
+        },
+        {
+            type: "mcq",
+            question: "<b>Advanced Logic Strategy: 3-Person Grid Deductive Logic!</b><br>Eliminate taken options so each person lands on their unique correct match.<br><i>Example: Person A gets Item 1, Person B doesn't get Item 2 -> Deduce all assignments.</i><br><br><b>Story:</b> Three champions (Marty, Ash, and Red) pick starter statues (Charizard, Blastoise, Venusaur). Clue 1: Ash takes Charizard. Clue 2: Red does NOT take Venusaur. Which statue does Red receive?",
+            options: ["Charizard", "Blastoise", "Venusaur"],
+            answer: "Blastoise",
+            hint: "Ash took Charizard. Red didn't take Venusaur. So Red MUST take...?",
+            explanation: "Charizard is taken by Ash. Red cannot take Venusaur, so Red gets Blastoise."
+        },
+        {
+            type: "text",
+            question: "<b>Grand Finale: Master League Total Accumulation!</b><br>Multiply items per phase by total number of phases to find the grand championship score.<br><i>Example: 12 trophies x 8 phases = 96 total trophies.</i><br><br><b>Story:</b> Marty and Team Alpha win 16 victory trophies in each of the 8 Pokémon League phases! Calculate 8 x 16 to find their grand total Hall of Fame trophy count!",
+            answer: "128",
+            hint: "Calculate 8 x 16 (think: 8 x 10 = 80, 8 x 6 = 48. Add 80 + 48!).",
+            explanation: "8 x 16 = (8 x 10) + (8 x 6) = 80 + 48 = 128 total trophies! Pokémon Master Champion!"
         }
     ]
 };
