@@ -1,321 +1,321 @@
 const missionConfig = {
-    themeTitle: "⚡ Pokémon: The Legendary Champion League",
-    themeColor: "linear-gradient(135deg, #1d4ed8 0%, #b91c1c 50%, #eab308 100%)", // Pokéball Red, Masterball Blue & Electric Yellow
-    themeIcon: "⚡",
+    themeTitle: "🧩 The Mind Fortress: Master Logic & Math Academy",
+    themeColor: "linear-gradient(135deg, #0284c7 0%, #4f46e5 50%, #9333ea 100%)", // Sapphire Blue, Royal Indigo & Quantum Purple
+    themeIcon: "🧠",
     showStreakCounter: true,
     streakCounter: true,
     enableStreakBonus: true,
     streakThreshold: 3,
     questions: [
-        // --- Phase 1: Pewter & Cerulean Gyms (Warm-Up Strategies) ---
+        // --- Phase 1: Mind Gym Warm-Up (Number Sense & Visual Logic) ---
         {
             type: "text",
-            question: "<b>Advanced Strategy: Bridging Through 100!</b><br>When adding numbers close to 100, break apart the second number to make 100 first, then add what remains.<br><i>Example: To solve 97 + 25, take 3 from 25 to make 97 + 3 = 100, then add the remaining 22 to get 122.</i><br><br><b>Story:</b> Marty and Pikachu enter the Pewter City Gym. Pikachu has 95 Electric power points and collects 36 extra charge points from a Thunderstone. Using Bridging Through 100, what is Pikachu's total power score?",
-            answer: "131",
-            hint: "Take 5 from 36 to turn 95 into 100. Then add the remaining 31!",
-            explanation: "95 + 36 = (95 + 5) + 31 = 100 + 31 = 131 power points."
+            question: "<b>Strategy: Bridging Through 100!</b><br><i>What it means:</i> When adding numbers close to 100, split the smaller number into two parts. Use the first part to round the big number up to 100, then add what's left over. Tens and hundreds are much easier to work with!<br><br><b>Story:</b> Marty is loading power cells into the Mind Fortress generator. Cell A has 96 units of energy and Cell B has 38 units. Marty breaks 38 into 4 and 34 (96 + 4 = 100, then 100 + 34). How many total energy units does he load?",
+            answer: "134",
+            hint: "Take 4 away from 38 to make 96 into 100. Then add the leftover 34!",
+            explanation: "96 + 38 = (96 + 4) + 34 = 100 + 34 = 134 energy units."
         },
         {
             type: "text",
-            question: "<b>Advanced Strategy: Counting Up in Chunks for Subtraction!</b><br>Count up from the smaller number to the nearest hundred first, then to the target number.<br><i>Example: To solve 215 - 188, count up from 188: +12 to reach 200, then +15 to reach 215. Total = 12 + 15 = 27.</i><br><br><b>Story:</b> Charizard needs 314 Flame units to blast through Onix's Rock Wall, but currently has 278 units. Count UP from 278 to 314. How many more Flame units does Charizard need?",
-            answer: "36",
-            hint: "Count from 278 up to 300 (+22), then from 300 to 314 (+14). Add 22 + 14!",
-            explanation: "278 to 300 is 22. 300 to 314 is 14. 22 + 14 = 36 Flame units."
+            question: "<b>Strategy: Multi-Step Counting Up for Subtraction!</b><br><i>What it means:</i> Subtraction measures the distance between two numbers. Instead of counting backward, start at the smaller number and count UP in friendly landmark jumps (first to the nearest 10 or 100, then to the target).<br><br><b>Story:</b> The fortress shield needs 324 power points to activate, but Marty's battery only has 286 points. Count UP from 286 to 300 (+14), then from 300 to 324 (+24). How many more points does he need?",
+            answer: "38",
+            hint: "Add your two jumps together: 14 + 24.",
+            explanation: "From 286 to 300 is 14. From 300 to 324 is 24. 14 + 24 = 38 power points."
         },
         {
             type: "mcq",
-            question: "<b>Advanced Concept: Composite Perimeter!</b><br>Perimeter is the total distance all the way around the outside edge of a shape. Add all side lengths together.<br><i>Example: A shape with outer sides 4 in, 5 in, 6 in, 3 in, and 2 in has a perimeter of 4 + 5 + 6 + 3 + 2 = 20 in.</i><br><br><b>Story:</b> Misty builds a custom training pool for Starmie. The outer sides measure 14 feet, 9 feet, 8 feet, 6 feet, 6 feet, and 17 feet. What is the total perimeter around the pool?",
-            options: ["50 feet", "58 feet", "60 feet", "64 feet"],
+            question: "<b>Strategy: Calculating Composite Perimeter!</b><br><i>What it means:</i> <b>Perimeter</b> is the total boundary distance all the way around the outside edge of a 2D shape. You calculate it by adding the lengths of every outer side together.<br><br><b>Story:</b> Marty maps the outer security boundary of the fortress. The boundary has 6 straight sides measuring 15 ft, 10 ft, 8 ft, 7 ft, 5 ft, and 15 ft. What is the total perimeter of the boundary?",
+            options: ["50 feet", "55 feet", "60 feet", "65 feet"],
             answer: "60 feet",
-            hint: "Add all 6 sides together: 14 + 9 + 8 + 6 + 6 + 17.",
-            explanation: "14 + 9 = 23, + 8 = 31, + 6 = 37, + 6 = 43, + 17 = 60 feet."
+            hint: "Add all 6 side lengths together: 15 + 10 + 8 + 7 + 5 + 15.",
+            explanation: "15 + 10 = 25, + 8 = 33, + 7 = 40, + 5 = 45, + 15 = 60 feet perimeter."
         },
         {
             type: "text",
-            question: "<b>Advanced Strategy: Near-Double Compensation!</b><br>To add two numbers right next to each other, double the smaller number and add 1.<br><i>Example: To solve 36 + 37, double 36 to get 72, then add 1 = 73.</i><br><br><b>Story:</b> Marty picks up 58 Poké Balls and Arjun picks up 59 Poké Balls at the Cerulean City Mart. Use Near Doubles (double 58, then add 1) to find how many Poké Balls they have in total.",
-            answer: "117",
-            hint: "Double 58 is 116. Now add 1 more!",
-            explanation: "58 + 59 = (58 + 58) + 1 = 116 + 1 = 117 Poké Balls."
+            question: "<b>Strategy: Near-Double Compensation!</b><br><i>What it means:</i> If two numbers are consecutive or very close, double the smaller number and adjust by adding the difference (or double the middle number!).<br><br><b>Story:</b> Marty collects 48 data crystals on Floor 1 and 49 data crystals on Floor 2. Use Near Doubles (double 48 to get 96, then add 1) to find the total number of crystals.",
+            answer: "97",
+            hint: "48 + 48 = 96. Now add the 1 extra crystal from 49!",
+            explanation: "48 + 49 = 48 + 48 + 1 = 96 + 1 = 97 data crystals."
         },
         {
             type: "mcq",
-            question: "<b>Advanced Concept: Rounding to the Nearest 100!</b><br>Look at the tens digit. If it is 50 or higher, round UP to the next hundred. If it is 49 or lower, round DOWN.<br><i>Example: 340 rounds down to 300. 360 rounds up to 400.</i><br><br><b>Story:</b> Marty's Pokédex scans a wild Gyarados with 849 Combat Power. What is 849 rounded to the nearest 100?",
-            options: ["800", "850", "900", "1,000"],
+            question: "<b>Strategy: Rounding to the Nearest 100!</b><br><i>What it means:</i> Rounding simplifies numbers to make mental math easier. Look at the tens place (or last two digits): if it is 50 or higher, round UP to the next 100. If it is 49 or lower, round DOWN.<br><br><b>Story:</b> Marty's scanner detects an incoming energy wave at 762 megahertz. What is 762 rounded to the nearest 100?",
+            options: ["700", "750", "800", "900"],
             answer: "800",
-            hint: "Look at the tens digit (49). Since 49 is less than 50, round down!",
-            explanation: "849 is closer to 800 than 900, so it rounds down to 800."
+            hint: "Look at the 62 in 762. Since 62 is 50 or bigger, round up to the next hundred!",
+            explanation: "762 is closer to 800 than 700, so it rounds up to 800."
         },
 
-        // --- Phase 2: Vermilion & Celadon Gyms (Multiplication & Division) ---
+        // --- Phase 2: Quantum Multiplication & Division Mechanics ---
         {
             type: "text",
-            question: "<b>Advanced Strategy: Distributive Chunking for Multiplication!</b><br>Break the larger factor into Tens and Ones, multiply separately, then add them together.<br><i>Example: 7 x 13 = (7 x 10) + (7 x 3) = 70 + 21 = 91.</i><br><br><b>Story:</b> Lt. Surge trains 8 Raichu squads. Each squad requires 15 Volt Badges. Using Distributive Chunking (8 x 10 plus 8 x 5), how many Volt Badges are needed in total?",
-            answer: "120",
-            hint: "8 x 10 = 80, and 8 x 5 = 40. Add 80 + 40!",
-            explanation: "8 x 15 = (8 x 10) + (8 x 5) = 80 + 40 = 120 Volt Badges."
+            question: "<b>Strategy: Distributive Multiplication Chunking!</b><br><i>What it means:</i> Break a large multiplication problem into smaller, friendly parts. Multiply each part separately, then combine the products.<br><br><b>Story:</b> Marty needs to calculate 7 x 14 energy cells. He splits 14 into (10 + 4), then calculates (7 x 10) + (7 x 4). What is the total product?",
+            answer: "98",
+            hint: "7 x 10 = 70. 7 x 4 = 28. Add 70 + 28!",
+            explanation: "7 x 14 = (7 x 10) + (7 x 4) = 70 + 28 = 98 energy cells."
         },
         {
             type: "mcq",
-            question: "<b>Advanced Concept: Prime vs. Composite Numbers!</b><br>Prime numbers only have 2 factors: 1 and itself. Composite numbers can be split evenly into equal groups.<br><i>Example: 9 is composite (3 x 3). 11 is prime.</i><br><br><b>Story:</b> Erika inspects a box of Grass-type Berries: 13, 19, 25, and 31. Which of these numbers is a COMPOSITE number that can be divided into equal groups?",
-            options: ["13", "19", "25", "31"],
-            answer: "25",
-            hint: "Which number can be made by multiplying 5 by itself? (5 x 5 = ?)",
-            explanation: "25 is composite because 5 x 5 = 25. The others (13, 19, 31) are all prime."
+            question: "<b>Strategy: Classifying Prime vs. Composite Numbers!</b><br><i>What it means:</i> A <b>Prime number</b> has exactly two factors (1 and itself) and cannot be split into equal groups. A <b>Composite number</b> has more than two factors and can be formed by multiplying smaller whole numbers.<br><br><b>Story:</b> Marty checks four security lock codes: 17, 23, 27, and 31. Which of these numbers is a COMPOSITE number that can be split into equal groups?",
+            options: ["17", "23", "27", "31"],
+            answer: "27",
+            hint: "Which number appears in the 3 or 9 times tables? (3 x 9 = ?)",
+            explanation: "27 is composite because 3 x 9 = 27. The numbers 17, 23, and 31 are all prime."
         },
         {
             type: "text",
-            question: "<b>Advanced Strategy: Chunking Division!</b><br>Split a dividend into two easy parts that both divide cleanly.<br><i>Example: 84 / 4 -> (40 / 4) + (44 / 4) = 10 + 11 = 21.</i><br><br><b>Story:</b> Marty and Ash have 96 Hyper Potions to distribute equally among 6 Pokémon Centers. Using chunking (60 / 6 + 36 / 6), how many Potions does each Center get?",
+            question: "<b>Strategy: Division Chunking!</b><br><i>What it means:</i> To divide a large number, split it into two smaller numbers that are both easy to divide by your divisor, then add the answers.<br><br><b>Story:</b> Marty has 96 security keys to distribute equally among 6 vault doors. He chunks 96 into (60 / 6) + (36 / 6). How many keys go to each vault door?",
             answer: "16",
-            hint: "Divide 60 by 6 (=10), then divide 36 by 6 (=6). Add 10 + 6!",
-            explanation: "60 / 6 = 10 and 36 / 6 = 6. 10 + 6 = 16 Potions per Center."
+            hint: "60 / 6 = 10, and 36 / 6 = 6. Add 10 + 6!",
+            explanation: "60 / 6 = 10 and 36 / 6 = 6. 10 + 6 = 16 keys per door."
         },
         {
             type: "mcq",
-            question: "<b>Advanced Strategy: The 'Add Two Zeros' Trick for 100s!</b><br>When multiplying any whole number by 100, add two zeros to the end of the number.<br><i>Example: 9 x 100 = 900.</i><br><br><b>Story:</b> Professor Oak sends 18 Pokemon Researchers into the wild. Each researcher receives 100 Ultra Balls. What is 18 x 100?",
-            options: ["180", "1,800", "18,000", "10,800"],
-            answer: "1,800",
-            hint: "Write 18 and attach two zeros to the right!",
-            explanation: "18 x 100 = 1,800 Ultra Balls."
+            question: "<b>Strategy: Multiplying by 100 ('Add Two Zeros')!</b><br><i>What it means:</i> Multiplying a whole number by 100 shifts every digit two places to the left (increasing its place value by a factor of 100), effectively placing two zeros at the end.<br><br><b>Story:</b> Marty programs 16 defense drones. Each drone requires 100 micro-charges. What is 16 x 100?",
+            options: ["160", "1,600", "16,000", "160,000"],
+            answer: "1,600",
+            hint: "Write down 16 and attach two zeros to the end!",
+            explanation: "16 x 100 = 1,600 micro-charges."
         },
         {
             type: "text",
-            question: "<b>Advanced Strategy: Halving and Doubling for Multiplication!</b><br>Cut one factor in half and double the other to make the multiplication simple!<br><i>Example: 12 x 15 -> Cut 12 in half (6), double 15 (30) -> 6 x 30 = 180.</i><br><br><b>Story:</b> Marty calculates total EXP gained from 14 battles yielding 25 EXP each: 14 x 25. Cut 14 in half (7) and double 25 (50). Now calculate 7 x 50. What is the total EXP?",
-            answer: "350",
-            hint: "Multiply 7 x 50 (think: 7 x 5 = 35, then add a zero).",
-            explanation: "14 x 25 = 7 x 50 = 350 EXP."
+            question: "<b>Strategy: Halving and Doubling for Multiplication!</b><br><i>What it means:</i> You can double one number and cut the other number in half without changing the product! This turns tricky multiplication into mental math.<br><br><b>Story:</b> Solve 18 x 15 using Halving and Doubling: Cut 18 in half to get 9, and double 15 to get 30. Now multiply 9 x 30. What is the product?",
+            answer: "270",
+            hint: "Multiply 9 x 3 (which is 27), then add a zero to the end!",
+            explanation: "18 x 15 = 9 x 30 = 270."
         },
 
-        // --- Phase 3: Fuchsia & Saffron Gyms (Geometry & Spatial Reasoning) ---
+        // --- Phase 3: Spatial Reasoning & Structural Logic ---
         {
             type: "mcq",
-            question: "<b>Advanced Logic Strategy: Shape Elimination!</b><br>Cross out options that fail geometric properties until the correct shape remains.<br><i>Example: A 4-sided polygon with opposite parallel sides and no right angles is a parallelogram.</i><br><br><b>Story:</b> Koga hides a Ninja Scroll inside a 4-sided geometric display case. Clue 1: All 4 sides are equal in length. Clue 2: None of its angles are 90-degree right angles. What is the shape of the case?",
+            question: "<b>Strategy: Geometric Property Elimination!</b><br><i>What it means:</i> Evaluate shapes by testing their specific definitions (number of sides, parallel lines, angle types) to eliminate impossible choices.<br><br><b>Story:</b> Marty inspects a locked door panel. Clue 1: It is a 4-sided polygon with all 4 sides equal in length. Clue 2: Its angles are NOT 90-degree right angles. What geometric shape is the panel?",
             options: ["Rectangle", "Trapezoid", "Rhombus", "Square"],
             answer: "Rhombus",
-            hint: "A square has 4 equal sides WITH right angles. If angles are NOT 90 degrees, it's a Rhombus!",
-            explanation: "A Rhombus has 4 equal side lengths without requiring 90-degree right angles."
+            hint: "A square has 4 equal sides WITH right angles. If it lacks right angles, it's a rhombus!",
+            explanation: "A rhombus has 4 equal side lengths but does not require 90-degree right angles."
         },
         {
             type: "mcq",
-            question: "<b>Advanced Concept: Complex Two-Attribute Patterns!</b><br>Track changes in two different features (like color and shape, or size and direction) at the same time.<br><i>Example: Big Red, Small Blue, Big Red, Small Blue...</i><br><br><b>Story:</b> Sabrina arranges Psychic Teleportation tiles: Gold Star, Silver Circle, Gold Star, Silver Circle... What is the 7th tile in her pattern?",
-            options: ["Gold Star", "Silver Circle", "Gold Circle", "Silver Star"],
-            answer: "Gold Star",
-            hint: "Positions 1, 3, 5, 7 start each new repeating pair!",
-            explanation: "The pattern repeats every 2 tiles (1:Gold Star, 2:Silver Circle...). Tile 7 is Gold Star."
+            question: "<b>Strategy: Two-Attribute Sequence Analysis!</b><br><i>What it means:</i> Some visual patterns alternate two different traits at once (e.g., shape AND color, or rotation AND count). Identify the core repeating unit.<br><br><b>Story:</b> Marty decodes a security laser grid pattern: Blue Square, Red Triangle, Blue Square, Red Triangle... What is the 9th item in this sequence?",
+            options: ["Blue Square", "Red Triangle", "Blue Triangle", "Red Square"],
+            answer: "Blue Square",
+            hint: "Odd positions (1, 3, 5, 7, 9) always feature the first item in the pattern pair!",
+            explanation: "The pattern repeats every 2 items. Positions 1, 3, 5, 7, 9 are all Blue Squares."
         },
         {
             type: "text",
-            question: "<b>Advanced Concept: Area of an L-Shaped Floor!</b><br>Split an L-shape into two separate rectangles, calculate both areas (Length x Width), then add them together.<br><i>Example: Section 1 is 3x4 (12) and Section 2 is 5x2 (10). Total Area = 12 + 10 = 22.</i><br><br><b>Story:</b> Marty helps Sabrina lay psychic floor mats. Area 1 is 7 feet by 3 feet (21 sq ft). Area 2 is 5 feet by 4 feet (20 sq ft). What is the total combined Area?",
-            answer: "41",
-            hint: "Add the two area amounts together: 21 + 20.",
-            explanation: "Area = (7 x 3) + (5 x 4) = 21 + 20 = 41 square feet."
+            question: "<b>Strategy: Area of a Compound Shape!</b><br><i>What it means:</i> <b>Area</b> is the amount of flat 2D surface space inside a boundary, calculated as Length x Width. For L-shaped floors, split the shape into two separate rectangles, calculate both areas, and sum them.<br><br><b>Story:</b> Marty lays solar tiles on an L-shaped roof. Rectangular Section A is 8 ft by 3 ft (Area = 24). Rectangular Section B is 5 ft by 4 ft (Area = 20). What is the total Area of the roof?",
+            answer: "44",
+            hint: "Add the area of Section A (24) and Section B (20) together.",
+            explanation: "Area = (8 x 3) + (5 x 4) = 24 + 20 = 44 square feet."
         },
         {
             type: "mcq",
-            question: "<b>Advanced Logic Strategy: Multi-Constraint Sandwich Clues!</b><br>Narrow down numbers using boundaries, parity (even/odd), and divisibility.<br><i>Example: An odd number between 20 and 30 that divides by 5 is 25.</i><br><br><b>Story:</b> Marty tries to guess Alakazam's secret IQ score badge. Rod the AI says: 'It is an EVEN number between 70 and 80 that is a multiple of 8.' What is the number?",
-            options: ["72", "74", "76", "78"],
-            answer: "72",
-            hint: "Which number between 70 and 80 is in the 8 times table? (8 x 9 = ?)",
-            explanation: "8 x 9 = 72, which is even and sits between 70 and 80."
+            question: "<b>Strategy: Multi-Constraint Sandwich Clues!</b><br><i>What it means:</i> Narrow down a number by setting lower/upper boundaries ('sandwiching' it) and applying rules like even/odd or divisibility.<br><br><b>Story:</b> Marty needs the vault override code. Rod the AI says: 'The code is an EVEN number greater than 60, less than 70, and a multiple of 8.' What is the code?",
+            options: ["62", "64", "66", "68"],
+            answer: "64",
+            hint: "Which number between 60 and 70 is in the 8 times table? (8 x 8 = ?)",
+            explanation: "8 x 8 = 64, which sits between 60 and 70 and is an even number."
         },
         {
             type: "text",
-            question: "<b>Advanced Strategy: Growing Pattern Multiplier Rules!</b><br>Identify the multiplier or addition jump between terms in a growing sequence.<br><i>Example: 3, 6, 12, 24... doubles (x2) each step. Next is 48.</i><br><br><b>Story:</b> Psychic energy waves grow in frequency: 4 Hz, 12 Hz, 36 Hz, ___ Hz. The sequence multiplies by 3 each step. What is the next frequency value (36 x 3)?",
-            answer: "108",
-            hint: "Multiply 36 by 3 (think: 30 x 3 = 90, 6 x 3 = 18. 90 + 18 = ?).",
-            explanation: "The pattern multiplies by 3 each step. 36 x 3 = 108 Hz."
-        },
-
-        // --- Phase 4: Cinnabar & Viridian Gyms (Fractions & Multi-Step Time) ---
-        {
-            type: "text",
-            question: "<b>Advanced Concept: Finding Three-Quarters (3/4) of a Number!</b><br>Divide the total by 4 to find 1/4, then multiply that result by 3!<br><i>Example: 3/4 of 16 -> 16 / 4 = 4, then 4 x 3 = 12.</i><br><br><b>Story:</b> Blaine has 28 Fire-type badges. He awards 3/4 of them to elite trainers. Calculate (28 / 4) x 3. How many badges did Blaine award?",
-            answer: "21",
-            hint: "First divide 28 by 4 (= 7). Then multiply 7 by 3!",
-            explanation: "28 / 4 = 7. 7 x 3 = 21 badges awarded."
-        },
-        {
-            type: "text",
-            question: "<b>Advanced Strategy: 2-Digit Addition with Carrying!</b><br>Add the ones column first (regrouping tens), then add the tens column.<br><i>Example: 57 + 38 -> Ones: 7 + 8 = 15 (write 5 carry 1). Tens: 5 + 3 + 1 = 9 -> 95.</i><br><br><b>Story:</b> Marty collects 67 Magmar embers and Arjun collects 78 Arcanine flames. What is the total combined count of fire items?",
-            answer: "145",
-            hint: "Add ones: 7 + 8 = 15. Add tens: 60 + 70 + 10 = 140. Combine 140 + 5!",
-            explanation: "67 + 78 = 145 fire items."
-        },
-        {
-            type: "text",
-            question: "<b>Advanced Concept: Three-Item Average Calculation!</b><br>Add all three numbers together, then divide the total sum by 3.<br><i>Example: Average of 10, 20, 30 -> Sum = 60. 60 / 3 = 20.</i><br><br><b>Story:</b> Giovanni measures speed stats for three Ground Pokémon: 110, 130, and 180. Add them up (420), then divide by 3 to find their average speed.",
-            answer: "140",
-            hint: "Divide 420 by 3 (think: 42 / 3 = 14, then add a zero).",
-            explanation: "110 + 130 + 180 = 420. 420 / 3 = 140 average speed."
-        },
-        {
-            type: "text",
-            question: "<b>Advanced Strategy: Working Backward with Two Steps!</b><br>Undo operations in reverse order: subtract added amounts, then divide multiplied amounts.<br><i>Example: (X + 4) x 2 = 20 -> 20 / 2 = 10, then 10 - 4 = 6.</i><br><br><b>Story:</b> Pikachu doubled his stored energy (x2) and then absorbed 10 bonus units (+10), reaching 50 total units. Work backward: (50 - 10) / 2. How much energy did Pikachu start with?",
-            answer: "20",
-            hint: "Subtract 10 from 50 (= 40). Then divide 40 by 2!",
-            explanation: "50 - 10 = 40. 40 / 2 = 20 starting units."
-        },
-        {
-            type: "mcq",
-            question: "<b>Advanced Concept: Comparing Non-Unit Fractions!</b><br>Convert fractions to percents or compare against a half (1/2) benchmark.<br><i>Example: 4/5 is larger than 2/3 because 4/5 is 80% while 2/3 is ~67%.</i><br><br><b>Story:</b> Marty's Pidgeot flies across 4/5 of Kanto, while Fearow flies across 3/4 of Kanto. Which Pokémon covered a GREATER fraction of the region?",
-            options: ["Pidgeot (4/5)", "Fearow (3/4)"],
-            answer: "Pidgeot (4/5)",
-            hint: "4/5 equals 80/100 (80%), whereas 3/4 equals 75/100 (75%). Which is bigger?",
-            explanation: "4/5 (80%) > 3/4 (75%). Pidgeot covered a greater fraction."
-        },
-
-        // --- Phase 5: Victory Road (Data Analysis: Mode, Median, Range) ---
-        {
-            type: "text",
-            question: "<b>Advanced Concept: Median of an Even Data Set!</b><br>Order numbers from least to greatest. If there are two middle numbers, find the exact midpoint between them!<br><i>Example: For [10, 14, 18, 22], middle numbers are 14 and 18. Midpoint = 16.</i><br><br><b>Story:</b> Marty records Machamp's punch speeds on Victory Road: 14 mph, 18 mph, 22 mph, and 30 mph. Look at the two middle numbers (18 and 22). What is the Median value sitting right between them?",
-            answer: "20",
-            hint: "What number is halfway between 18 and 22?",
-            explanation: "The middle two values are 18 and 22. Halfway between them is 20."
-        },
-        {
-            type: "text",
-            question: "<b>Advanced Strategy: Multiply by 25 (Multiply by 100 then Divide by 4)!</b><br>To multiply a number by 25 easily, multiply it by 100 first, then divide by 4!<br><i>Example: 12 x 25 -> 12 x 100 = 1200, then 1200 / 4 = 300.</i><br><br><b>Story:</b> Arjun calculates total Max Revive points for 12 Pokémon: 12 x 25. First calculate 12 x 100 = 1200. What is 1200 divided by 4?",
-            answer: "300",
-            hint: "12 / 4 = 3, so 1200 / 4 = 300!",
-            explanation: "12 x 100 = 1200. 1200 / 4 = 300."
-        },
-        {
-            type: "text",
-            question: "<b>Advanced Concept: Multi-Value Range!</b><br>Range is the difference between the Largest value and Smallest value in a set (Max - Min).<br><i>Example: For [15, 30, 45, 80], Range = 80 - 15 = 65.</i><br><br><b>Story:</b> Ash measures wild Pokémon HP levels on Victory Road: 42, 28, 95, and 61. Subtract the smallest HP (28) from the largest HP (95) to find the Range.",
-            answer: "67",
-            hint: "Subtract 95 - 28 (think: 95 - 20 = 75, then 75 - 8 = 67).",
-            explanation: "95 - 28 = 67 HP Range."
-        },
-        {
-            type: "text",
-            question: "<b>Advanced Strategy: Subtraction by Rounding to 50!</b><br>To subtract 49 easily, subtract 50 first, then add 1 back!<br><i>Example: 135 - 49 -> 135 - 50 = 85, then 85 + 1 = 86.</i><br><br><b>Story:</b> Solve 162 - 49 for Victory Road rock clearance time. First do 162 - 50 (which is 112), then add 1 back. What is the final answer?",
-            answer: "113",
-            hint: "162 - 50 = 112. Now add 1 back to 112!",
-            explanation: "162 - 50 = 112. 112 + 1 = 113."
-        },
-        {
-            type: "mcq",
-            question: "<b>Advanced Logic Strategy: 4-Item Comparative Chain Deduction!</b><br>Link statements together to rank items from highest to lowest.<br><i>Example: W > X, X > Y, Y > Z -> W is highest, Z is lowest.</i><br><br><b>Story:</b> In a battle sprint, Dragonite is faster than Lapras. Lapras is faster than Snorlax. Snorlax is faster than Blastoise. Which Pokémon is the SLOWEST overall?",
-            options: ["Dragonite", "Lapras", "Snorlax", "Blastoise"],
-            answer: "Blastoise",
-            hint: "Follow the chain down: Dragonite > Lapras > Snorlax > Blastoise. Who is last?",
-            explanation: "Dragonite > Lapras > Snorlax > Blastoise. Blastoise is at the bottom."
-        },
-
-        // --- Phase 6: Indigo Plateau - Elite Four (Logic & Deduction) ---
-        {
-            type: "text",
-            question: "<b>Advanced Concept: Combinations across Three Categories!</b><br>Multiply the number of options in Category 1 x Category 2 x Category 3.<br><i>Example: 2 caps, 3 shirts, 4 shoes = 2 x 3 x 4 = 24 outfits.</i><br><br><b>Story:</b> Marty creates custom Pokémon battle gear. He has 4 battle vests, 2 glove types, and 3 mega-ring colors. How many unique gear combinations can he make (4 x 2 x 3)?",
-            answer: "24",
-            hint: "Multiply 4 x 2 = 8, then multiply 8 x 3!",
-            explanation: "4 x 2 x 3 = 24 unique gear combinations."
-        },
-        {
-            type: "mcq",
-            question: "<b>Advanced Concept: Lines of Symmetry on Regular Polygons!</b><br>A regular polygon (equal sides and angles) has as many lines of symmetry as it has sides!<br><i>Example: A regular pentagon (5 sides) has 5 lines of symmetry.</i><br><br><b>Story:</b> Lorelei examines an ice crystal shaped like a regular Hexagon (6 equal sides). How many lines of symmetry does a regular Hexagon have?",
-            options: ["4", "5", "6", "8"],
-            answer: "6",
-            hint: "A regular shape with 6 equal sides has 6 lines of symmetry!",
-            explanation: "Regular polygons have lines of symmetry equal to their number of sides (6)."
-        },
-        {
-            type: "text",
-            question: "<b>Advanced Strategy: The Triple-Double Trick for x8!</b><br>To multiply any number by 8, double it three times in a row!<br><i>Example: 9 x 8 -> Double 9 (18), double 18 (36), double 36 (72).</i><br><br><b>Story:</b> Bruno's Onix smashes 6 boulders yielding 8 Stardust each: 6 x 8. Use Triple-Double: Double 6 is 12, double 12 is 24, now double 24. What is 6 x 8?",
+            question: "<b>Strategy: Geometric Pattern Growth Rules!</b><br><i>What it means:</i> Analyze the mathematical operation used to jump from step to step in a growing sequence (e.g., adding an increasing number or multiplying).<br><br><b>Story:</b> Marty tracks pulse signals that double every step: 3 Hz, 6 Hz, 12 Hz, 24 Hz, ___ Hz. What is the next frequency in this doubling pattern?",
             answer: "48",
-            hint: "Double 24 (24 + 24 = ?).",
-            explanation: "Double 6 = 12, double 12 = 24, double 24 = 48. 6 x 8 = 48."
+            hint: "Multiply the last number (24) by 2!",
+            explanation: "The pattern multiplies by 2 each step. 24 x 2 = 48 Hz."
+        },
+
+        // --- Phase 4: Fractions, Averages & Reverse Engineering ---
+        {
+            type: "text",
+            question: "<b>Strategy: Non-Unit Fraction Calculation (3/4 of a set)!</b><br><i>What it means:</i> To find three-quarters (3/4) of a set, divide the total set into 4 equal groups (to find 1/4), then multiply that group size by 3.<br><br><b>Story:</b> Marty has 32 energy canisters. He uses 3/4 of them to power the main elevator. Calculate (32 / 4) x 3. How many canisters does he use?",
+            answer: "24",
+            hint: "First divide 32 by 4 (= 8). Then multiply 8 by 3!",
+            explanation: "32 / 4 = 8. 8 x 3 = 24 energy canisters."
+        },
+        {
+            type: "text",
+            question: "<b>Strategy: Column Addition with Regrouping (Carrying)!</b><br><i>What it means:</i> When adding multi-digit numbers, sum the ones column first. If the ones sum is 10 or greater, write down the ones digit and carry the ten over to the tens column.<br><br><b>Story:</b> Marty combines two power grids: Grid A produces 76 kilowatts and Grid B produces 88 kilowatts. Calculate 76 + 88 using regrouping.",
+            answer: "164",
+            hint: "Add ones: 6 + 8 = 14 (write 4, carry 10). Add tens: 70 + 80 + 10 = 160. Total = 164!",
+            explanation: "76 + 88 = 164 kilowatts."
+        },
+        {
+            type: "text",
+            question: "<b>Strategy: Calculating a 3-Item Average!</b><br><i>What it means:</i> An <b>Average</b> represents a central value for a set of numbers. To calculate it, sum all the values together, then divide by the total number of items in the set.<br><br><b>Story:</b> Marty runs three test laps around the training track. His lap times are 110 seconds, 130 seconds, and 150 seconds. Add them together (390), then divide by 3 to find his average lap time.",
+            answer: "130",
+            hint: "Divide 390 by 3 (think: 39 / 3 = 13, then add a zero).",
+            explanation: "110 + 130 + 150 = 390. 390 / 3 = 130 seconds average."
+        },
+        {
+            type: "text",
+            question: "<b>Strategy: Two-Step Working Backward!</b><br><i>What it means:</i> To solve for an unknown starting value when given the final result, reverse every operation in backward order (addition becomes subtraction, multiplication becomes division).<br><br><b>Story:</b> Marty had a stash of power gems. He doubled the amount (x2), then added 8 more gems (+8), ending up with 38 gems total. Work backward: (38 - 8) / 2. How many gems did he start with?",
+            answer: "15",
+            hint: "First undo the addition: 38 - 8 = 30. Then undo the doubling: 30 / 2 = ?",
+            explanation: "38 - 8 = 30. 30 / 2 = 15 starting gems."
         },
         {
             type: "mcq",
-            question: "<b>Advanced Concept: Crossing Hour Markers in Elapsed Time!</b><br>Calculate elapsed minutes by counting to the top of the hour first, then adding the remaining minutes.<br><i>Example: From 3:40 PM to 4:25 PM is 20 min (to 4:00) + 25 min = 45 minutes.</i><br><br><b>Story:</b> Lance's Dragon-type battle starts at 4:45 PM and finishes at 5:30 PM. How many total minutes did the match last?",
-            options: ["30 minutes", "40 minutes", "45 minutes", "50 minutes"],
+            question: "<b>Strategy: Comparing Fractions with Benchmark Percentages!</b><br><i>What it means:</i> Convert fractions into equivalent parts of 100 or compare them against 1/2 (50%) to see which represents a larger quantity.<br><br><b>Story:</b> Battery A is filled to 4/5 of capacity. Battery B is filled to 3/4 of capacity. Which battery contains a GREATER portion of charge?",
+            options: ["Battery A (4/5)", "Battery B (3/4)"],
+            answer: "Battery A (4/5)",
+            hint: "4/5 equals 80/100 (80%). 3/4 equals 75/100 (75%). Which is larger?",
+            explanation: "4/5 = 80%, while 3/4 = 75%. Battery A contains more charge."
+        },
+
+        // --- Phase 5: Statistical Analysis & Multi-Item Deductions ---
+        {
+            type: "text",
+            question: "<b>Strategy: Finding the Median of an Even Data Set!</b><br><i>What it means:</i> The <b>Median</b> is the exact middle value in an ordered list. When there is an even number of items, put them in order and find the exact number sitting halfway between the two middle values.<br><br><b>Story:</b> Marty records scanner readings in order: 14, 18, 22, and 28. The two middle values are 18 and 22. What is the Median value sitting halfway between them?",
+            answer: "20",
+            hint: "What number is directly halfway between 18 and 22?",
+            explanation: "Halfway between 18 and 22 is 20 [(18 + 22) / 2 = 20]."
+        },
+        {
+            type: "text",
+            question: "<b>Strategy: Multiplying by 25 (100 / 4 Rule)!</b><br><i>What it means:</i> Since 25 is one-fourth of 100, you can multiply any number by 25 by multiplying it by 100 first, then dividing that result by 4!<br><br><b>Story:</b> Solve 16 x 25 using this strategy: First calculate 16 x 100 = 1,600. Now divide 1,600 by 4. What is the final answer?",
+            answer: "400",
+            hint: "16 divided by 4 is 4. So 1,600 divided by 4 is...?",
+            explanation: "16 x 100 = 1,600. 1,600 / 4 = 400."
+        },
+        {
+            type: "text",
+            question: "<b>Strategy: Calculating Statistical Range!</b><br><i>What it means:</i> The <b>Range</b> measures the total spread of a data set. Calculate it by taking the Maximum (highest) value and subtracting the Minimum (lowest) value: Range = Max - Min.<br><br><b>Story:</b> Marty records temperature sensor outputs: 32°C, 19°C, 84°C, and 51°C. Subtract the lowest value (19) from the highest value (84) to find the Range.",
+            answer: "65",
+            hint: "84 - 19 (think: 84 - 20 = 64, then add 1 back = 65).",
+            explanation: "84 - 19 = 65°C Range."
+        },
+        {
+            type: "text",
+            question: "<b>Strategy: Subtraction via Rounding Compensation!</b><br><i>What it means:</i> To subtract a number ending in 8 or 9 (like 49), subtract the next ten (50) instead, then add back the difference (1) to correct your answer.<br><br><b>Story:</b> Solve 154 - 49 for lab equipment setup: Subtract 50 from 154 first (which gives 104), then add 1 back. What is the result?",
+            answer: "105",
+            hint: "154 - 50 = 104. Now add 1 back!",
+            explanation: "154 - 50 = 104. 104 + 1 = 105."
+        },
+        {
+            type: "mcq",
+            question: "<b>Strategy: 4-Step Chain Deduction!</b><br><i>What it means:</i> Link multiple comparison statements in sequential order (A > B, B > C, C > D) to establish a complete top-to-bottom ranking.<br><br><b>Story:</b> In a speed test, Drone A is faster than Drone B. Drone B is faster than Drone C. Drone C is faster than Drone D. Which drone is the SLOWEST overall?",
+            options: ["Drone A", "Drone B", "Drone C", "Drone D"],
+            answer: "Drone D",
+            hint: "Follow the speed chain down: A > B > C > D. Who is at the very bottom?",
+            explanation: "The complete chain is A > B > C > D, making Drone D the slowest."
+        },
+
+        // --- Phase 6: Multi-Dimensional Combinations & Symmetry ---
+        {
+            type: "text",
+            question: "<b>Strategy: 3-Category Combinations Rule!</b><br><i>What it means:</i> To find the total number of unique combinations across multiple distinct sets, multiply the number of options in each category together (Options A x Options B x Options C).<br><br><b>Story:</b> Marty designs custom robots. He has 4 chassis bases, 3 arm modules, and 3 sensor heads. How many unique robot combinations can he assemble (4 x 3 x 3)?",
+            answer: "36",
+            hint: "Multiply 4 x 3 = 12, then multiply 12 x 3!",
+            explanation: "4 x 3 x 3 = 36 unique robot combinations."
+        },
+        {
+            type: "mcq",
+            question: "<b>Strategy: Lines of Symmetry in Regular Polygons!</b><br><i>What it means:</i> A <b>Line of Symmetry</b> is an imaginary fold line that cuts a shape into two identical mirror-image halves. Any regular polygon (all sides and angles equal) has exactly as many lines of symmetry as it has sides!<br><br><b>Story:</b> Marty inspects an opening hatch shaped like a regular Octagon (8 equal sides). How many lines of symmetry does a regular Octagon have?",
+            options: ["4", "6", "8", "10"],
+            answer: "8",
+            hint: "A regular shape with 8 equal sides has a matching line of symmetry for every side!",
+            explanation: "A regular octagon has 8 lines of symmetry."
+        },
+        {
+            type: "text",
+            question: "<b>Strategy: The Triple-Double Method for Multiplying by 8!</b><br><i>What it means:</i> Since 8 is 2 x 2 x 2, multiplying any number by 8 is the exact same as doubling that number three times in a row!<br><br><b>Story:</b> Solve 7 x 8 using Triple-Double: Double 7 once (14), double 14 a second time (28), and double 28 a third time. What is 7 x 8?",
+            answer: "56",
+            hint: "Double 28 (28 + 28 = ?).",
+            explanation: "Double 7 = 14. Double 14 = 28. Double 28 = 56. 7 x 8 = 56."
+        },
+        {
+            type: "mcq",
+            question: "<b>Strategy: Crossing Hour Markers for Elapsed Time!</b><br><i>What it means:</i> To calculate total elapsed time when crossing an hour boundary, split the calculation into two jumps: first count the minutes to the top of the hour (60 min mark), then add the remaining minutes.<br><br><b>Story:</b> A diagnostic test starts at 3:40 PM and completes at 4:25 PM. How many total minutes did the test take?",
+            options: ["35 minutes", "40 minutes", "45 minutes", "50 minutes"],
             answer: "45 minutes",
-            hint: "Count from 4:45 PM to 5:00 PM (15 min), then add 30 min past 5:00!",
-            explanation: "15 minutes (to 5:00) + 30 minutes = 45 minutes elapsed."
+            hint: "Count from 3:40 PM to 4:00 PM (20 min), then add the 25 min past 4:00!",
+            explanation: "20 minutes to reach 4:00 PM + 25 minutes past 4:00 = 45 minutes total."
         },
         {
             type: "mcq",
-            question: "<b>Advanced Strategy: Dual-Inverse Verification!</b><br>Check multiplication using division to verify correctness.<br><i>Example: Check 15 x 4 = 60 by verifying 60 / 4 = 15.</i><br><br><b>Story:</b> Agatha calculates that 28 x 3 = 84 Ghost energy points. Verify her math by dividing 84 by 3. Does it equal 28?",
+            question: "<b>Strategy: Dual-Inverse Proof Verification!</b><br><i>What it means:</i> You can prove a multiplication answer is correct by executing its inverse operation (division) and verifying that you return to the starting number.<br><br><b>Story:</b> Marty calculates 27 x 4 = 108 circuit nodes. Check his calculation by dividing 108 by 4. Does it equal 27?",
             options: ["Yes", "No"],
             answer: "Yes",
-            hint: "Divide 84 by 3. Does it give 28?",
-            explanation: "Yes! 84 / 3 = 28, confirming Agatha's calculation is correct."
+            hint: "Divide 108 by 4 (100 / 4 = 25, 8 / 4 = 2 -> 25 + 2 = 27).",
+            explanation: "108 / 4 = 27, proving Marty's multiplication was 100% correct."
         },
 
-        // --- Phase 7: Boss Battle - Legendary Mewtwo Strike (Multi-Step & Equations) ---
+        // --- Phase 7: Master Logic - Core Override Protocol ---
         {
             type: "mcq",
-            question: "<b>Advanced Concept: Simplified Probability Fractions!</b><br>Probability = Favorable Choices / Total Choices. Reduce the fraction to simplest form.<br><i>Example: 4 green balls out of 12 total = 4/12 = 1 in 3 chance.</i><br><br><b>Story:</b> Mewtwo creates 10 psychic barrier spheres, but only 2 contain real access keys. What is the simplified probability of picking a real key on the first attempt?",
-            options: ["1 in 5 chance", "1 in 4 chance", "2 in 5 chance", "1 in 10 chance"],
-            answer: "1 in 5 chance",
-            hint: "Simplify 2 out of 10 (2/10 -> divide numerator and denominator by 2).",
-            explanation: "2 out of 10 simplifies to 1/5, or a 1 in 5 chance."
+            question: "<b>Strategy: Simplified Probability Ratios!</b><br><i>What it means:</i> <b>Probability</b> measures how likely an event is to happen: (Favorable Outcomes) / (Total Outcomes). Express the ratio in its simplest reduced fraction form.<br><br><b>Story:</b> A vault contains 12 keycard slots. Exactly 3 of them unlock the main door, while 9 are decoys. What is the simplified probability of picking a real keycard on the first try?",
+            options: ["1 in 3 chance", "1 in 4 chance", "3 in 4 chance", "1 in 12 chance"],
+            answer: "1 in 4 chance",
+            hint: "Simplify the fraction 3 out of 12 (3/12 -> divide top and bottom by 3).",
+            explanation: "3/12 simplifies to 1/4, which represents a 1 in 4 chance."
         },
         {
             type: "text",
-            question: "<b>Advanced Strategy: Grouping Numbers into Tens & Hundreds!</b><br>Combine pairs of numbers that make clean tens/hundreds first.<br><i>Example: 35 + 48 + 15 + 22 -> (35 + 15 = 50) + (48 + 22 = 70) = 120.</i><br><br><b>Story:</b> Marty combines four energy cells to pierce Mewtwo's shield: 44 + 37 + 16 + 23. Group (44 + 16 = 60) and (37 + 23 = 60). What is the total combined energy score?",
+            question: "<b>Strategy: Friendly Pairing for Multi-Term Addition!</b><br><i>What it means:</i> When adding 4 or more numbers, reorder and pair numbers that sum up to clean tens or hundreds first.<br><br><b>Story:</b> Add these four power readouts: 36 + 47 + 14 + 23. Group (36 + 14 = 50) and (47 + 23 = 70). What is the grand total sum?",
             answer: "120",
-            hint: "Add 60 + 60!",
-            explanation: "(44 + 16) + (37 + 23) = 60 + 60 = 120 energy units."
+            hint: "Add your two friendly totals together: 50 + 70!",
+            explanation: "(36 + 14) + (47 + 23) = 50 + 70 = 120 total power."
         },
         {
             type: "mcq",
-            question: "<b>Advanced Logic Strategy: Multi-Constraint 'NOT' Grid Elimination!</b><br>Cross out options ruled out by negative clues to reveal the true answer.<br><i>Example: 'Not blue, not red, not small' leaves 'Big Green'.</i><br><br><b>Story:</b> Mewtwo's weak spot is hidden in one of four chambers: Chamber A, Chamber B, Chamber C, Chamber D. Clue 1: It is NOT in Chamber A. Clue 2: It is NOT in Chamber B. Clue 3: It is in an ODD-numbered position (A=1, B=2, C=3, D=4). Where is the weak spot?",
-            options: ["Chamber A", "Chamber B", "Chamber C", "Chamber D"],
-            answer: "Chamber C",
-            hint: "Cross out A and B. Position C is #3 (odd) and D is #4 (even). Which is odd?",
-            explanation: "Eliminating A and B leaves C (#3, odd) and D (#4, even). Chamber C is correct."
+            question: "<b>Strategy: Multi-Constraint 'NOT' Elimination!</b><br><i>What it means:</i> Use negative conditions ('NOT X') to systematically cross out invalid options from a matrix until the single correct choice remains.<br><br><b>Story:</b> The main computer core is hidden in one of four chambers: Sector A, Sector B, Sector C, or Sector D. Clue 1: It is NOT in Sector A. Clue 2: It is NOT in Sector B. Clue 3: It is located in an ODD-numbered sector (A=1, B=2, C=3, D=4). Where is the core?",
+            options: ["Sector A", "Sector B", "Sector C", "Sector D"],
+            answer: "Sector C",
+            hint: "Cross out A and B. Position C is #3 (odd) and D is #4 (even).",
+            explanation: "Eliminating A and B leaves C (#3, odd) and D (#4, even). Sector C is correct."
         },
         {
             type: "text",
-            question: "<b>Advanced Concept: Finding the Median of 5 Values!</b><br>Sort all 5 values in order from smallest to largest and pick the 3rd (middle) value.<br><i>Example: For [12, 19, 24, 31, 40], the median is 24.</i><br><br><b>Story:</b> Sort Mewtwo's 5 barrier recovery times in seconds: 42, 19, 55, 33, and 28. Put them in order [19, 28, 33, 42, 55]. What is the Median value?",
-            answer: "33",
-            hint: "Look at the sorted list: 19, 28, 33, 42, 55. Which number is right in the center?",
-            explanation: "In the sorted list [19, 28, 33, 42, 55], 33 sits right in the middle."
-        },
-        {
-            type: "text",
-            question: "<b>Advanced Strategy: Three-Step Multi-Operation Word Problem!</b><br>Execute operations in precise sequence: Multiply first, Add second, Subtract third.<br><i>Example: 4 x 6 = 24. Add 10 = 34. Subtract 5 = 29.</i><br><br><b>Story:</b> Charizard carries 4 packs of Fire Energy with 8 cards in each pack (4 x 8 = 32). Marty gives him 10 bonus cards (32 + 10 = 42). Mewtwo's Disable attack removes 7 cards. How many cards remain (42 - 7)?",
+            question: "<b>Strategy: Finding the Median in an Odd-Sized Set!</b><br><i>What it means:</i> Arrange all values in order from least to greatest. In an odd-sized set (like 5 numbers), the median is the single number sitting directly in the middle (3rd number).<br><br><b>Story:</b> Sort Marty's 5 drone flight times in seconds: 48, 22, 60, 35, and 29. Put them in order [22, 29, 35, 48, 60]. What is the Median flight time?",
             answer: "35",
-            hint: "Step 1: 4 x 8 = 32. Step 2: 32 + 10 = 42. Step 3: 42 - 7 = ?",
-            explanation: "4 x 8 = 32. 32 + 10 = 42. 42 - 7 = 35 cards remaining."
+            hint: "Look at the sorted list: 22, 29, 35, 48, 60. Which number sits in the exact center?",
+            explanation: "In the sorted set [22, 29, 35, 48, 60], 35 is the middle (3rd) value."
+        },
+        {
+            type: "text",
+            question: "<b>Strategy: Three-Step Sequential Execution!</b><br><i>What it means:</i> Solve complex multi-step real-world problems by breaking them into sequential single operations: Step 1 (Multiply), Step 2 (Add), Step 3 (Subtract).<br><br><b>Story:</b> Marty orders 4 crates of spare parts with 9 gears in each crate (4 x 9 = 36). He receives 10 bonus gears from the lab (36 + 10 = 46). He uses 8 gears for repairs. How many working gears remain (46 - 8)?",
+            answer: "38",
+            hint: "Step 1: 4 x 9 = 36. Step 2: 36 + 10 = 46. Step 3: 46 - 8 = ?",
+            explanation: "4 x 9 = 36. 36 + 10 = 46. 46 - 8 = 38 gears remaining."
         },
 
-        // --- Phase 8: Hall of Fame Victory Celebration (Graphs, Money & Master Logic) ---
+        // --- Phase 8: Mind Fortress Grand Master Ceremony ---
         {
             type: "text",
-            question: "<b>Advanced Concept: Comparative Bar Graph Reading!</b><br>Subtract the lower bar value from the higher bar value to calculate the margin.<br><i>Example: High bar = 90, Low bar = 42 -> Difference = 90 - 42 = 48.</i><br><br><b>Story:</b> In the Hall of Fame record book, Marty's team scored 94 victory points while Rival Blue scored 48 points. Subtract 48 from 94 to find Marty's winning point margin.",
-            answer: "46",
-            hint: "Subtract 94 - 48 (think: 94 - 40 = 54, then 54 - 8 = 46).",
-            explanation: "94 - 48 = 46 victory points margin."
+            question: "<b>Strategy: Comparative Data Margin Reading!</b><br><i>What it means:</i> To find the exact difference or 'margin' between two values on a bar graph, subtract the smaller bar's value from the larger bar's value.<br><br><b>Story:</b> On the final Master Academy board, Marty scores 95 logic points and the benchmark score is 47 points. Subtract 47 from 95 to find Marty's winning margin.",
+            answer: "48",
+            hint: "95 - 47 (think: 95 - 40 = 55, then 55 - 7 = 48).",
+            explanation: "95 - 47 = 48 points margin."
         },
         {
             type: "text",
-            question: "<b>Advanced Strategy: Multiply by 99 (Multiply by 100 minus 1 group)!</b><br>To multiply any number by 99, multiply by 100 first, then subtract 1 group of that number!<br><i>Example: 8 x 99 -> (8 x 100) - 8 = 800 - 8 = 792.</i><br><br><b>Story:</b> Professor Oak orders victory confetti cannons: 6 x 99. First calculate 6 x 100 = 600. Now subtract 6 from 600. What is 6 x 99?",
-            answer: "594",
-            hint: "Subtract 6 from 600 (600 - 6).",
-            explanation: "6 x 100 = 600. 600 - 6 = 594 confetti bursts."
+            question: "<b>Strategy: Multiplying by 99 (100 - 1 Rule)!</b><br><i>What it means:</i> To multiply any number by 99, multiply it by 100 first, then subtract 1 group of that number from the product!<br><br><b>Story:</b> Solve 8 x 99 for grand ceremony decorations: Multiply 8 x 100 = 800. Now subtract 8 from 800. What is 8 x 99?",
+            answer: "792",
+            hint: "Subtract 8 from 800 (800 - 8).",
+            explanation: "8 x 100 = 800. 800 - 8 = 792."
         },
         {
             type: "text",
-            question: "<b>Advanced Concept: Multi-Item Money Change Calculation!</b><br>Multiply item cost by quantity, then subtract from total money handed to cashier.<br><i>Example: 4 items at $6 each = $24. Pay with $50 bill -> $50 - $24 = $26 change.</i><br><br><b>Story:</b> Marty buys 4 Champion T-shirts at the Indigo Plateau shop for $9 each ($4 x $9 = $36 total). He pays with a $50 bill. How much change does he get back ($50 - $36)?",
-            answer: "14",
-            hint: "Subtract $36 from $50 ($50 - $36).",
-            explanation: "4 x $9 = $36 total cost. $50 - $36 = $14 change returned."
+            question: "<b>Strategy: Calculating Currency Change from Multiple Items!</b><br><i>What it means:</i> Multiply the item price by the quantity to find total cost. Then subtract total cost from the payment bill handed over.<br><br><b>Story:</b> Marty buys 3 Master Logic books for $9 each ($3 x $9 = $27 total). He pays with a $50 bill. How much change does he receive ($50 - $27)?",
+            answer: "23",
+            hint: "Subtract $27 from $50 ($50 - $27).",
+            explanation: "3 x $9 = $27. $50 - $27 = $23 change."
         },
         {
             type: "mcq",
-            question: "<b>Advanced Logic Strategy: 3-Person Grid Deductive Logic!</b><br>Eliminate taken options so each person lands on their unique correct match.<br><i>Example: Person A gets Item 1, Person B doesn't get Item 2 -> Deduce all assignments.</i><br><br><b>Story:</b> Three champions (Marty, Ash, and Red) pick starter statues (Charizard, Blastoise, Venusaur). Clue 1: Ash takes Charizard. Clue 2: Red does NOT take Venusaur. Which statue does Red receive?",
-            options: ["Charizard", "Blastoise", "Venusaur"],
-            answer: "Blastoise",
-            hint: "Ash took Charizard. Red didn't take Venusaur. So Red MUST take...?",
-            explanation: "Charizard is taken by Ash. Red cannot take Venusaur, so Red gets Blastoise."
+            question: "<b>Strategy: 3-Item Grid Deductive Matching!</b><br><i>What it means:</i> Use confirmed matches and direct negative clues to rule out possibilities in a grid until every subject has one unique match.<br><br><b>Story:</b> Three scholars (Marty, Leo, and Ava) pick trophy categories (Math, Logic, Science). Clue 1: Leo takes Science. Clue 2: Ava does NOT take Math. Which trophy does Ava receive?",
+            options: ["Math", "Logic", "Science"],
+            answer: "Logic",
+            hint: "Leo took Science. Ava cannot take Math. So Ava MUST take...?",
+            explanation: "Science is taken by Leo. Ava cannot take Math, so Ava takes Logic."
         },
         {
             type: "text",
-            question: "<b>Grand Finale: Master League Total Accumulation!</b><br>Multiply items per phase by total number of phases to find the grand championship score.<br><i>Example: 12 trophies x 8 phases = 96 total trophies.</i><br><br><b>Story:</b> Marty and Team Alpha win 16 victory trophies in each of the 8 Pokémon League phases! Calculate 8 x 16 to find their grand total Hall of Fame trophy count!",
+            question: "<b>Grand Finale: Total Cumulative Multiplication!</b><br><i>What it means:</i> When equal amounts are accumulated across multiple stages, multiply the stage count by the per-stage value.<br><br><b>Story:</b> Marty completes all 8 phases of the Master Logic Academy, earning 16 Master Badges per phase! Calculate 8 x 16 to find his grand total badge score!",
             answer: "128",
             hint: "Calculate 8 x 16 (think: 8 x 10 = 80, 8 x 6 = 48. Add 80 + 48!).",
-            explanation: "8 x 16 = (8 x 10) + (8 x 6) = 80 + 48 = 128 total trophies! Pokémon Master Champion!"
+            explanation: "8 x 16 = (8 x 10) + (8 x 6) = 80 + 48 = 128 total Master Badges! Grand Master Champion!"
         }
     ]
 };
