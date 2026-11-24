@@ -1,298 +1,300 @@
-// Marty's Worksheet — Mission 4: Robot Lab Rescue
+// Marty's Worksheet — Mission 5: Robot Lab Rescue LEVEL 2 — The Core Chamber
 // Drop-in replacement for questions.js in worksheet-app
-// Story: Bolt the robot is stranded in the lab with a dead battery and
-// locked doors. Each phase reboots one system: power, logic, movement,
-// patterns, gears, codes, debugging, and the final rescue door.
-// Built to Marty's design profile: discovery over instruction, logic /
-// patterns / how-things-work first, adventure framing, no drill sets.
-// Like Mission 3, this file omits the per-question help field entirely
-// (the app only displays it in Review Mode when one exists). The short
-// 'Tool' line in each question hands Marty the rule like a gadget he
-// picks up on the mission — figuring out how to use it is the puzzle.
-// Explanations are included for Review Mode.
+// Story: Bolt is rescued, but deep below the lab the Core Chamber — the
+// room that powers the whole building — is still dark. Bolt leads Marty
+// down to reboot it. Every system is a level up from Mission 4:
+// 5-switch binary panels, three-gate chains, loops that must be tracked
+// square by square (including negative coordinates), nested loops,
+// combined battery drain, and tougher cryptarithms.
+// Built ~20% harder than Mission 4 at Bhanu's request (2026-11-23),
+// after Marty finished Robot Lab Rescue quite easily. Same rules as
+// Missions 3-4: no per-question help field anywhere in this file, short
+// 'Tool' lines instead of lessons, explanations kept for Review Mode.
 
 const missionConfig = {
-    themeTitle: "🤖 Robot Lab Rescue: Reboot Bolt!",
-    themeColor: "linear-gradient(135deg, #0ea5e9 0%, #0f172a 50%, #22c55e 100%)",
-    themeIcon: "🤖",
+    themeTitle: "🤖 Robot Lab Rescue — LEVEL 2: The Core Chamber",
+    themeColor: "linear-gradient(135deg, #7c3aed 0%, #0f172a 50%, #ef4444 100%)",
+    themeIcon: "⚡",
     showStreakCounter: true,
     streakCounter: true,
     enableStreakBonus: true,
     streakThreshold: 3,
     questions: [
-        // --- PHASE 1: POWER UP — BINARY SWITCHES (Questions 1 - 5) ---
+        // --- PHASE 1: FIVE-SWITCH BINARY (Questions 1 - 5) ---
         {
             type: "text",
-            question: "<b>Tool: Binary Switch Panel</b><br><i>How it works:</i> Bolt's power panel has 4 switches worth 8, 4, 2 and 1. An ON switch (1) adds its value, an OFF switch (0) adds nothing. The pattern 1-0-0-1 means 8 + 1 = 9.<br><br><b>Mission:</b> The panel shows 1-0-1-0. How much power does Bolt get?",
-            answer: "10",
-            explanation: "1-0-1-0 means the 8 and the 2 are ON: 8 + 2 = 10 power."
-        },
-        {
-            type: "text",
-            question: "<b>Tool: Binary Switch Panel</b><br><i>How it works:</i> Same panel: switch values 8, 4, 2, 1, read left to right.<br><br><b>Mission:</b> A second panel shows 0-1-1-1. How much power does this panel give?",
-            answer: "7",
-            explanation: "0-1-1-1 means 4 + 2 + 1 = 7 power. The 8 switch is OFF."
+            question: "<b>Tool: Upgraded Binary Panel</b><br><i>How it works:</i> The Core Chamber panel has FIVE switches worth 16, 8, 4, 2 and 1. ON (1) adds the value, OFF (0) adds nothing.<br><br><b>Mission:</b> The panel shows 1-1-0-1-0. How much power does the Core get?",
+            answer: "26",
+            explanation: "The 16, 8 and 2 switches are ON: 16 + 8 + 2 = 26 power."
         },
         {
             type: "mcq",
-            question: "<b>Tool: Binary Switch Panel</b><br><i>How it works:</i> Now work backwards: to make a number, switch ON the values that add up to it.<br><br><b>Mission:</b> Bolt needs exactly 13 power to boot his motors. Which switch pattern makes 13?",
-            options: ["1011", "1101", "1110", "1001"],
-            answer: "1101",
-            explanation: "13 = 8 + 4 + 1, so switches 8, 4 and 1 are ON and 2 is OFF: 1-1-0-1."
+            question: "<b>Tool: Upgraded Binary Panel</b><br><i>How it works:</i> Work backwards again: switch ON exactly the values that add up to the target.<br><br><b>Mission:</b> The Core needs exactly 25 power to wake its first machine. Which pattern makes 25?",
+            options: ["10101", "11001", "10011", "11100"],
+            answer: "11001",
+            explanation: "25 = 16 + 8 + 1, so the pattern is 1-1-0-0-1. (Check the traps: 10101 = 21, 10011 = 19, 11100 = 28.)"
         },
         {
             type: "mcq",
-            question: "<b>Tool: Robot Counting</b><br><i>How it works:</i> Robots count in binary — the same ON/OFF patterns in order. Watch Bolt count: 1, 10, 11, 100, 101...<br><br><b>Mission:</b> What does Bolt say NEXT in this count?",
-            options: ["102", "110", "111", "200"],
-            answer: "110",
-            explanation: "In normal numbers Bolt is counting 1, 2, 3, 4, 5, so next is 6. Six in binary is 4 + 2 = 110. (Binary never uses the digit 2, which rules out 102 and 200.)"
+            question: "<b>Tool: Robot Counting — Deeper</b><br><i>How it works:</i> Binary counting again, further along: each pattern is worth one more than the last.<br><br><b>Mission:</b> Bolt counts: 110, 111, 1000, 1001, ___. What comes next?",
+            options: ["1010", "1100", "1002", "1110"],
+            answer: "1010",
+            explanation: "In normal numbers that count is 6, 7, 8, 9, so next is 10. Ten in binary is 8 + 2 = 1010."
         },
         {
             type: "text",
-            question: "<b>Tool: Power Merger</b><br><i>How it works:</i> Two panels can feed one battery. Convert each pattern to a number first, then add the numbers.<br><br><b>Mission:</b> Panel A shows 1-0-1 and Panel B shows 0-1-0 (switch values 4, 2, 1 on this smaller panel). What is the total power in the battery?",
-            answer: "7",
-            explanation: "Panel A: 4 + 1 = 5. Panel B: 2. Total = 5 + 2 = 7 power."
+            question: "<b>Tool: Twin Core Panels</b><br><i>How it works:</i> Two 4-switch panels (values 8, 4, 2, 1) feed one battery. Convert each, then add.<br><br><b>Mission:</b> Panel A shows 1-1-0-0 and Panel B shows 0-1-0-1. What is the total power?",
+            answer: "17",
+            explanation: "Panel A: 8 + 4 = 12. Panel B: 4 + 1 = 5. Total = 12 + 5 = 17."
+        },
+        {
+            type: "mcq",
+            question: "<b>Tool: Panel Showdown</b><br><i>How it works:</i> To compare two binary patterns, convert both — the bigger-looking pattern is not always the bigger number, because the LEFT switches are worth the most.<br><br><b>Mission:</b> Two panels glow in the dark: 1-0-1-0-1 and 0-1-1-1-1. Which panel gives MORE power?",
+            options: ["10101", "01111", "They are equal", "Neither panel works"],
+            answer: "10101",
+            explanation: "10101 = 16 + 4 + 1 = 21. 01111 = 8 + 4 + 2 + 1 = 15. The first panel wins, 21 to 15 — its 16 switch beats all four of the other's small switches combined."
         },
 
-        // --- PHASE 2: LOGIC GATES (Questions 6 - 10) ---
+        // --- PHASE 2: LOGIC GATES LEVEL 2 (Questions 6 - 10) ---
         {
             type: "mcq",
-            question: "<b>Tool: AND Gate</b><br><i>How it works:</i> An AND gate turns ON only when BOTH of its inputs are ON. If either input is OFF, the output is OFF.<br><br><b>Mission:</b> Bolt's arm motor is wired through an AND gate. Input 1 is ON, Input 2 is OFF. Is the motor output ON or OFF?",
+            question: "<b>Tool: Triple AND Gate</b><br><i>How it works:</i> An AND gate with THREE inputs still follows the same rule: the output is ON only if EVERY input is ON.<br><br><b>Mission:</b> The Core's fan runs through a triple AND gate. Inputs: ON, ON, OFF. Is the fan ON or OFF?",
             options: ["ON", "OFF"],
             answer: "OFF",
-            explanation: "AND needs both inputs ON. One input is OFF, so the output is OFF."
+            explanation: "One input is OFF, and AND needs all three ON. The fan stays OFF."
         },
         {
             type: "mcq",
-            question: "<b>Tool: OR Gate</b><br><i>How it works:</i> An OR gate turns ON when AT LEAST ONE input is ON. It only stays OFF when both inputs are OFF.<br><br><b>Mission:</b> The lab alarm runs through an OR gate. Sensor 1 is OFF, Sensor 2 is ON. Is the alarm ON or OFF?",
+            question: "<b>Tool: OR-then-NOT Chain</b><br><i>How it works:</i> Work through chained gates in order: finish the first gate completely, then feed its result into the next.<br><br><b>Mission:</b> Signals OFF and ON enter an OR gate. That result passes through a NOT gate. What is the FINAL output?",
+            options: ["ON", "OFF"],
+            answer: "OFF",
+            explanation: "OR with one ON input gives ON. NOT then flips it to OFF."
+        },
+        {
+            type: "mcq",
+            question: "<b>Tool: NOT-then-AND Chain</b><br><i>How it works:</i> This time the NOT gate comes FIRST, so flip the signal before it meets the AND gate.<br><br><b>Mission:</b> Signal A is OFF. It passes through a NOT gate, then meets signal B (ON) at an AND gate. What is the FINAL output?",
             options: ["ON", "OFF"],
             answer: "ON",
-            explanation: "OR needs just one ON input. Sensor 2 is ON, so the alarm is ON."
+            explanation: "NOT flips A from OFF to ON. Then AND sees ON and ON, so the output is ON."
         },
         {
             type: "mcq",
-            question: "<b>Tool: NOT Gate</b><br><i>How it works:</i> A NOT gate flips whatever goes in: ON becomes OFF, and OFF becomes ON.<br><br><b>Mission:</b> Bolt's night light passes through a NOT gate. The input signal is ON. What comes out?",
+            question: "<b>Tool: The Double Flip</b><br><i>How it works:</i> Two NOT gates in a row flip the signal, then flip it right back.<br><br><b>Mission:</b> A signal that is ON travels through a NOT gate, then ANOTHER NOT gate. What comes out at the end?",
             options: ["ON", "OFF"],
-            answer: "OFF",
-            explanation: "NOT flips the signal: ON in, OFF out."
+            answer: "ON",
+            explanation: "First NOT: ON becomes OFF. Second NOT: OFF becomes ON again. Two flips cancel out."
         },
         {
             type: "mcq",
-            question: "<b>Tool: Gate Chain</b><br><i>How it works:</i> Gates can be chained: the output of one becomes the input of the next. Work through them one at a time, in order.<br><br><b>Mission:</b> Two signals, ON and ON, enter an AND gate. That result then passes through a NOT gate. What is the FINAL output?",
-            options: ["ON", "OFF"],
-            answer: "OFF",
-            explanation: "AND with both inputs ON gives ON. Then NOT flips it to OFF."
-        },
-        {
-            type: "mcq",
-            question: "<b>Tool: Wake-Up Circuit</b><br><i>How it works:</i> Real robot rules are often AND rules in disguise: EVERY condition must be true at the same time.<br><br><b>Mission:</b> Bolt wakes up ONLY IF the main switch is ON AND his battery is full. Right now the switch is ON but the battery is NOT full. Does Bolt wake up?",
+            question: "<b>Tool: Charging Rule</b><br><i>How it works:</i> An OR rule fires when AT LEAST ONE condition is true — and stays quiet only when every condition is false.<br><br><b>Mission:</b> Bolt charges IF his battery is low OR the sun panel is active. Right now his battery is NOT low (it is fine) AND the sun panel is INACTIVE. Does Bolt charge?",
             options: ["Yes", "No"],
             answer: "No",
-            explanation: "It is an AND rule: both conditions must be true. The battery is not full, so Bolt stays asleep."
+            explanation: "OR needs at least one true condition. Battery low? No. Sun panel active? No. Both false, so Bolt does not charge."
         },
 
-        // --- PHASE 3: GRID NAVIGATION (Questions 11 - 15) ---
+        // --- PHASE 3: GRID NAVIGATION LEVEL 2 (Questions 11 - 15) ---
         {
             type: "mcq",
-            question: "<b>Tool: Lab Grid Map</b><br><i>How it works:</i> Positions are written (x, y). Moving right adds to x, moving up adds to y.<br><br><b>Mission:</b> Bolt starts at (1, 2). He rolls 3 squares RIGHT and 2 squares UP. Where is he now?",
-            options: ["(4, 4)", "(3, 4)", "(4, 3)", "(5, 4)"],
-            answer: "(4, 4)",
-            explanation: "x: 1 + 3 = 4. y: 2 + 2 = 4. Bolt is at (4, 4)."
+            question: "<b>Tool: Full Compass Grid</b><br><i>How it works:</i> The Core floor grid extends in every direction: right adds to x, left subtracts from x, up adds to y, down subtracts from y.<br><br><b>Mission:</b> Bolt starts at (5, 5). He rolls 2 squares LEFT and 3 squares DOWN. Where is he now?",
+            options: ["(3, 2)", "(7, 2)", "(3, 8)", "(2, 3)"],
+            answer: "(3, 2)",
+            explanation: "x: 5 - 2 = 3. y: 5 - 3 = 2. Bolt is at (3, 2)."
         },
         {
             type: "mcq",
-            question: "<b>Tool: Compass Turns</b><br><i>How it works:</i> A right turn spins Bolt one quarter-turn clockwise: North to East to South to West. A left turn goes the other way.<br><br><b>Mission:</b> Bolt faces NORTH. He turns RIGHT, then RIGHT again, then LEFT. Which way does he face now?",
+            question: "<b>Tool: Compass Turns — Long Chain</b><br><i>How it works:</i> Track the facing after EVERY turn, one at a time. Right turns go North to East to South to West; left turns go the opposite way round.<br><br><b>Mission:</b> Bolt faces SOUTH. He turns LEFT, then LEFT, then RIGHT, then LEFT. Which way does he face at the end?",
             options: ["North", "East", "South", "West"],
-            answer: "East",
-            explanation: "North, right to East, right to South, left back to East. Bolt faces East."
-        },
-        {
-            type: "text",
-            question: "<b>Tool: Step Counter</b><br><i>How it works:</i> Bolt's odometer adds up EVERY square he rolls over, whichever direction he goes.<br><br><b>Mission:</b> Bolt rolls 3 squares north, then 2 squares east, then 1 more square north. How many squares has he rolled in total?",
-            answer: "6",
-            explanation: "3 + 2 + 1 = 6 squares in total."
-        },
-        {
-            type: "text",
-            question: "<b>Tool: Shortest Route Planner</b><br><i>How it works:</i> On a grid, the shortest route between two points uses exactly the right-moves plus the up-moves needed — no backtracking.<br><br><b>Mission:</b> Bolt is at (2, 2) and his charging station is at (5, 4). He can only roll right or up, one square at a time. What is the SMALLEST number of moves that gets him there?",
-            answer: "5",
-            explanation: "He needs 3 moves right (2 to 5) and 2 moves up (2 to 4). 3 + 2 = 5 moves, and no route can use fewer."
+            answer: "North",
+            explanation: "Start South. Left to East. Left to North. Right to East. Left to North. Bolt ends facing North."
         },
         {
             type: "mcq",
-            question: "<b>Tool: Loop Command</b><br><i>How it works:</i> REPEAT runs the same block of commands over and over. Every run of the block happens in full, including its turns.<br><br><b>Mission:</b> Bolt faces NORTH and runs this program: REPEAT 3 times: (Roll forward 1 square, Turn RIGHT). After the whole program finishes, which way does Bolt face?",
-            options: ["North", "East", "South", "West"],
-            answer: "West",
-            explanation: "Each repeat turns him once: North to East (1), East to South (2), South to West (3). After 3 repeats he faces West."
-        },
-
-        // --- PHASE 4: PATTERN DECODING (Questions 16 - 20) ---
-        {
-            type: "text",
-            question: "<b>Tool: Signal Decoder</b><br><i>How it works:</i> Some signals hide their rule. Test what changes from one number to the next — and check your idea works on EVERY jump, not just the first.<br><br><b>Mission:</b> Bolt's antenna receives: 2, 3, 5, 9, 17, ___. What number comes next?",
-            answer: "33",
-            explanation: "The rule is double, then subtract 1: 2x2-1=3, 3x2-1=5, 5x2-1=9, 9x2-1=17. Next: 17x2-1 = 33."
-        },
-        {
-            type: "mcq",
-            question: "<b>Tool: Letter Signal Decoder</b><br><i>How it works:</i> Letters can hide number patterns too: A=1, B=2, C=3 and so on. Look at how far each letter jumps.<br><br><b>Mission:</b> A signal reads: A, C, F, J, O, ___. Which letter comes next?",
-            options: ["T", "U", "V", "W"],
-            answer: "U",
-            explanation: "The jumps grow: A to C is +2, C to F is +3, F to J is +4, J to O is +5. Next jump is +6: O (15) + 6 = 21 = U."
+            question: "<b>Tool: Loop Tracker</b><br><i>How it works:</i> A loop changes BOTH where Bolt is AND which way he faces. Run the block once, update everything, then run it again from the new position and facing.<br><br><b>Mission:</b> Bolt starts at (0, 0) facing NORTH and runs: REPEAT 2 times: (Roll forward 2 squares, Turn LEFT). What position is he in when the program ends?",
+            options: ["(-2, 2)", "(0, 4)", "(2, 2)", "(-2, 0)"],
+            answer: "(-2, 2)",
+            explanation: "First run: forward 2 north to (0, 2), turn left to face West. Second run: forward 2 west to (-2, 2), turn left to face South. He ends at (-2, 2)."
         },
         {
             type: "text",
-            question: "<b>Tool: Printer Pattern</b><br><i>How it works:</i> The lab printer stamps one number per tile. Marty notices each tile is a number multiplied by itself.<br><br><b>Mission:</b> The tiles read: 1, 4, 9, 16, 25, ___. What number is stamped on the next tile?",
-            answer: "36",
-            explanation: "These are square numbers: 1x1, 2x2, 3x3, 4x4, 5x5. Next is 6x6 = 36."
+            question: "<b>Tool: Deep Grid Route</b><br><i>How it works:</i> Shortest routes still equal (right-moves needed) + (up-moves needed) — even when the start has a negative coordinate. Count the gap between start and target on each axis.<br><br><b>Mission:</b> Bolt is at (-1, 2) and the Core door is at (4, 6). Rolling only right or up, what is the smallest number of moves that gets him there?",
+            answer: "9",
+            explanation: "x gap: from -1 to 4 is 5 right-moves. y gap: from 2 to 6 is 4 up-moves. 5 + 4 = 9 moves."
         },
         {
             type: "text",
-            question: "<b>Tool: Two Signals at Once</b><br><i>How it works:</i> Sometimes two patterns take turns inside one signal. Split it into the 1st, 3rd, 5th... positions and the 2nd, 4th, 6th... positions and read each one separately.<br><br><b>Mission:</b> A tangled signal reads: 3, 10, 4, 12, 5, 14, ___. What number comes next?",
-            answer: "6",
-            explanation: "Odd positions: 3, 4, 5 — counting up. Even positions: 10, 12, 14 — counting up by 2. The next number sits in an odd position, so it is 6."
-        },
-        {
-            type: "text",
-            question: "<b>Tool: Shape Code</b><br><i>How it works:</i> Bolt's camera labels each shape with a number. Triangle is labelled 3, Square is labelled 4, Pentagon is labelled 5. Bolt is counting something about the shape itself.<br><br><b>Mission:</b> A Hexagon rolls past the camera. What label does Bolt give it?",
-            answer: "6",
-            explanation: "Bolt is counting sides: a triangle has 3 sides, a square 4, a pentagon 5. A hexagon has 6 sides."
-        },
-
-        // --- PHASE 5: GEARS & HOW THINGS WORK (Questions 21 - 25) ---
-        {
-            type: "text",
-            question: "<b>Tool: Gear Ratio Rig</b><br><i>How it works:</i> When two gears mesh, the gear with FEWER teeth spins FASTER. A 20-tooth gear turning a 10-tooth gear makes the small gear spin twice for every single turn of the big one.<br><br><b>Mission:</b> Bolt turns a 20-tooth gear exactly ONCE. It is meshed with a 10-tooth gear. How many full turns does the small gear make?",
-            answer: "2",
-            explanation: "The small gear has half as many teeth, so it spins twice as fast: 1 turn of the big gear = 2 turns of the small gear."
-        },
-        {
-            type: "mcq",
-            question: "<b>Tool: Gear Direction Rig</b><br><i>How it works:</i> Meshed gears always spin in OPPOSITE directions. Gear A spins clockwise, so the gear touching it spins counterclockwise, and the next one flips again.<br><br><b>Mission:</b> Three gears are meshed in a row: A, B, C. Gear A spins CLOCKWISE. Which way does gear C spin?",
-            options: ["Clockwise", "Counterclockwise"],
-            answer: "Clockwise",
-            explanation: "A is clockwise, B flips to counterclockwise, C flips again to clockwise. Two flips bring it back to clockwise."
-        },
-        {
-            type: "text",
-            question: "<b>Tool: Balance Lever</b><br><i>How it works:</i> A lever balances when (weight x distance from the middle) is the SAME on both sides. A heavy weight close in can balance a lighter weight further out.<br><br><b>Mission:</b> On Bolt's test lever, a weight of 6 sits at distance 2 on the left (6 x 2 = 12). On the right, a weight of 4 must balance it exactly. At what distance should the weight of 4 sit?",
-            answer: "3",
-            explanation: "The right side must also make 12. 4 x 3 = 12, so the weight sits at distance 3."
-        },
-        {
-            type: "text",
-            question: "<b>Tool: Wheel Rollout</b><br><i>How it works:</i> Every full turn of Bolt's wheel rolls him forward exactly 10 cm — the wheel's circumference is his built-in ruler.<br><br><b>Mission:</b> Bolt needs to roll exactly 50 cm to reach a power socket. How many full wheel turns does that take?",
-            answer: "5",
-            explanation: "50 / 10 = 5 full turns."
-        },
-        {
-            type: "text",
-            question: "<b>Tool: Battery Drain Meter</b><br><i>How it works:</i> Bolt's battery holds 100 units and his motors drain it at a steady 5 units per minute.<br><br><b>Mission:</b> Starting from a full battery, how many minutes can Bolt run before the battery is completely empty?",
-            answer: "20",
-            explanation: "100 / 5 = 20 minutes."
-        },
-
-        // --- PHASE 6: CODES & CIPHERS (Questions 26 - 30) ---
-        {
-            type: "mcq",
-            question: "<b>Tool: Number-for-Letter Code</b><br><i>How it works:</i> The lab's oldest code swaps each letter for its alphabet position: A=1, B=2, all the way to Z=26.<br><br><b>Mission:</b> Decode this message from the lab door: 18-15-2-15-20. What does it spell?",
-            options: ["ROBOT", "ROBAT", "RIBOT", "ROBUT"],
-            answer: "ROBOT",
-            explanation: "18=R, 15=O, 2=B, 15=O, 20=T. The door's message is ROBOT."
-        },
-        {
-            type: "mcq",
-            question: "<b>Tool: Shift Cipher Wheel</b><br><i>How it works:</i> This cipher shifts every letter ONE step FORWARD in the alphabet to hide it (A becomes B, B becomes C). To decode, shift every letter one step BACK.<br><br><b>Mission:</b> A note on a dog-shaped robot reads: E-P-H. What word does it decode to?",
-            options: ["DOG", "FQI", "CAT", "EPH"],
-            answer: "DOG",
-            explanation: "Shift each letter back one: E back to D, P back to O, H back to G. The note says DOG."
-        },
-        {
-            type: "text",
-            question: "<b>Tool: Letter-Math Vault</b><br><i>How it works:</i> In this vault puzzle, a letter stands for one mystery digit, and the same letter always means the same digit.<br><br><b>Mission:</b> The vault shows: A + A + A = 12. What digit is A?",
+            question: "<b>Tool: Net Drift</b><br><i>How it works:</i> Rolling back the way you came cancels earlier moves. To find where Bolt ENDS UP relative to the start, add the forward moves and subtract the backward ones.<br><br><b>Mission:</b> Bolt rolls 5 squares east, then 3 squares west, then 2 more squares east. How many squares EAST of his start is he now?",
             answer: "4",
-            explanation: "Three equal numbers add to 12, so each one is 12 / 3 = 4. A = 4."
-        },
-        {
-            type: "text",
-            question: "<b>Tool: Star-Digit Vault</b><br><i>How it works:</i> A star stands for one mystery digit everywhere it appears — including inside a bigger number, where it sits in the ones place.<br><br><b>Mission:</b> The vault shows: 3★ + ★ = 40. (3★ means the two-digit number thirty-something.) What digit is the star?",
-            answer: "5",
-            explanation: "Try the star as 5: 35 + 5 = 40. It works, so the star is 5. (Algebra check: 30 + star + star = 40, so 2 stars = 10, star = 5.)"
-        },
-        {
-            type: "mcq",
-            question: "<b>Tool: Three-Clue Keypad</b><br><i>How it works:</i> Keypad codes surrender to clues, one digit at a time. Use each clue exactly where it applies.<br><br><b>Mission:</b> A 3-digit code has these clues: (1) The three digits add up to 12. (2) The first digit is 4. (3) The last digit is 2 more than the first digit. What is the code?",
-            options: ["426", "462", "246", "642"],
-            answer: "426",
-            explanation: "First digit is 4. Last digit is 4 + 2 = 6. Middle digit: 12 - 4 - 6 = 2. The code is 426."
+            explanation: "5 east - 3 west + 2 east = 4 squares east of the start."
         },
 
-        // --- PHASE 7: DEBUGGING LAB (Questions 31 - 35) ---
+        // --- PHASE 4: PATTERN DECODING LEVEL 2 (Questions 16 - 20) ---
         {
             type: "text",
-            question: "<b>Tool: Bug Hunt — The Short Loop</b><br><i>How it works:</i> A program does EXACTLY what it says — no more, no less. When a robot does the wrong amount of work, count what the program actually commands.<br><br><b>Mission:</b> Bolt's program says: REPEAT 4 times: (Pick up 1 bolt). But Marty needs him to pick up 5 bolts. What should the REPEAT number be changed to?",
-            answer: "5",
-            explanation: "Each repeat picks up 1 bolt, so picking up 5 bolts needs REPEAT 5. The bug was the loop count."
+            question: "<b>Tool: Signal Decoder — Growing Rule</b><br><i>How it works:</i> Test a rule on EVERY jump. A rule like 'double and add a bit' must work from the first pair to the last.<br><br><b>Mission:</b> A Core signal reads: 1, 4, 10, 22, 46, ___. What number comes next?",
+            answer: "94",
+            explanation: "The rule is double, then add 2: 1x2+2=4, 4x2+2=10, 10x2+2=22, 22x2+2=46. Next: 46x2+2 = 94."
+        },
+        {
+            type: "text",
+            question: "<b>Tool: Adding-Machine Pattern</b><br><i>How it works:</i> In this famous pattern, each number is built by adding the two numbers before it.<br><br><b>Mission:</b> The Core computer prints: 2, 3, 5, 8, 13, 21, ___. What does it print next?",
+            answer: "34",
+            explanation: "Each number is the sum of the previous two: 13 + 21 = 34. (This is the Fibonacci pattern, starting from 2 and 3.)"
         },
         {
             type: "mcq",
-            question: "<b>Tool: Bug Hunt — Step Order</b><br><i>How it works:</i> Programs run their steps in order, so a step that must happen first physically has to be listed first.<br><br><b>Mission:</b> Bolt's door program is scrambled. Which instruction MUST come first for the program to work at all?",
-            options: ["Walk through the door", "Open the door", "Close the door", "Wave goodbye"],
-            answer: "Open the door",
-            explanation: "Bolt cannot walk through, close, or wave beyond a door that was never opened. Opening it must come first."
+            question: "<b>Tool: Letter Signal — Odd Jumps</b><br><i>How it works:</i> Convert letters to positions (A=1 ... Z=26) and study the jumps between them.<br><br><b>Mission:</b> A signal reads: B, E, J, Q, ___. Which letter comes next?",
+            options: ["X", "Y", "Z", "W"],
+            answer: "Z",
+            explanation: "Positions: B=2, E=5, J=10, Q=17. The jumps are +3, +5, +7 — odd numbers growing by 2. Next jump is +9: 17 + 9 = 26 = Z."
         },
         {
             type: "text",
-            question: "<b>Tool: Loop Counter</b><br><i>How it works:</i> To count what a loop does in total, multiply: (amount per repeat) x (number of repeats).<br><br><b>Mission:</b> Bolt runs: REPEAT 5 times: (Beep 2 times). How many beeps does he make in total?",
-            answer: "10",
-            explanation: "2 beeps per repeat x 5 repeats = 10 beeps."
+            question: "<b>Tool: Two Signals — Doubling Edition</b><br><i>How it works:</i> Split the signal into odd positions (1st, 3rd, 5th...) and even positions (2nd, 4th, 6th...) and read each strand on its own.<br><br><b>Mission:</b> A tangled Core signal reads: 2, 3, 4, 6, 8, 12, 16, ___. What number comes next?",
+            answer: "24",
+            explanation: "Odd positions: 2, 4, 8, 16 — doubling. Even positions: 3, 6, 12 — also doubling. The next number is in an even position: 12 x 2 = 24."
+        },
+        {
+            type: "text",
+            question: "<b>Tool: Cube Printer</b><br><i>How it works:</i> The printer's new tiles come from multiplying a number by itself THREE times: 2 x 2 x 2 = 8, 3 x 3 x 3 = 27.<br><br><b>Mission:</b> The tiles read: 1, 8, 27, 64, ___. What is stamped on the next tile?",
+            answer: "125",
+            explanation: "These are cube numbers: 1x1x1, 2x2x2, 3x3x3, 4x4x4. Next is 5x5x5 = 125."
+        },
+
+        // --- PHASE 5: GEARS & SYSTEMS LEVEL 2 (Questions 21 - 25) ---
+        {
+            type: "text",
+            question: "<b>Tool: Heavy Gear Rig</b><br><i>How it works:</i> Same gear law as the lab upstairs: divide the big gear's teeth by the small gear's teeth to get how many times faster the small gear spins — then multiply by the big gear's turns.<br><br><b>Mission:</b> A 24-tooth gear meshes with an 8-tooth gear. Marty turns the BIG gear 5 full turns. How many turns does the small gear make?",
+            answer: "15",
+            explanation: "24 / 8 = 3, so the small gear spins 3 times per big turn. 5 big turns x 3 = 15 small turns."
         },
         {
             type: "mcq",
-            question: "<b>Tool: Bug Hunt — The IF Rule</b><br><i>How it works:</i> An IF-THEN-ELSE rule follows its branches literally: IF the condition is true, the robot does the THEN action; otherwise it does the ELSE action — even if the rule itself is a bad idea.<br><br><b>Mission:</b> Bolt's battery is LOW. His program says: IF battery is low THEN keep working, ELSE charge. According to this program, what will Bolt do?",
-            options: ["Charge his battery", "Keeps working", "Turn off", "Beep for help"],
-            answer: "Keeps working",
-            explanation: "The battery IS low, so the THEN branch runs: keep working. (That is exactly the bug — the branches are the wrong way round for a tired robot!)"
+            question: "<b>Tool: The Four-Gear Line</b><br><i>How it works:</i> Every mesh flips the spin direction. Count the flips from the first gear to the last.<br><br><b>Mission:</b> Four gears mesh in a row: A, B, C, D. Gear A spins CLOCKWISE. Which way does gear D spin?",
+            options: ["Clockwise", "Counterclockwise"],
+            answer: "Counterclockwise",
+            explanation: "A clockwise, B counterclockwise (flip 1), C clockwise (flip 2), D counterclockwise (flip 3). Gear D spins counterclockwise."
         },
         {
             type: "text",
-            question: "<b>Tool: Sensor Sweep</b><br><i>How it works:</i> Robots often apply a rule to only SOME items in a row — like only the even-numbered ones. Count the matching items first, then apply the action.<br><br><b>Mission:</b> Bolt checks doors numbered 1 to 6. His rule: knock TWICE on every EVEN-numbered door, and never knock on odd doors. How many knocks does he make in total?",
+            question: "<b>Tool: Balance Lever — Heavier</b><br><i>How it works:</i> Balance needs (weight x distance) equal on both sides, just like upstairs — now with bigger loads.<br><br><b>Mission:</b> A weight of 8 sits at distance 3 on the left of the Core's lever. A weight of 6 on the right must balance it exactly. At what distance should the weight of 6 sit?",
+            answer: "4",
+            explanation: "Left side: 8 x 3 = 24. Right side must make 24 too: 6 x 4 = 24, so distance 4."
+        },
+        {
+            type: "text",
+            question: "<b>Tool: Cargo Wheel Rollout</b><br><i>How it works:</i> Bolt's bigger cargo wheels roll him 15 cm per full turn.<br><br><b>Mission:</b> The Core door is exactly 90 cm away. How many full wheel turns does Bolt need to reach it?",
             answer: "6",
-            explanation: "Even doors are 2, 4 and 6 — that is 3 doors. 3 doors x 2 knocks = 6 knocks."
+            explanation: "90 / 15 = 6 full turns."
+        },
+        {
+            type: "text",
+            question: "<b>Tool: Combined Drain</b><br><i>How it works:</i> When two systems drain one battery, ADD their drains first to get the total drain per minute, then divide the battery by it.<br><br><b>Mission:</b> Bolt's battery holds 80 units. His motors drain 5 units per minute and his lights drain 3 units per minute, both running together. How many minutes until the battery is empty?",
+            answer: "10",
+            explanation: "Combined drain: 5 + 3 = 8 units per minute. 80 / 8 = 10 minutes."
         },
 
-        // --- PHASE 8: THE FINAL RESCUE (Questions 36 - 40) ---
+        // --- PHASE 6: CODES & CIPHERS LEVEL 2 (Questions 26 - 30) ---
         {
-            type: "text",
-            question: "<b>Final Door — Part 1: The Power Code</b><br><i>How it works:</i> Everything Bolt rebooted is coming back online. The rescue door's first lock is his old binary panel (switch values 8, 4, 2, 1).<br><br><b>Mission:</b> The lock displays the pattern 1-0-1-1. What number must Marty type into the normal keypad to match it?",
-            answer: "11",
-            explanation: "1-0-1-1 means 8 + 2 + 1 = 11."
-        },
-        {
-            type: "text",
-            question: "<b>Final Door — Part 2: The Gear Crank</b><br><i>How it works:</i> The door's crank gear meshes with a door gear that has one third as many teeth — so the door gear spins 3 times for every 1 crank turn, just like the gear rig in Phase 5.<br><br><b>Mission:</b> Marty turns the crank gear 4 full turns. How many turns does the door gear make?",
-            answer: "12",
-            explanation: "4 crank turns x 3 door-gear turns each = 12 turns."
+            type: "mcq",
+            question: "<b>Tool: Number-for-Letter Code — Longer</b><br><i>How it works:</i> The A=1 ... Z=26 code again, on a longer message from the Core door.<br><br><b>Mission:</b> Decode: 3-15-4-5. What does it spell?",
+            options: ["CODE", "CIDE", "COBE", "CADE"],
+            answer: "CODE",
+            explanation: "3=C, 15=O, 4=D, 5=E. The message is CODE."
         },
         {
             type: "mcq",
-            question: "<b>Final Door — Part 3: The Name Seal</b><br><i>How it works:</i> The last seal uses the lab's number-for-letter code (A=1, B=2, ... Z=26). Only the right name opens it.<br><br><b>Mission:</b> The seal shows: 2-15-12-20. Whose name is on the seal?",
-            options: ["BOLT", "BOLD", "BOAT", "BELT"],
-            answer: "BOLT",
-            explanation: "2=B, 15=O, 12=L, 20=T. The seal says BOLT — it was his door all along."
+            question: "<b>Tool: Double-Shift Cipher</b><br><i>How it works:</i> This cipher wheel shifts every letter TWO steps forward to hide it. To decode, shift every letter TWO steps back.<br><br><b>Mission:</b> A note on the Core door reads: H-T-Q-I. What word does it decode to?",
+            options: ["FROG", "TOAD", "HTQI", "JUMP"],
+            answer: "FROG",
+            explanation: "Shift each letter back two: H back to F, T back to R, Q back to O, I back to G. The note says FROG."
         },
         {
             type: "text",
-            question: "<b>Final Door — Part 4: The Roll Home</b><br><i>How it works:</i> Shortest grid routes again: count the right-moves plus the up-moves, nothing wasted.<br><br><b>Mission:</b> Bolt is at (0, 0) and the open rescue door is at (4, 3). Rolling only right or up, one square at a time, what is the smallest number of moves that gets Bolt home?",
-            answer: "7",
-            explanation: "4 moves right (0 to 4) + 3 moves up (0 to 3) = 7 moves."
+            question: "<b>Tool: Twin-Star Vault</b><br><i>How it works:</i> The star is one mystery digit, and here it appears twice inside a two-digit number — so the number is 11, 22, 33... style, and it is added to ITSELF.<br><br><b>Mission:</b> The vault shows: ★★ + ★★ = 88. What digit is the star?",
+            answer: "4",
+            explanation: "Try 44: 44 + 44 = 88. It works, so the star is 4."
+        },
+        {
+            type: "text",
+            question: "<b>Tool: Mirror-Star Vault</b><br><i>How it works:</i> Now the star appears in the TENS place of one number and the ONES place of another. Write both numbers with a test digit and check the sum.<br><br><b>Mission:</b> The vault shows: ★7 + 7★ = 132. What digit is the star?",
+            answer: "5",
+            explanation: "Try 5: 57 + 75 = 132. It works, so the star is 5. (Algebra check: the two numbers always add to 77 + 11 x star; 132 - 77 = 55, and 55 / 11 = 5.)"
         },
         {
             type: "mcq",
-            question: "<b>Final Door — Part 5: The Master Switch</b><br><i>How it works:</i> One last logic puzzle. Three switches — A, B and C — and the door opens only when ALL of these are true at once: A is ON, B is OFF, and C matches A.<br><br><b>Mission:</b> Which switch setting opens the rescue door and sets Bolt free?",
-            options: ["A ON, B ON, C ON", "A ON, B OFF, C ON", "A OFF, B OFF, C OFF", "A ON, B OFF, C OFF"],
+            question: "<b>Tool: Three-Clue Keypad — Core Edition</b><br><i>How it works:</i> Same keypad attack as upstairs: pin down the digits the clues name directly, then let the total-sum clue reveal the last one.<br><br><b>Mission:</b> A 3-digit code has these clues: (1) The three digits add up to 15. (2) The first digit is 7. (3) The last digit is 4 LESS than the first digit. What is the code?",
+            options: ["753", "735", "573", "375"],
+            answer: "753",
+            explanation: "First digit is 7. Last digit is 7 - 4 = 3. Middle digit: 15 - 7 - 3 = 5. The code is 753."
+        },
+
+        // --- PHASE 7: DEBUGGING LAB LEVEL 2 (Questions 31 - 35) ---
+        {
+            type: "text",
+            question: "<b>Tool: Nested Loops</b><br><i>How it works:</i> A loop inside a loop multiplies: the INNER loop runs in full every single time the OUTER loop repeats.<br><br><b>Mission:</b> Bolt runs: REPEAT 2 times: (REPEAT 3 times: (Beep once)). How many beeps does he make in total?",
+            answer: "6",
+            explanation: "The inner loop beeps 3 times, and the outer loop runs it twice: 3 x 2 = 6 beeps."
+        },
+        {
+            type: "mcq",
+            question: "<b>Tool: Bug Hunt — The OR Rule</b><br><i>How it works:</i> With an OR inside an IF, the THEN action fires when ANY ONE of the conditions is true — even if the others are false.<br><br><b>Mission:</b> Bolt's program says: IF battery is low OR the door is locked THEN call Marty, ELSE keep exploring. Right now Bolt's battery is FULL, but the door IS locked. What does Bolt do?",
+            options: ["Call Marty", "Keep exploring", "Charge his battery", "Go to sleep"],
+            answer: "Call Marty",
+            explanation: "The OR condition needs only one true part: the door is locked, so the THEN branch fires — Bolt calls Marty."
+        },
+        {
+            type: "text",
+            question: "<b>Tool: Simulate the Program</b><br><i>How it works:</i> Debugging means running the program in your head, exactly as written, and counting what it ACTUALLY does — not what it was supposed to do.<br><br><b>Mission:</b> A program meant to collect 12 bolts says: REPEAT 3 times: (Pick up 3 bolts). How many bolts does this program actually collect?",
+            answer: "9",
+            explanation: "3 repeats x 3 bolts = 9 bolts. The program falls 3 short of its 12-bolt target — that shortfall is the bug to fix."
+        },
+        {
+            type: "mcq",
+            question: "<b>Tool: Bug Hunt — The Last Step</b><br><i>How it works:</i> Some steps can only happen after everything they depend on is done. That step must sit at the END of the program.<br><br><b>Mission:</b> Bolt's message program has four steps: Turn on the radio, Type the message, Charge the antenna battery, Send the message. Which step MUST come last?",
+            options: ["Turn on the radio", "Type the message", "Charge the antenna battery", "Send the message"],
+            answer: "Send the message",
+            explanation: "Sending needs the radio on, the message typed AND the antenna charged. Everything depends on nothing else — but sending depends on all of them, so it must be last."
+        },
+        {
+            type: "text",
+            question: "<b>Tool: Sensor Sweep — Multiples</b><br><i>How it works:</i> Apply the rule only to items matching the condition — this time, numbers that are multiples of 3 (3, 6, 9...).<br><br><b>Mission:</b> Bolt checks doors numbered 1 to 9. His rule: knock THREE times on every door whose number is a multiple of 3, and never knock on the others. How many knocks in total?",
+            answer: "9",
+            explanation: "Multiples of 3 between 1 and 9: doors 3, 6 and 9 — 3 doors. 3 doors x 3 knocks = 9 knocks."
+        },
+
+        // --- PHASE 8: THE CORE CHAMBER FINALE (Questions 36 - 40) ---
+        {
+            type: "text",
+            question: "<b>Core Lock 1: The Deep Panel</b><br><i>How it works:</i> The five-switch panel one last time (16, 8, 4, 2, 1) — the Core's master power reading.<br><br><b>Mission:</b> The master panel shows 1-0-1-1-0. How much power is flowing into the Core?",
+            answer: "22",
+            explanation: "The 16, 4 and 2 switches are ON: 16 + 4 + 2 = 22 power."
+        },
+        {
+            type: "mcq",
+            question: "<b>Core Lock 2: The Triple Chain</b><br><i>How it works:</i> Three gates in a row this time. Finish each gate before moving to the next, and carry the result forward.<br><br><b>Mission:</b> Signals A (ON) and B (OFF) enter an OR gate. That result meets signal C (ON) at an AND gate. That result passes through a NOT gate. What is the FINAL output?",
+            options: ["ON", "OFF"],
+            answer: "OFF",
+            explanation: "OR: ON or OFF gives ON. AND: ON and ON gives ON. NOT flips it to OFF. Final output: OFF."
+        },
+        {
+            type: "mcq",
+            question: "<b>Core Lock 3: The Long Roll</b><br><i>How it works:</i> Track x and y separately through a whole journey: right adds to x, left subtracts; up adds to y, down subtracts.<br><br><b>Mission:</b> Bolt starts at (2, 1) and rolls: 3 right, 2 up, 1 left, 3 up. Where does he end?",
+            options: ["(4, 6)", "(6, 6)", "(4, 4)", "(2, 6)"],
+            answer: "(4, 6)",
+            explanation: "x: 2 + 3 - 1 = 4. y: 1 + 2 + 3 = 6. Bolt ends at (4, 6)."
+        },
+        {
+            type: "text",
+            question: "<b>Core Lock 4: The Tens Vault</b><br><i>How it works:</i> The letter A is a mystery digit sitting in the TENS place of a number, and then added once more on its own: A0 means A x 10.<br><br><b>Mission:</b> The Core vault shows: A0 + A = 55. What digit is A?",
+            answer: "5",
+            explanation: "Try A = 5: 50 + 5 = 55. It works. (Algebra check: A0 + A is 11 x A, and 55 / 11 = 5.)"
+        },
+        {
+            type: "mcq",
+            question: "<b>Core Lock 5: The Master Switch</b><br><i>How it works:</i> The final lock: three switches A, B and C, and the Core only wakes when ALL of these are true at once: A is ON, B is DIFFERENT from A, and C is ON.<br><br><b>Mission:</b> Which switch setting wakes the Core and completes the rescue?",
+            options: ["A ON, B ON, C ON", "A ON, B OFF, C ON", "A OFF, B ON, C ON", "A ON, B OFF, C OFF"],
             answer: "A ON, B OFF, C ON",
-            explanation: "Check the winning setting against every rule: A is ON (yes), B is OFF (yes), and C is ON, matching A (yes). All three rules true — the door opens. Bolt is rescued!"
+            explanation: "Check the winner against every rule: A is ON (yes), B is OFF which is different from A (yes), C is ON (yes). All three rules true — the Core Chamber lights up. Mission complete: Bolt rescued the lab!"
         }
     ]
 };
