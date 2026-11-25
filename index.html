@@ -384,6 +384,8 @@
     </div>
 
 
+    <div id="help-resume-bar" onclick="finishHelpCall()" style="display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 9998; background: #16a34a; color: #fff; text-align: center; padding: 14px 10px; font-weight: bold; font-size: 1rem; cursor: pointer; box-shadow: 0 -4px 18px rgba(0,0,0,0.35);">📞 This is your question page — Dad can see it now. Tap here when you finish the call ✅</div>
+
     <div class="help-overlay" id="help-overlay">
         <div class="help-panel">
             <h2>🆘 Ask Dad for Help</h2>
@@ -940,6 +942,7 @@
             document.getElementById('help-question-preview').innerText = currentQuestionPlainText();
             document.getElementById('help-note').innerText = "";
             refreshHelpSetup();
+            document.getElementById('help-resume-bar').style.display = 'none';
             document.getElementById('help-overlay').style.display = 'flex';
         }
 
@@ -949,15 +952,22 @@
         }
 
         function callDad() {
-            const note = document.getElementById('help-note');
             const t = getDadTarget();
+            // Close the help panel FIRST, so the screen Marty shares shows the
+            // question page — not this panel. Timers stay paused; the green
+            // bar at the bottom resumes them when the call is over.
+            document.getElementById('help-overlay').style.display = 'none';
+            document.getElementById('help-resume-bar').style.display = 'block';
             if (t) {
-                note.innerText = "Opening FaceTime… Now do the two blue-box steps to share your screen.";
                 window.location.href = "facetime://" + encodeURIComponent(t);
             } else {
-                note.innerText = "Opening FaceTime — pick Dad from your favourites. (A grown-up can also do the one-time setup below so this button calls him directly.)";
                 window.location.href = "facetime://";
             }
+        }
+
+        function finishHelpCall() {
+            document.getElementById('help-resume-bar').style.display = 'none';
+            resumeHelpTimers();
         }
 
         function copyQuestionForDad() {
