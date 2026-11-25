@@ -256,6 +256,68 @@
             pointer-events: none;
             z-index: 999;
         }
+
+        /* --- Ask Dad help feature --- */
+        .btn-help {
+            width: 100%;
+            margin-top: 12px;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+        .btn-help:active { transform: scale(0.98); }
+        .help-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 6, 23, 0.82);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .help-panel {
+            background: #1e293b;
+            color: #f8fafc;
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 520px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .help-panel h2 { margin-top: 0; }
+        .help-panel .help-q {
+            text-align: left;
+            background: rgba(255,255,255,0.07);
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 0.95rem;
+            max-height: 180px;
+            overflow-y: auto;
+            margin: 12px 0 18px;
+        }
+        .help-panel button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 14px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            color: #fff;
+        }
+        .help-call { background: #2563eb; }
+        .help-copy { background: #7c3aed; }
+        .help-done { background: #16a34a; }
+        .help-note { font-size: 0.85rem; opacity: 0.8; min-height: 1.2em; }
     </style>
 </head>
 <body>
@@ -281,6 +343,7 @@
 
             <div id="answer-area"></div>
             <button class="btn-primary" id="submit-btn" onclick="submitAnswer()" style="width: 100%;">Submit Answer</button>
+            <button class="btn-help" id="help-btn" onclick="openHelp()">🆘 Ask Dad for Help</button>
         </div>
 
         <div id="scorecard-view" style="display: none; text-align: center;">
@@ -317,6 +380,26 @@
                 <button class="btn-primary" onclick="startRetryMode()" id="retry-btn" style="flex: 1; display: none;">Review Missed Questions</button>
                 <button class="btn-primary" onclick="restartMission()" style="flex: 1; background: #64748b; color: #fff;">Restart Mission</button>
             </div>
+        </div>
+    </div>
+
+
+    <div class="help-overlay" id="help-overlay">
+        <div class="help-panel">
+            <h2>🆘 Ask Dad for Help</h2>
+            <div style="font-size: 0.9rem; opacity: 0.85;">Your timers are paused — take your time. This is the question you are on:</div>
+            <div class="help-q" id="help-question-preview"></div>
+            <button class="help-call" onclick="callDad()">📞 Call Dad on FaceTime</button>
+            <div style="background: rgba(37,99,235,0.18); border: 1px solid rgba(147,197,253,0.5); border-radius: 10px; padding: 10px 12px; margin: 4px 0 10px; font-size: 1rem; text-align: left;">📺 <b>When the call starts, share your screen:</b><br>1. Click the <b>share button</b> in FaceTime<br>2. Click <b>Screen</b></div>
+            <div id="help-setup" style="display: none; margin: 10px 0; text-align: left;">
+                <div style="font-size: 0.9rem; margin-bottom: 6px;">One-time setup (a grown-up does this once): type Dad's mobile number or Apple ID email. It is saved <b>only on this Mac</b> — never in the app, never online.</div>
+                <input id="help-target-input" type="text" placeholder="Dad's number or Apple ID email" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.08); color: #fff; box-sizing: border-box;">
+                <button class="help-copy" onclick="saveDadTarget()">💾 Save on this Mac</button>
+            </div>
+            <div id="help-target-row" style="display: none; font-size: 0.85rem; opacity: 0.85; margin: 4px 0;">Calling: <span id="help-target-mask"></span> <a href="#" onclick="editDadTarget(); return false;" style="color: #93c5fd;">change</a></div>
+            <button class="help-copy" onclick="copyQuestionForDad()">📋 Copy this question for Dad</button>
+            <div class="help-note" id="help-note"></div>
+            <button class="help-done" onclick="closeHelp()">✅ I got it — back to the mission</button>
         </div>
     </div>
 
@@ -766,6 +849,137 @@
 
         function restartMission() {
             window.location.reload();
+        }
+
+        // --- Ask Dad help feature (FaceTime) ---
+        // PRIVACY: this file lives in a PUBLIC repo, so Dad's number / Apple ID
+        // is NEVER written here. It is typed once on Marty's Mac and kept in
+        // this browser's local storage on that machine only.
+        const HELP_CONFIG = {
+            helperName: "Dad",
+            storageKey: "askDadFaceTimeTarget"
+        };
+
+        function getDadTarget() {
+            try { return localStorage.getItem(HELP_CONFIG.storageKey) || ""; } catch (e) { return ""; }
+        }
+
+        function maskTarget(t) {
+            if (!t) return "";
+            if (t.length <= 4) return "••••";
+            return "••••" + t.slice(-4);
+        }
+
+        function refreshHelpSetup() {
+            const t = getDadTarget();
+            document.getElementById('help-setup').style.display = t ? 'none' : 'block';
+            document.getElementById('help-target-row').style.display = t ? 'block' : 'none';
+            if (t) document.getElementById('help-target-mask').innerText = maskTarget(t);
+        }
+
+        function saveDadTarget() {
+            const v = document.getElementById('help-target-input').value.trim();
+            const note = document.getElementById('help-note');
+            if (!v) { note.innerText = "Type Dad's number or Apple ID email first."; return; }
+            try { localStorage.setItem(HELP_CONFIG.storageKey, v); } catch (e) { /* storage unavailable */ }
+            refreshHelpSetup();
+            note.innerText = "✅ Saved on this Mac only. Now tap \"Call Dad on FaceTime\".";
+        }
+
+        function editDadTarget() {
+            document.getElementById('help-target-input').value = getDadTarget();
+            document.getElementById('help-setup').style.display = 'block';
+            document.getElementById('help-target-row').style.display = 'none';
+        }
+        let helpTimersPaused = false;
+
+        function currentQuestionPlainText() {
+            const q = questions[currentIdx];
+            if (!q) return "";
+            const tmp = document.createElement('div');
+            tmp.innerHTML = q.question;
+            let text = (tmp.textContent || "").replace(/\s+/g, " ").trim();
+            if (q.type === 'mcq' && q.options) {
+                text += " Options: " + q.options.join(" / ");
+            }
+            return text;
+        }
+
+        function helpMessageText() {
+            const title = (typeof missionConfig !== 'undefined' && missionConfig.themeTitle) ? missionConfig.themeTitle : "Marty's Worksheet";
+            const label = isReviewMode ? "Review question" : ("Question " + (currentIdx + 1) + " of " + questions.length);
+            return "Marty needs help! " + title + " — " + label + ": " + currentQuestionPlainText();
+        }
+
+        function pauseHelpTimers() {
+            if (helpTimersPaused) return;
+            helpTimersPaused = true;
+            clearInterval(questionTimerInterval);
+            clearInterval(globalTimerInterval);
+        }
+
+        function resumeHelpTimers() {
+            if (!helpTimersPaused) return;
+            helpTimersPaused = false;
+            questionTimerInterval = setInterval(() => {
+                questionSeconds++;
+                let mins = Math.floor(questionSeconds / 60).toString().padStart(2, '0');
+                let secs = (questionSeconds % 60).toString().padStart(2, '0');
+                document.getElementById('question-timer').innerText = `${mins}:${secs}`;
+            }, 1000);
+            globalTimerInterval = setInterval(() => {
+                globalSeconds++;
+                let mins = Math.floor(globalSeconds / 60).toString().padStart(2, '0');
+                let secs = (globalSeconds % 60).toString().padStart(2, '0');
+                document.getElementById('global-timer').innerText = `${mins}:${secs}`;
+            }, 1000);
+        }
+
+        function openHelp() {
+            pauseHelpTimers();
+            document.getElementById('help-question-preview').innerText = currentQuestionPlainText();
+            document.getElementById('help-note').innerText = "";
+            refreshHelpSetup();
+            document.getElementById('help-overlay').style.display = 'flex';
+        }
+
+        function closeHelp() {
+            document.getElementById('help-overlay').style.display = 'none';
+            resumeHelpTimers();
+        }
+
+        function callDad() {
+            const note = document.getElementById('help-note');
+            const t = getDadTarget();
+            if (t) {
+                note.innerText = "Opening FaceTime… Now do the two blue-box steps to share your screen.";
+                window.location.href = "facetime://" + encodeURIComponent(t);
+            } else {
+                note.innerText = "Opening FaceTime — pick Dad from your favourites. (A grown-up can also do the one-time setup below so this button calls him directly.)";
+                window.location.href = "facetime://";
+            }
+        }
+
+        function copyQuestionForDad() {
+            const text = helpMessageText();
+            const note = document.getElementById('help-note');
+            const done = () => { note.innerText = "✅ Copied! Paste it to Dad in the call chat or in Messages."; };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+            } else {
+                fallbackCopy(text, done);
+            }
+        }
+
+        function fallbackCopy(text, done) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); done(); } catch (e) { /* clipboard unavailable */ }
+            document.body.removeChild(ta);
         }
     </script>
 </body>
